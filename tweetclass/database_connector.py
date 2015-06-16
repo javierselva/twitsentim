@@ -1,4 +1,4 @@
-from .models import Query, Query_data, Tweet
+from .models import Query, Query_data
 import time
 import threading
 from django.utils import timezone

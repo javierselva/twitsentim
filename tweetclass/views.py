@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 
-from .models import Query, Query_data, Tweet
+from .models import Query, Query_data
 
 from .code import get_tweets
 from .code import get_polarity

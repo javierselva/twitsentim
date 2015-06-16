@@ -29,12 +29,12 @@ class Query_data(models.Model):
 
 # This class will store the tweets corresponding to a concrete query
 # The id of each tweet will be the same that in tweeter
-class Tweet(models.Model):
-    query_id = models.ForeignKey(Query)
-    tweet_text = models.CharField(max_length=140)
-    tweet_pol = models.CharField(max_length=4)
-    
-    #This is used for when the system needs to print a Query object
-    def __str__(self):
-        return self.tweet_text
+#~ class Tweet(models.Model):
+    #~ query_id = models.ForeignKey(Query)
+    #~ tweet_text = models.CharField(max_length=140)
+    #~ tweet_pol = models.CharField(max_length=4)
+    #~ 
+    #~ #This is used for when the system needs to print a Query object
+    #~ def __str__(self):
+        #~ return self.tweet_text
 
