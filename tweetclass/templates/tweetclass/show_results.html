@@ -7,94 +7,111 @@
 * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
 ***********************************************/
 </script>
+<table border=1 width=100%>
+    <tr>
+        <td colspan=2>
+            <h1> Polarity Classifier in Twitter</h1>
 
-<h1> Polarity Classifier in Twitter</h1>
+            <form action="{% url 'tweetclass:query_page' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="query_text" id="query_text" value={{ query.query_text }} />
+            <input type="submit" value="Search" />
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td width = 500>
+            <h2>Query: <i>{{ query.query_text }}</i></h2>
 
-<form action="{% url 'tweetclass:query_page' %}" method="post">
-{% csrf_token %}
-<input type="text" name="query_text" id="query_text" value={{ query.query_text }} />
-<input type="submit" value="Search" />
-</form>
+            <h3>Results for {{ current.query_date }}:</h3>
+            <ul>
+                <li><table width=2{{ current.p_pos_p }}px border=0><tr><td><div style="background-color:#00FF00"><b>P+ {{current.p_pos_p}} %</b></div></td></tr></table></li>
+                <li><table width=2{{ current.p_pos }}px border=0><tr><td><div style="background-color:#008800"><b>P {{current.p_pos}} %</b></div></td></tr></table></li>
+                <li><table width=2{{ current.p_neu }}px border=0><tr><td><div style="background-color:#888888"><b>NEU {{current.p_neu}} %</b></div></td></tr></table></li>
+                <li><table width=2{{ current.p_neg }}px border=0><tr><td><div style="background-color:#880000"><b>N {{current.p_neg}} %</b></div></td></tr></table></li>
+                <li><table width=2{{ current.p_neg_p }}px border=0><tr><td><div style="background-color:#FF0000"><b>N+ {{current.p_neg_p}} %</b></div></td></tr></table></li>
+                <li><table width=2{{ current.p_none }}px border=0><tr><td><div style="background-color:#000000"><font color="#FFFFFF"><b>NONE {{current.p_none}} %</b></font></div></td></tr></table></li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+            {% for tweet in sum_twe %}
+                <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+            {% endfor %}
+            </ul>
+        </td>
+    </tr>
 
-<h2>Query: <i>{{ query.query_text }}</i></h2>
+    <tr>
+        <td colspan=2>
+            <h3>Historic results</h3>
 
-<h3>Results for {{ current.query_date }}:</h3>
-<ul>
-    <li><table width=2{{ current.p_pos_p }}px border=0><tr><td><div style="background-color:#00FF00"><b>P+ {{current.p_pos_p}} %</b></div></td></tr></table></li>
-    <li><table width=2{{ current.p_pos }}px border=0><tr><td><div style="background-color:#008800"><b>P {{current.p_pos}} %</b></div></td></tr></table></li>
-    <li><table width=2{{ current.p_neu }}px border=0><tr><td><div style="background-color:#888888"><b>NEU {{current.p_neu}} %</b></div></td></tr></table></li>
-    <li><table width=2{{ current.p_neg }}px border=0><tr><td><div style="background-color:#880000"><b>N {{current.p_neg}} %</b></div></td></tr></table></li>
-    <li><table width=2{{ current.p_neg_p }}px border=0><tr><td><div style="background-color:#FF0000"><b>N+ {{current.p_neg_p}} %</b></div></td></tr></table></li>
-    <li><table width=2{{ current.p_none }}px border=0><tr><td><div style="background-color:#000000"><font color="#FFFFFF"><b>NONE {{current.p_none}} %</b></font></div></td></tr></table></li>
-</ul>
+            <!--
+            START OF THE TAB ELEMENT
+            -->
 
+            <ul id="countrytabs" class="shadetabs">
+            <li><a href="#1" rel="table" class="selected">Information Table</a></li>
+            <li><a href="#1" rel="graph1">Generic Graphic</a></li>
+            <li><a href="#1" rel="graph2">Sumarized Graphic</a></li>
+            <li><a href="#1" rel="somethingElse">Something Else</a></li>
+            </ul>
 
+            <div style="border:0px; width:1000px; height:600px margin-bottom: 1em; padding: 10px">
 
-<h3>Historic results</h3>
+            <a id="#1">
+            <div id="table" class="tabcontent">
+                <table border=1>
+                    <tr style="background-color:#AAAAAA" align="center">
+                        <td width="200px"><b>Query Date</b></td>
+                        <td width="50px"><b>P+</b></td>
+                        <td width="50px"><b>P</b></td>
+                        <td width="50px"><b>NEU</b></td>
+                        <td width="50px"><b>N</b></td>
+                        <td width="50px"><b>N+</b></td>
+                        <td width="50px"><b>NONE</b></td>
+                    </tr>
+                    {% for result in all_res %}
+                        <tr align="center">
+                            <td width="200px" style="background-color:#CCCCCC">{{ result.query_date }}</td>
+                            <td width="50px">{{ result.p_pos_p }}</td>
+                            <td width="50px">{{ result.p_pos }}</td>
+                            <td width="50px">{{ result.p_neu }}</td>
+                            <td width="50px">{{ result.p_neg }}</td>
+                            <td width="50px">{{ result.p_neg_p }}</td>
+                            <td width="50px">{{ result.p_none }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
 
-<!--
-START OF THE TAB ELEMENT
--->
+            <div id="graph1" class="tabcontent">
+                <img src="{% static generic_image_path %}" alt="My image"/>
+            </div>
 
-<ul id="countrytabs" class="shadetabs">
-<li><a href="#1" rel="table" class="selected">Information Table</a></li>
-<li><a href="#1" rel="graph1">Generic Graphic</a></li>
-<li><a href="#1" rel="graph2">Sumarized Graphic</a></li>
-<li><a href="#1" rel="somethingElse">Something Else</a></li>
-</ul>
+            <div id="graph2" class="tabcontent">
+            <img src="{% static summary_image_path %}" alt="My image"/>
+            </div>
 
-<div style="border:0px; width:1000px; height:600px margin-bottom: 1em; padding: 10px">
+            <div id="somethinElse" class="tabcontent">
+            This has not been done yet<br /><br />
+            </div>
 
-<a id="#1">
-<div id="table" class="tabcontent">
-    <table border=1>
-        <tr style="background-color:#AAAAAA" align="center">
-            <td width="200px"><b>Query Date</b></td>
-            <td width="50px"><b>P+</b></td>
-            <td width="50px"><b>P</b></td>
-            <td width="50px"><b>NEU</b></td>
-            <td width="50px"><b>N</b></td>
-            <td width="50px"><b>N+</b></td>
-            <td width="50px"><b>NONE</b></td>
-        </tr>
-        {% for result in all_res %}
-            <tr align="center">
-                <td width="200px" style="background-color:#CCCCCC">{{ result.query_date }}</td>
-                <td width="50px">{{ result.p_pos_p }}</td>
-                <td width="50px">{{ result.p_pos }}</td>
-                <td width="50px">{{ result.p_neu }}</td>
-                <td width="50px">{{ result.p_neg }}</td>
-                <td width="50px">{{ result.p_neg_p }}</td>
-                <td width="50px">{{ result.p_none }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
+            </div>
 
-<div id="graph1" class="tabcontent">
-    <img src="{% static generic_image_path %}" alt="My image"/>
-</div>
+            <script type="text/javascript">
+            var countries=new ddtabcontent("countrytabs")
+            countries.setpersist(true)
+            countries.setselectedClassTarget("link")
+            countries.init()
+            </script>
 
-<div id="graph2" class="tabcontent">
-<img src="{% static summary_image_path %}" alt="My image"/>
-</div>
+            <!--
+            END OF THE TAB ELEMENT 
+            -->
 
-<div id="somethinElse" class="tabcontent">
-This has not been done yet<br /><br />
-</div>
-
-</div>
-
-<script type="text/javascript">
-var countries=new ddtabcontent("countrytabs")
-countries.setpersist(true)
-countries.setselectedClassTarget("link")
-countries.init()
-</script>
-
-<!--
-END OF THE TAB ELEMENT 
--->
-
-<br />
-<a href="{% url 'tweetclass:index' %}">Make other query</a>
+            <br />
+            <a href="{% url 'tweetclass:index' %}">Make other query</a>
+        </td>
+    </tr>
+</table>

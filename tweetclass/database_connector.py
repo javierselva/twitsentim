@@ -1,4 +1,4 @@
-from .models import Query, Query_data
+from .models import Query, Query_data, Summary_tweet
 import time
 import threading
 from django.utils import timezone
@@ -41,6 +41,8 @@ def store_polarity(requested_query,clas_tweets):
     )
     print("results stored")
     
+    requested_query.save()
+    
     return requested_query_data
 
 # The tweets have to be stored in the database
@@ -60,6 +62,14 @@ def retrieve_query(requested_query_data_id):
     current_query = Query_data.objects.get(pk=requested_query_data_id)
     query = get_object_or_404(Query,pk=current_query.query_id_id)
     all_results = query.query_data_set.all()
-    return current_query,query,all_results
+    sum_tweets = Summary_tweet.objects.filter(query_id=current_query.id)
+    return current_query,query,all_results,sum_tweets
 
+def store_summary(requested_query, tweets):
+    for tweet in tweets:
+        requested_query.summary_tweet_set.create(
+            id=tweet["id"],
+            tweet_text=tweet["text"],
+            tweet_pol=tweet["polarity"]
+            )
         

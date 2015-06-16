@@ -27,14 +27,14 @@ class Query_data(models.Model):
     p_neg_p = models.FloatField(default=0)
     p_none = models.FloatField(default=0)
 
-# This class will store the tweets corresponding to a concrete query
+# This class will store the tweets that summarizes a concrete query
 # The id of each tweet will be the same that in tweeter
-#~ class Tweet(models.Model):
-    #~ query_id = models.ForeignKey(Query)
-    #~ tweet_text = models.CharField(max_length=140)
-    #~ tweet_pol = models.CharField(max_length=4)
-    #~ 
-    #~ #This is used for when the system needs to print a Query object
-    #~ def __str__(self):
-        #~ return self.tweet_text
+class Summary_tweet(models.Model):
+    query_id = models.ForeignKey(Query_data)
+    tweet_text = models.CharField(max_length=140)
+    tweet_pol = models.CharField(max_length=4)
+    
+    #This is used for when the system needs to print a Query object
+    def __str__(self):
+        return self.tweet_text
 
