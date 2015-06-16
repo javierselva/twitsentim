@@ -1,4 +1,5 @@
 import tweepy
+import json
 
 #Returns a list of 100 tweets of the given query (id,date,text)
 def get_tweets(query): 
@@ -28,8 +29,10 @@ def get_tweets(query):
     result = tweepy.Cursor(api.search, q=query, count=100).items(MAX_TWEETS)
 
     #~ print(len(result))
+    tweets =[ {"id":str(tw.id),"date":str(tw.created_at),"text":tw.text.replace('\n',' ').replace('\r',' ')} for tw in result]
+    #~ print(json.dumps(tws,indent=4,separators=(',',':')))
 
-    tweets = [[str(tweet.id), str(tweet.created_at), tweet.text.replace('\n',' ').replace('\r',' ')] for tweet in result]
+    #~ tweets = [[str(tweet.id), str(tweet.created_at), tweet.text.replace('\n',' ').replace('\r',' ')] for tweet in result]
 
     #~ for tweet in tweets:
         #~ print(tweet)

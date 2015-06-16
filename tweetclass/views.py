@@ -34,7 +34,7 @@ def query_page(request):
    
     # Try to get the object asociated with the query
     # If it doesn't exist it will be created
-    requested_query = database_connector.connect_db(query_text_search=query_text_search,flag=0)
+    requested_query = database_connector.obtain_query(query_text_search)
    
     # Get the tweets from tweeter
     print("about to get tweets")
@@ -43,14 +43,14 @@ def query_page(request):
     
     # Get the class for every tweet
     print("about to clasify the tweets")
-    clas_tweets = get_polarity.get_polarity([tweet for [idd,date,tweet] in raw_tweets])
+    clas_tweets = get_polarity.get_polarity([tw["text"] for tw in raw_tweets])
     print("already clasified them")
     
     # Store the polarity information in Query_data
-    requested_query_data=database_connector.connect_db(raw_tweets,clas_tweets,requested_query,"",1)
+    requested_query_data=database_connector.store_polarity(requested_query,clas_tweets)
     
     # Store all the retrieved tweets
-    _thread.start_new_thread( database_connector.connect_db, (raw_tweets,clas_tweets,requested_query,"",2), )
+    _thread.start_new_thread( database_connector.store_tweets, (requested_query,raw_tweets,clas_tweets), )
     #~ add_data_to_database.store_data(raw_tweets,clas_tweets,requested_query)
     
     # Return the information about the query just made to the show_results page
@@ -60,7 +60,7 @@ def query_page(request):
 # It will show the results to the user
 def show_results(request,requested_query_data_id):
     # Get the current Query_data object, the actual Query, and every Query_data related to that query
-    current_query,query,all_results=database_connector.connect_db(requested_query_data_id=requested_query_data_id,flag=3)
+    current_query,query,all_results=database_connector.retrieve_query(requested_query_data_id)
     
     # Prepare all the historic graphics
     print("drawing graph")
