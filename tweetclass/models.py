@@ -26,6 +26,7 @@ class Query_data(models.Model):
     p_neg = models.FloatField(default=0)
     p_neg_p = models.FloatField(default=0)
     p_none = models.FloatField(default=0)
+    hm_tweets = models.IntegerField(default=0)
 
 # This class will store the tweets that summarizes a concrete query
 # The id of each tweet will be the same that in tweeter

@@ -26,7 +26,7 @@ def get_tweets(query):
     
     #The cursor allows to get mor than 100 tweets with only 1 instruction
     MAX_TWEETS = 500
-    result = tweepy.Cursor(api.search, q=query, count=100).items(MAX_TWEETS)
+    result = tweepy.Cursor(api.search, q=query, count=100, lang="es").items(MAX_TWEETS)
 
     #~ print(len(result))
     tweets =[ {"id":str(tw.id),"date":str(tw.created_at),"text":tw.text.replace('\n',' ').replace('\r',' ')} for tw in result]

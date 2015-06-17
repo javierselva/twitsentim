@@ -38,6 +38,7 @@ def store_polarity(requested_query,clas_tweets):
         p_neg=clas_tweets.count("N")*100/hm,
         p_neg_p=clas_tweets.count("N+")*100/hm,
         p_none=clas_tweets.count("NONE")*100/hm,
+        hm_tweets=hm,
     )
     print("results stored")
     
@@ -67,9 +68,11 @@ def retrieve_query(requested_query_data_id):
 
 def store_summary(requested_query, tweets):
     for tweet in tweets:
-        requested_query.summary_tweet_set.create(
-            id=tweet["id"],
-            tweet_text=tweet["text"],
-            tweet_pol=tweet["polarity"]
-            )
+        if not (requested_query.summary_tweet_set.filter(pk=tweet["id"]).exists()):
+            requested_query.summary_tweet_set.create(
+                id=tweet["id"],
+                tweet_text=tweet["text"],
+                tweet_pol=tweet["polarity"]
+                )
+    requested_query.save()
         
