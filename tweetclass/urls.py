@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^query_page/$', views.query_page,name='query_page'),
     # /tweetclass/34/show_results/
     url(r'^(?P<requested_query_data_id>[0-9]+)/show_results/$', views.show_results,name='show_results'),
+    # /tweetclass/add_test/
+    url(r'^add_test/$', views.add_test,name='add_test'),
 ]

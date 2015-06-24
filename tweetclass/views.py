@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 
-from .models import Query, Query_data, Summary_tweet
+from .models import Query, Query_data, Summary_tweet, Test_tweet
 
 from .code import get_tweets,get_polarity,tweet_summary
 from . import graph_data_generator, database_connector
@@ -26,6 +26,7 @@ def index(request):
 def query_page(request):
     # Get the query from the request
     query_text_search = request.POST['query_text']
+    print(request.POST)
     # If the query is empty, redirect the user.
     if query_text_search=="":
         return render(request,'tweetclass/index.html',{'error_message':"You didn't write a query."})
@@ -81,3 +82,9 @@ def show_results(request,requested_query_data_id):
         'sum_twe':sum_tweets,
         'generic_image_path':"tweetclass/histogram_generic_"+query.query_text+".png",
         'summary_image_path':"tweetclass/histogram_summary_"+query.query_text+".png" })
+
+def add_test(request):
+    print(request.POST)
+    tweets = Summary_tweet.objects.filter(query_id=request.POST["summary_tweet_id"])
+    database_connector.store_feedback(tweets,[request.POST['choice'+str(cont)] for cont in range(1,len(tweets)+1)])
+    return HttpResponseRedirect(reverse('tweetclass:show_results',args=(request.POST["summary_tweet_id"],)))

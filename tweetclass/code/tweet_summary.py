@@ -3,16 +3,30 @@ import numpy as np
 import json
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-def summarize(tweets,polarity,flag=2):
+def summarize(tweets=[],polarity=[],flag=0,rango=4):
     #~ print (json.dumps(docs, indent=1, ensure_ascii=False))
-
-    #~ print ('\nContadores binarios')
+    
     if flag==0:
         vec = CountVectorizer()
-    elif flag==1:
+    elif flag==1: # Contadores binarios
         vec = CountVectorizer(binary=True)
     elif flag==2:
+        vec = CountVectorizer(ngram_range=(1,rango))
+    elif flag==3: # TF-IDF: con idf suavizado y normalización 'l2'(opción por defecto)
         vec = TfidfVectorizer()
+    elif flag==4: # TF normalizado 'l1' (Contadores normalizados para sumar 1)
+        vec = TfidfVectorizer(norm='l1', use_idf=False)
+    elif flag==5: # TF normalizado 'l2' (Contadores normalizados para que el módulo del vector sea 1)
+        vec = TfidfVectorizer(norm='l2', use_idf=False)    
+    elif flag==6: # TF-IDF
+        vec = TfidfVectorizer(norm=None, smooth_idf=False)
+    elif flag==7: # TF-IDF con idf suavizado
+        vec = TfidfVectorizer(norm=None, smooth_idf=True)
+    elif flag==8: # TF-IDF: con idf suavizado y normalización 'l1'
+        vec = TfidfVectorizer(norm='l1', smooth_idf=True)
+        
+    
+        
     X = vec.fit_transform([tweet["text"] for tweet in tweets ])
     voca = vec.get_feature_names()
 
@@ -25,30 +39,17 @@ def summarize(tweets,polarity,flag=2):
         for columna in cind:
             A[fila, columna ] = X[fila, columna]
 
-    #~ print (X)
-    #~ print ('-'*20)
-    #~ print (A)
-    #~ print ('-'*20)
-    #~ A = A.T
-    #~ print (A)
-    #~ print ('-'*20)
-    #a = np.random.randn(9, 6) #+ 1j*np.random.randn(9, 6)
 
     #Reconstruction based on reduced SVD:
     U, s, V = np.linalg.svd(A,full_matrices=False)
-    #~ S = np.diag(s)
     
     MAX_RES_TWEETS = 5
     
-    
     max_ind = np.argmax(V[:,:MAX_RES_TWEETS+1], axis=0)
     
+    #~ print("Max_Ind: ",max_ind)
+    #~ print("V.shape: ",V.shape)
     
-    print("Max_Ind: ",max_ind)
-    print("V.shape: ",V.shape)
-    
-    
-    #~ ind = range(0,len(tweets))
     i=MAX_RES_TWEETS-1
     res = []
     while i >= 0:

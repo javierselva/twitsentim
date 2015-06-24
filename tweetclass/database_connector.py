@@ -1,4 +1,4 @@
-from .models import Query, Query_data, Summary_tweet
+from .models import Query, Query_data, Summary_tweet, Test_tweet
 import time
 import threading
 from django.utils import timezone
@@ -32,12 +32,12 @@ def store_polarity(requested_query,clas_tweets):
     print("storing results")
     requested_query_data=requested_query.query_data_set.create(
         query_date=timezone.now(),
-        p_pos_p=clas_tweets.count("P+")*100.0/hm,
-        p_pos=clas_tweets.count("P")*100/hm,
-        p_neu=clas_tweets.count("NEU")*100/hm,
-        p_neg=clas_tweets.count("N")*100/hm,
-        p_neg_p=clas_tweets.count("N+")*100/hm,
-        p_none=clas_tweets.count("NONE")*100/hm,
+        p_pos_p=round(clas_tweets.count("P+")*100.0/hm,2),
+        p_pos=round(clas_tweets.count("P")*100/hm,2),
+        p_neu=round(clas_tweets.count("NEU")*100/hm,2),
+        p_neg=round(clas_tweets.count("N")*100/hm,2),
+        p_neg_p=round(clas_tweets.count("N+")*100/hm,2),
+        p_none=round(clas_tweets.count("NONE")*100/hm,2),
         hm_tweets=hm,
     )
     print("results stored")
@@ -76,3 +76,8 @@ def store_summary(requested_query, tweets):
                 )
     requested_query.save()
         
+def store_feedback(tweets,polarity):
+    cont=0
+    for tweet in tweets:
+        Test_tweet(tweet_text=tweet.tweet_text,tweet_pol=polarity[cont]).save()
+        cont+=1

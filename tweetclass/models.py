@@ -35,7 +35,14 @@ class Summary_tweet(models.Model):
     tweet_text = models.CharField(max_length=140)
     tweet_pol = models.CharField(max_length=4)
     
-    #This is used for when the system needs to print a Query object
+    #This is used for when the system needs to print a Summary_tweet object
     def __str__(self):
         return self.tweet_text
 
+class Test_tweet(models.Model):
+    tweet_text = models.CharField(max_length=140)
+    tweet_pol = models.CharField(max_length=4)
+    
+    #This is used for when the system needs to print a Test_tweet object
+    def __str__(self):
+        return self.tweet_text

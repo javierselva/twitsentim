@@ -29,9 +29,10 @@ def get_tweets(query):
     result = tweepy.Cursor(api.search, q=query, count=100, lang="es").items(MAX_TWEETS)
 
     #~ print(len(result))
-    tweets =[ {"id":str(tw.id),"date":str(tw.created_at),"text":tw.text.replace('\n',' ').replace('\r',' ')} for tw in result]
+    tweets =[ {"id":str(tw.id),"date":str(tw.created_at),"text":tw.text.replace('\n',' ').replace('\r',' ')} for tw in result]# if not tw.text.startswith("RT")]
     #~ print(json.dumps(tws,indent=4,separators=(',',':')))
-
+    #~ for tw in tweets:
+        #~ print("User: ",tw["user"],"\n")
     #~ tweets = [[str(tweet.id), str(tweet.created_at), tweet.text.replace('\n',' ').replace('\r',' ')] for tweet in result]
 
     #~ for tweet in tweets:

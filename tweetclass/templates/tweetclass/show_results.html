@@ -35,9 +35,28 @@
         </td>
         <td><h3>Total tweets: {{current.hm_tweets}}</h3>
             <ul>
+                <form action="{% url 'tweetclass:add_test' %}" method="post">
+                    {% csrf_token %}
             {% for tweet in sum_twe %}
-                <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+                <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)
+                    <br /> 
+                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
+                    <label>P+</label>
+                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
+                    <label>P</label>
+                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
+                    <label>NEU</label>
+                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
+                    <label>N</label>
+                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
+                    <label>N+</label>
+                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
+                    <label>NONE</label>
+                </li>
             {% endfor %}
+                    <input type="hidden" name="summary_tweet_id" value="{{ current.id }}">
+                    <input type="submit" value="Send feedback" />
+                </form>
             </ul>
         </td>
     </tr>
@@ -63,7 +82,7 @@
             <div id="table" class="tabcontent">
                 <table border=1>
                     <tr style="background-color:#AAAAAA" align="center">
-                        <td width="200px"><b>Query Date</b></td>
+                        <td width="250px"><b>Query Date</b></td>
                         <td width="50px"><b>P+</b></td>
                         <td width="50px"><b>P</b></td>
                         <td width="50px"><b>NEU</b></td>
@@ -73,7 +92,7 @@
                     </tr>
                     {% for result in all_res %}
                         <tr align="center">
-                            <td width="200px" style="background-color:#CCCCCC">{{ result.query_date }}</td>
+                            <td width="250px" style="background-color:#CCCCCC">{{ result.query_date }}</td>
                             <td width="50px">{{ result.p_pos_p }}</td>
                             <td width="50px">{{ result.p_pos }}</td>
                             <td width="50px">{{ result.p_neu }}</td>
