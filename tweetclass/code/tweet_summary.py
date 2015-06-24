@@ -3,7 +3,7 @@ import numpy as np
 import json
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-def summarize(tweets=[],polarity=[],flag=0,rango=4):
+def summarize(tweets=[],polarity=[],flag=2,rango=4):
     #~ print (json.dumps(docs, indent=1, ensure_ascii=False))
     
     if flag==0:
