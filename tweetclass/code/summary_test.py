@@ -2,6 +2,8 @@ import get_tweets as gt
 import get_polarity as gp
 import tweet_summary as ts
 import pickle
+from pyrouge import Rouge155
+from numpy import *
 
 def save_obj(obj, name ):
     with open('summary_test_files/'+ name + '.pkl', 'wb+') as f:
@@ -26,7 +28,7 @@ def add_field(field_name,tweets,field_content):
 def store_tweets(tweets,name):
     fil = open("summary_test_files/" + name + ".txt","w+")
     for tweet in tweets:
-        fil.write(tweet["text"] + "\n")
+        fil.write(tweet["text"] + "\n\n")
     fil.close()
 
 def load_tweets_score(tweets,name):
@@ -50,26 +52,70 @@ def download_corpus(query):
     save_obj(clas_tw,"clean_clas_tweets")
     
     store_tweets(clas_tw,"plain_clean_tweets")
+
+def rouge_test():
+    r = Rouge155()
+    r.system_dir = 'summary_test_files/summary_results_01/'
+    r.model_dir = 'summary_test_files/summary_model_01/'
+    r.system_filename_pattern = 'summary_flagged.(\d+).txt'
+    r.model_filename_pattern = 'manual_summary.txt'
+
+    output = r.convert_and_evaluate()
+    print(output)
+    output_dict = r.output_to_dict(output)
+
+def process_rouge_output(num,name):
+    fil = open("summary_test_files/summary_rouge_results_"+num+"/" + name + ".txt","r")
+    #~ header = "<table border=1><tr><td rowspan=2 align=\"center\" valing=\"center\" width=\"200\">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td></tr><tr><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>"
+    values = array(fil.read().replace("\n\n","\n").replace("\n\n","\n").split("\n")[1:217]).reshape((9,24),order='F')
+    max_val_ind = argmax(values,axis=0)
+    print(values)
+            
     
+
 if __name__ == "__main__":
-    raw_tweets=load_obj("raw_tweets")
-    clean_tweets=load_obj("clean_tweets")
-    clean_clas_tweets=load_obj("clean_clas_tweets")
     
-    raw_score_clas_tweet = load_obj("raw_score_clas_tweet")
-    clean_score_clas_tweet = load_obj("clean_score_clas_tweet")
+    #~ raw_mixed_tweets = load_obj("raw_mixed_tweets")
+    #~ 
+    #~ modeled_mixed_tweets = gt.clear_retweets(raw_mixed_tweets)
+    #~ 
+    #~ save_obj(modeled_mixed_tweets,"modeled_mixed_tweets")
+    #~ 
+    #~ store_tweets(modeled_mixed_tweets,"plain_mixed_tweets")
     
-    manual_summary=load_obj("manual_summary")
+    process_rouge_output("01","pene")
     
-    flag_key={0:"Contadores",1:"Contadores binarios",2:"Contadores ngramas",3:"TF-IDF (Defecto)",4:"TF normalizado l1",5:"TF normalizado l2",6:"TF-IDF",7:"TF-IDF con idf suavizado",8:"TF-IDF: idf suav. y norm. l1"}
     
-    for i in range(9):
-        summary = ts.summarize(tweets=clean_score_clas_tweet,flag=i)
-        total_score=0
-        for tweet in summary:
-            total_score+=tweet["score"]
-        
-        print("Sistema utilizado: ",flag_key[i],". \t Total score: ",total_score,"\n")
-        
+    #~ raw_tweets=load_obj("raw_tweets")
+    #~ clean_tweets=load_obj("clean_tweets")
+    #~ clean_clas_tweets=load_obj("clean_clas_tweets")
+    
+    #~ raw_score_clas_tweet = load_obj("raw_score_clas_tweet")
+    
+    
+    
+    #LANZA TEST:
+    
+    #~ clean_score_clas_tweet = load_obj("summary_raw_01/clean_score_clas_tweet")
+    #~ 
+    #~ manual_summary=load_obj("summary_raw_01/manual_summary")
+    #~ 
+    #~ flag_key={0:"Contadores",1:"Contadores binarios",2:"Contadores ngramas",3:"TF-IDF (Defecto)",4:"TF normalizado l1",5:"TF normalizado l2",6:"TF-IDF",7:"TF-IDF con idf suavizado",8:"TF-IDF: idf suav. y norm. l1"}
+    #~ 
+    #~ for i in range(9):
+        #~ summary = ts.summarize(tweets=clean_score_clas_tweet,flag=i,MAX_RES_TWEETS = 10)
+        #~ store_tweets(summary,"summary_results_01/summary_flagged.001")
+        #~ store_tweets(summary,"summary_results_01/summary_flagged.002")
+        #~ rouge_test()
+        #~ total_score=0
+        #~ tweets_in_summary=0
         #~ for tweet in summary:
-            #~ print("Score: ",tweet["score"],"\t Text: ",tweet["text"][:50],"\n")
+            #~ total_score+=tweet["score"]
+            #~ if tweet["score"]>6:
+                #~ tweets_in_summary+=1
+        #~ 
+        #~ print("Sistema utilizado: ",flag_key[i],". \t Total score: ",total_score,"\t Number of suc. tweets: ",tweets_in_summary,"\n")
+        #~ 
+        #~ for tweet in summary:
+            #~ print("Score: ",tweet["score"],"\t Text: ",tweet["text"][:50],"\t Id: ",tweet["id"])
+    

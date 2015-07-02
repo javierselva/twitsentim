@@ -3,7 +3,7 @@ import numpy as np
 import json
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-def summarize(tweets=[],polarity=[],flag=2,rango=4):
+def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5):
     #~ print (json.dumps(docs, indent=1, ensure_ascii=False))
     
     if flag==0:
@@ -42,11 +42,14 @@ def summarize(tweets=[],polarity=[],flag=2,rango=4):
 
     #Reconstruction based on reduced SVD:
     U, s, V = np.linalg.svd(A,full_matrices=False)
+    max_ind=[]
     
-    MAX_RES_TWEETS = 5
+    incr=0
     
-    max_ind = np.argmax(V[:,:MAX_RES_TWEETS+1], axis=0)
-    
+    while len(max_ind)<MAX_RES_TWEETS:
+        max_ind = np.argmax(V[:,:MAX_RES_TWEETS+1+incr], axis=0)
+        max_ind = list(set(max_ind)) # Avoid repetitions
+        incr+=1
     #~ print("Max_Ind: ",max_ind)
     #~ print("V.shape: ",V.shape)
     
@@ -54,7 +57,8 @@ def summarize(tweets=[],polarity=[],flag=2,rango=4):
     res = []
     while i >= 0:
         r_ch=max_ind[i]
-        tweets[r_ch]["polarity"]=polarity[r_ch]
+        if len(polarity)>0:
+            tweets[r_ch]["polarity"]=polarity[r_ch]
         res.append(tweets[r_ch])
         i -= 1
     
