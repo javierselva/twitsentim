@@ -66,11 +66,31 @@ def rouge_test():
 
 def process_rouge_output(num,name):
     fil = open("summary_test_files/summary_rouge_results_"+num+"/" + name + ".txt","r")
-    #~ header = "<table border=1><tr><td rowspan=2 align=\"center\" valing=\"center\" width=\"200\">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td></tr><tr><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>"
-    values = array(fil.read().replace("\n\n","\n").replace("\n\n","\n").split("\n")[1:217]).reshape((9,24),order='F')
+    print("<table border=1><tr style=\"background-color:#AAAAAA\" align=\"center\"><td rowspan=2 align=\"center\" valing=\"center\" width=\"200\">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td></tr><tr style=\"background-color:#CCCCCC\" align=\"center\"><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>")
+    flag_key={0:"Contadores",1:"Contadores binarios",2:"Contadores ngramas",3:"TF-IDF (Defecto)",4:"TF normalizado l1",5:"TF normalizado l2",6:"TF-IDF",7:"TF-IDF con idf suavizado",8:"TF-IDF: idf suav. y norm. l1"}
+    
+    
+    aux = fil.read().replace("\n\n","\n").replace("\n\n","\n").split("\n")[1:217]
+    [aux.append("0.000000000000000000000") for x in range(24)]
+    values=array(aux).reshape((10,24))
     max_val_ind = argmax(values,axis=0)
-    print(values)
-            
+    #~ print(values)
+    
+    #~ values[0][0]="<b>"+values[0][0]
+    
+    for col in range(len(max_val_ind)):
+        row=max_val_ind[col]
+        values[row][col]="<b>"+values[row][col]+"</b>"
+    
+    #~ print(values)
+    
+    for system in range(9):
+        print("<tr><td style=\"background-color:#AAAAAA\">"+flag_key[system]+"</td>")
+        for r in range(24):
+            print("<td>"+values[system][r]+"</td>")
+        print("</tr>")
+        
+    print("</table>")
     
 
 if __name__ == "__main__":
