@@ -4,6 +4,7 @@ import tweet_summary as ts
 import pickle
 from pyrouge import Rouge155
 from numpy import *
+import re
 
 def save_obj(obj, name ):
     with open('summary_test_files/'+ name + '.pkl', 'wb+') as f:
@@ -13,9 +14,14 @@ def load_obj(name ):
     with open('summary_test_files/' + name + '.pkl', 'rb') as f:
         return pickle.load(f)
 
-def clean_tweets(tweets):
+def clean_tweets(tweets,to_clean=["urls","hashtags","mentions"]):
+    
+    reg_exp={'urls':'\s*https?://[\w.-/]+\s*','mentions':'\s*@[a-zA-Z0-9_]+\s*','hashtags':'\s*#[\w-]+\s*'}
+    
+    rex = re.compile('|'.join([reg_exp[taca] for taca in to_clean]))
+    
     for tweet in tweets:
-        tweet["text"]=" ".join([t for t in tweet["text"].split() if not t.startswith("@") and not t.startswith("http")])
+        tweet["text"]=rex.sub("",tweet["text"])
     return tweets
     
 def add_field(field_name,tweets,field_content):
@@ -28,7 +34,7 @@ def add_field(field_name,tweets,field_content):
 def store_tweets(tweets,name):
     fil = open("summary_test_files/" + name + ".txt","w+")
     for tweet in tweets:
-        fil.write(tweet["text"] + "\n\n")
+        fil.write(tweet + "\n")
     fil.close()
 
 def load_tweets_score(tweets,name):
@@ -66,14 +72,14 @@ def rouge_test():
 
 def process_rouge_output(num,name):
     fil = open("summary_test_files/summary_rouge_results_"+num+"/" + name + ".txt","r")
-    print("<table border=1><tr style=\"background-color:#AAAAAA\" align=\"center\"><td rowspan=2 align=\"center\" valing=\"center\" width=\"200\">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td></tr><tr style=\"background-color:#CCCCCC\" align=\"center\"><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>")
+    print("<table border=1><tr style=\"background-color:#AAAAAA\" align=\"center\"><td rowspan=2 align=\"center\" valing=\"center\" width=\"200\">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td><td rowspan=2 align=\"center\" valing=\"center\">Recuento</td></tr><tr style=\"background-color:#CCCCCC\" align=\"center\"><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>")
     flag_key={0:"Contadores",1:"Contadores binarios",2:"Contadores ngramas",3:"TF-IDF (Defecto)",4:"TF normalizado l1",5:"TF normalizado l2",6:"TF-IDF",7:"TF-IDF con idf suavizado",8:"TF-IDF: idf suav. y norm. l1"}
     
     
     aux = fil.read().replace("\n\n","\n").replace("\n\n","\n").split("\n")[1:217]
     [aux.append("0.000000000000000000000") for x in range(24)]
     values=array(aux).reshape((10,24))
-    max_val_ind = argmax(values,axis=0)
+    max_val_ind = argmax(values,axis=0).tolist()
     #~ print(values)
     
     #~ values[0][0]="<b>"+values[0][0]
@@ -88,6 +94,7 @@ def process_rouge_output(num,name):
         print("<tr><td style=\"background-color:#AAAAAA\">"+flag_key[system]+"</td>")
         for r in range(24):
             print("<td>"+values[system][r]+"</td>")
+        print("<td align=\"center\">"+str(max_val_ind.count(system))+"</td>")
         print("</tr>")
         
     print("</table>")
@@ -97,13 +104,29 @@ if __name__ == "__main__":
     
     #~ raw_mixed_tweets = load_obj("raw_mixed_tweets")
     #~ 
-    #~ modeled_mixed_tweets = gt.clear_retweets(raw_mixed_tweets)
-    #~ 
-    #~ save_obj(modeled_mixed_tweets,"modeled_mixed_tweets")
-    #~ 
-    #~ store_tweets(modeled_mixed_tweets,"plain_mixed_tweets")
+    #~ modeled_mixed_tweets = load_obj("modeled_mixed_tweets")
     
-    process_rouge_output("01","pene")
+    modeled_mixed_scored_tweets = load_obj("modeled_mixed_scored_tweets")
+    
+    no_repeat = set([])
+    manual_summary_clean = []
+    cont=0
+    
+    for tweet in modeled_mixed_scored_tweets: 
+        if tweet["score"]>6:
+            cont+=1
+            text_aux = clean_tweets([tweet],["urls","mentions"])[0]["text"]
+            if text_aux not in no_repeat:
+                no_repeat.add(text_aux)
+                manual_summary_clean.append(tweet)
+                
+    save_obj(manual_summary_clean,"manual_summary_hashtags")
+    
+    store_tweets(sorted(no_repeat),"model_summary_hashtags")
+    
+    print("Count: ",cont,"\t set_len: ",len(no_repeat))
+    
+    #~ process_rouge_output("01","pene")
     
     
     #~ raw_tweets=load_obj("raw_tweets")
