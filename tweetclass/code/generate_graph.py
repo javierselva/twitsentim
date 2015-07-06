@@ -11,12 +11,33 @@ import datetime
 
 import matplotlib.ticker as ticker
 
-from ..models import Query
+#~ from ..models import Query
 
 #~ try:
     #~ from StringIO import StringIO
 #~ except ImportError:
     #~ from io import StringIO
+
+def draw_rt_vs_score(rt,score):
+    fig = Figure()
+    fig.set_figwidth(20)
+    canvas = FigureCanvas(fig)
+    
+    ax = fig.add_subplot(1,1,1, axisbg='white')
+    ax.set_ylabel('Value')
+    ax.set_xlabel('Tweets')
+    ax.set_title('Score vs Retweet_count')
+    
+    N = len(rt)
+    ind = np.arange(N)
+    
+    for s in range(len(rt)):
+        rt[s]=(rt[s]*20)/1258
+    
+    ax.plot(ind,rt,"#00FF00",linewidth=1.3)
+    ax.plot(ind,score,"#FF0000",linewidth=1.3)
+    
+    canvas.print_figure('comparision01.png',facecolor='white',bbox_inches='tight')
 
 def general_graph(polarity,name):
     
