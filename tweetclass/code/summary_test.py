@@ -6,7 +6,7 @@ import pickle
 from pyrouge import Rouge155
 from numpy import *
 import re
-import json
+import math
 
 
 def save_obj(obj, name ):
@@ -155,16 +155,23 @@ def launch_test(test_number,verbose=False):
     
 if __name__ == "__main__":
     
-    raw_mixed_tweets = load_obj("raw_mixed_tweets")
+    #~ raw_mixed_tweets = load_obj("raw_mixed_tweets")
     #~ 
     #~ tweets = load_obj("modeled_mixed_scored_tweets")
     #~ tweets = gt.clear_retweets(raw_mixed_tweets)
     #~ save_obj(add_field("score",tweets,load_tweets_score(tweets,"plain_mixed_tweets")),"modeled_mixed_scored_tweets")
     
     
-    tweets=load_obj("modeled_mixed_scored_tweets")
-    sorted(tweets,lambda key k : "retweet_count")
-    gg.draw_rt_vs_score([tweet["retweet_count"] for tweet in tweets],[tweet["favorite_count"] for tweet in tweets],[tweet["score"] for tweet in tweets])
+    tweets=sorted(load_obj("modeled_mixed_scored_tweets"),key=lambda k : k["score"])
+    
+    max_rt=max([tweet["retweet_count"] for tweet in tweets])
+    max_fav=max([tweet["favorite_count"] for tweet in tweets])
+    #~ print("Max rt: %d\tMax fav: %d" % (max_rt ,max_fav))
+    
+    for tweet in tweets:
+        tweet["metric_score"]=((math.log(tweet["retweet_count"]*30/max_rt + 1)) + (math.log(tweet["favorite_count"]*20/max_fav + 1)*0.75)) + (tweet["score"])
+    
+    gg.draw_rt_vs_score([tweet["retweet_count"] for tweet in tweets],[tweet["favorite_count"] for tweet in tweets],[tweet["score"] for tweet in tweets],[tweet["metric_score"] for tweet in tweets])
     
     if False:
         test_number = "10"

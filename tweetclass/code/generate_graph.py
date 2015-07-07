@@ -18,9 +18,9 @@ import matplotlib.ticker as ticker
 #~ except ImportError:
     #~ from io import StringIO
 
-def draw_rt_vs_score(rt,fav,score):
+def draw_rt_vs_score(rt,fav,score,m_sco):
     fig = Figure()
-    fig.set_figwidth(20)
+    fig.set_figwidth(30)
     canvas = FigureCanvas(fig)
     
     ax = fig.add_subplot(1,1,1, axisbg='white')
@@ -40,9 +40,10 @@ def draw_rt_vs_score(rt,fav,score):
     
     ax.plot(ind,rt,"#00FF00",linewidth=1.3)
     ax.plot(ind,score,"#FF0000",linewidth=1.3)
-    ax.plot(ind,fav,"#00AAAA",linewidth=1.3)
+    ax.plot(ind,fav,"#33AAAA",linewidth=1.3)
+    ax.plot(ind,m_sco,"#AAAA33",linewidth=1.3)
     
-    canvas.print_figure('comparision01.png',facecolor='white',bbox_inches='tight')
+    canvas.print_figure('comparision02.png',facecolor='white',bbox_inches='tight')
 
 def general_graph(polarity,name):
     
