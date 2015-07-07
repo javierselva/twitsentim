@@ -23,7 +23,8 @@ def extract_tweet_info(tweet):
     return {"id":str(tweet.id),
             "date":str(tweet.created_at),
             "text":tweet.text.replace('\n',' ').replace('\r',' '),
-            "retweet_count":tweet.retweet_count}
+            "retweet_count":tweet.retweet_count,
+            "favorite_count":tweet.favorite_count}
 
 def clear_retweets(raw_tweets):
     ret_ids=set([tweet.id for tweet in raw_tweets])
@@ -40,7 +41,7 @@ def clear_retweets(raw_tweets):
         except:#It wasn't a retweet
             modeled_tweets.append(extract_tweet_info(tweet))
     
-    print(cont)
+    #~ print(cont)
     
     return modeled_tweets
 

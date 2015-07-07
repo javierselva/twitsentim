@@ -6,6 +6,7 @@ import pickle
 from pyrouge import Rouge155
 from numpy import *
 import re
+import json
 
 
 def save_obj(obj, name ):
@@ -34,18 +35,21 @@ def add_field(field_name,tweets,field_content):
     return tweets
 
 def store_tweets(tweets,name):
-    fil = open("summary_test_files/" + name + ".txt","w+")
-    for tweet in tweets:
-        fil.write(tweet["text"] + "\n")
-    fil.close()
+    with open("summary_test_files/" + name + ".txt","w+") as fil:
+        for tweet in tweets:
+            fil.write(tweet["text"] + "\n")
+
+def clear_file(name):
+    with open("summary_test_files/" + name + ".txt","w+") as fil:
+        fil.write("")
 
 def load_tweets_score(tweets,name):
-    fil = open("summary_test_files/" + name + ".txt","r")
-    score=[]
-    for tweet in tweets:
-        fil.readline()
-        score.append(int(fil.readline()))
-    return score
+    with open("summary_test_files/" + name + ".txt","r") as fil:
+        score=[]
+        for tweet in tweets:
+            fil.readline()
+            score.append(int(fil.readline()))
+        return score
 
 def download_corpus(query):
     tweets=gt.get_tweets(query)
@@ -69,13 +73,12 @@ def rouge_test(num):
     r.model_filename_pattern = 'manual_summary.txt'
 
     output = r.convert_and_evaluate()
-    fil = open("summary_test_files/summary_rouge_results_"+num+"/results.txt","a+")
-    print(output)
     output_dict = r.output_to_dict(output)
-    for version in ["1","2","3","4","l","w_1.2","s*","su*"]:
-        for res in ["recall","precision","f_score"]:
-            fil.write("%0.5f" % output_dict["rouge_"+version+"_"+res]+"\n")
-    fil.close()
+    with open("summary_test_files/summary_rouge_results_"+num+"/results.txt","a+") as fil:
+    #~ print(output)
+        for version in ["1","2","3","4","l","w_1.2","s*","su*"]:
+            for res in ["recall","precision","f_score"]:
+                fil.write("%0.5f" % output_dict["rouge_"+version+"_"+res]+"\n")
     
 def process_rouge_output(num):
     fil = open("summary_test_files/summary_rouge_results_"+num+"/results.txt","r")
@@ -83,7 +86,7 @@ def process_rouge_output(num):
     flag_key={0:"Contadores",1:"Contadores binarios",2:"Contadores ngramas",3:"TF-IDF (Defecto)",4:"TF normalizado l1",5:"TF normalizado l2",6:"TF-IDF",7:"TF-IDF con idf suavizado",8:"TF-IDF: idf suav. y norm. l1"}
     
     
-    aux = fil.read().split("\n")[1:217]
+    aux = fil.read().split("\n")[:216]
     [aux.append("0.000000000000000000000") for x in range(24)]
     values=array(aux).reshape((10,24))
     max_val_ind = argmax(values,axis=0).tolist()
@@ -105,17 +108,25 @@ def process_rouge_output(num):
     fil.close()
 
 def launch_test(test_number,verbose=False):
-    original_tweets = load_obj("summary_raw_"+test_number+"/clean_score_clas_tweet")
+    original_tweets = load_obj("summary_raw_"+test_number+"/original_tweets")
+    
+    original_tweets = clean_tweets(original_tweets)
+    
+    clear_file("summary_results_"+test_number+"/summary_flagged.001")
+    clear_file("summary_results_"+test_number+"/summary_flagged.002")
+    clear_file("summary_rouge_results_"+test_number+"/results.txt")
     
     flag_key={0:"Contadores",1:"Contadores binarios",2:"Contadores ngramas",3:"TF-IDF (Defecto)",4:"TF normalizado l1",5:"TF normalizado l2",6:"TF-IDF",7:"TF-IDF con idf suavizado",8:"TF-IDF: idf suav. y norm. l1"}
     
     print("<table border=1><tr style=\"background-color:#AAAAAA\" align=\"center\"><td>Sistema empleado</td><td>Total score</td><td>Number of suc. tweets</td><td>Avg. RT count</td></tr>")
-    
+    summary_tweets_data = ""
     for i in range(9):
         mrt=10
-        summary = ts.summarize(tweets=original_tweets,flag=i,MAX_RES_TWEETS = mrt)
+        summary = ts.summarize(tweets=original_tweets,use_retweets=True,flag=i,MAX_RES_TWEETS = mrt)
         store_tweets(summary,"summary_results_"+test_number+"/summary_flagged.001")
         store_tweets(summary,"summary_results_"+test_number+"/summary_flagged.002")
+        
+        #~ store_tweets(summary,"summary_results_"+test_number+"/summary_culete"+str(i))
         
         rouge_test(test_number)
         
@@ -124,31 +135,53 @@ def launch_test(test_number,verbose=False):
         avg_retweets=0
         for tweet in summary:
             total_score+=tweet["score"]
-            #~ avg_retweets+=tweet["retweet_count"]
+            avg_retweets+=tweet["retweet_count"]
             if tweet["score"]>6:
                 tweets_in_summary+=1
         
         
         
-        print("<tr align=\"center\"><td style=\"background-color:#AAAAAA\">",flag_key[i],"</td><td>",total_score,"</td><td>",tweets_in_summary,"</td></tr>")#,avg_retweets/mrt,"</td></tr>")
+        print("<tr align=\"center\"><td style=\"background-color:#AAAAAA\">",flag_key[i],"</td><td>",total_score,"</td><td>",tweets_in_summary,"</td><td>",avg_retweets/mrt,"</td></tr>")
         
         if verbose:
+            summary_tweets_data+="<h4>"+flag_key[i]+"</h4> "
             for tweet in summary:
-                print("Score: ",tweet["score"],"\t Text: ",tweet["text"][:50],"\t Id: ",tweet["id"],"\t RT: ",tweet["retweet_count"])
-    print("</table>")
+                summary_tweets_data+= "Score: "+str(tweet["score"])+"|| RT: "+str(tweet["retweet_count"])+"|| Id: "+tweet["id"]+"|| Text: "+tweet["text"][:50]+"<br />"
+    print("</table><br />")
+    
     process_rouge_output(test_number)
+    if verbose:
+        print("<br />"+summary_tweets_data)
     
 if __name__ == "__main__":
     
-    #~ raw_mixed_tweets = load_obj("raw_mixed_tweets")
+    raw_mixed_tweets = load_obj("raw_mixed_tweets")
     #~ 
-    #~ modeled_mixed_tweets = load_obj("modeled_mixed_tweets")
+    #~ tweets = load_obj("modeled_mixed_scored_tweets")
+    #~ tweets = gt.clear_retweets(raw_mixed_tweets)
+    #~ save_obj(add_field("score",tweets,load_tweets_score(tweets,"plain_mixed_tweets")),"modeled_mixed_scored_tweets")
     
-    test_number = "02"
-    description = ""
     
-    launch_test("01")
+    tweets=load_obj("modeled_mixed_scored_tweets")
+    sorted(tweets,lambda key k : "retweet_count")
+    gg.draw_rt_vs_score([tweet["retweet_count"] for tweet in tweets],[tweet["favorite_count"] for tweet in tweets],[tweet["score"] for tweet in tweets])
     
-    #~ process_rouge_output("01","pene")
-    
-    #LANZA TEST:
+    if False:
+        test_number = "10"
+        print("<meta http-equiv=\"Content-type\" content=\"text/html;charset=ISO-8859-1\">")
+        print("<h1>Test #"+test_number+"</h1>")
+        #TWEETS TAL CUAL #2 - #5
+        #~ print("<br /> Esta primera prueba con el nuevo corpus entrenado consiste en un resumen realizado simplemente considerando los tweets con score >6 sin hashtags y habiendo eliminado manualmente los repetidos. El conjunto de tweets es el original, del que se han eliminado los que eran RT y se han añadido los originales de los mismos.")
+        #~ print("<br /> La segunda prueba es igual que la anterior pero en este caso limpiamos los tweets antes de realizar el resumen.")
+        #~ print("<br /> Es igual que el primero, pero utilizando en el model de resumen los tweets con hashtags")
+        #~ print("<br /> Es igual que el segundo, pero utilizando en el modelo de resumen los tweets con hashtags y al limpiar, dejando los hashtags")
+        
+        #ELIMINANDO LOS QUE TENGAN RT DEBAJO DE LA MEDIA #6 - #9
+        #~ print("<br /> En este caso, empleando el resumen sin hashtags como modelo, se ha intentado dar más relevancia a los retweets mediante la modificación de la matriz. Si el número de RT de un tweet concreto es inferior a la MEDIA de RT de todos los tweets, ese tweet no se cogerá.")
+        #~ print("<br /> Igual que el anterior (descartando un tweet si sus RT son inferiores a la media) pero esta vez limpiando los tweets")
+        #~ print("<br /> Igual que #6 pero trabajando con el modelo resumen con hashtags")
+        #~ print("<br /> Igual que el anterior pero limpiando urls y menciones")
+        
+        #ELIMINANDO LOS QUE TENGAN RT DEBAJO DEL PERCENTIL
+        print("<br /> Descarta los tweets que tengan RT por debajo del percentil (70). Resumen modelo sin hashtags y tweets limpiados.")
+        launch_test(test_number,True)

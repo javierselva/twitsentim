@@ -1,0 +1,260 @@
+<meta http-equiv="Content-type" content="text/html;charset=ISO-8859-1">
+<h1>Test #09</h1>
+<br /> Igual que el anterior pero limpiando urls y menciones
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td>Sistema empleado</td><td>Total score</td><td>Number of suc. tweets</td><td>Avg. RT count</td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores </td><td> 17 </td><td> 0 </td><td> 180.9 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores binarios </td><td> 30 </td><td> 0 </td><td> 271.1 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores ngramas </td><td> 33 </td><td> 1 </td><td> 147.3 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF (Defecto) </td><td> 32 </td><td> 0 </td><td> 162.3 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l1 </td><td> 20 </td><td> 0 </td><td> 117.2 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l2 </td><td> 33 </td><td> 1 </td><td> 66.9 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF </td><td> 27 </td><td> 0 </td><td> 114.6 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF con idf suavizado </td><td> 34 </td><td> 0 </td><td> 308.7 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF: idf suav. y norm. l1 </td><td> 32 </td><td> 1 </td><td> 246.3 </td></tr>
+</table><br />
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td rowspan=2 align="center" valing="center" width="200">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td><td rowspan=2 align="center" valing="center">Recuento</td></tr><tr style="background-color:#CCCCCC" align="center"><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>
+<tr><td style="background-color:#AAAAAA">Contadores</td>
+<td>0.20164</td>
+<td><b>0.79211</b></td>
+<td>0.32145</td>
+<td>0.13516</td>
+<td><b>0.53237</b></td>
+<td>0.21559</td>
+<td>0.10969</td>
+<td><b>0.43321</b></td>
+<td>0.17506</td>
+<td>0.09424</td>
+<td>0.37319</td>
+<td>0.15048</td>
+<td>0.19982</td>
+<td><b>0.78495</b></td>
+<td>0.31855</td>
+<td>0.05553</td>
+<td><b>0.42609</b></td>
+<td>0.09825</td>
+<td>0.03995</td>
+<td><b>0.61809</b></td>
+<td>0.07505</td>
+<td>0.04024</td>
+<td><b>0.61932</b></td>
+<td>0.07557</td>
+<td align="center">7</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores binarios</td>
+<td>0.21168</td>
+<td>0.70517</td>
+<td>0.32562</td>
+<td>0.12785</td>
+<td>0.42683</td>
+<td>0.19676</td>
+<td>0.10512</td>
+<td>0.35168</td>
+<td>0.16186</td>
+<td>0.09058</td>
+<td>0.30368</td>
+<td>0.13954</td>
+<td>0.20803</td>
+<td>0.69301</td>
+<td>0.32000</td>
+<td>0.05576</td>
+<td>0.36280</td>
+<td>0.09666</td>
+<td>0.04433</td>
+<td>0.49296</td>
+<td>0.08134</td>
+<td>0.04463</td>
+<td>0.49423</td>
+<td>0.08187</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores ngramas</td>
+<td><b>0.23084</b></td>
+<td>0.75298</td>
+<td><b>0.35335</b></td>
+<td><b>0.16073</b></td>
+<td>0.52537</td>
+<td><b>0.24615</b></td>
+<td><b>0.13071</b></td>
+<td>0.42814</td>
+<td><b>0.20028</b></td>
+<td>0.11253</td>
+<td>0.36937</td>
+<td>0.17251</td>
+<td><b>0.22901</b></td>
+<td>0.74702</td>
+<td><b>0.35055</b></td>
+<td>0.06123</td>
+<td>0.39009</td>
+<td>0.10585</td>
+<td><b>0.05149</b></td>
+<td>0.54895</td>
+<td><b>0.09415</b></td>
+<td><b>0.05181</b></td>
+<td>0.55015</td>
+<td><b>0.09470</b></td>
+<td align="center">12</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF (Defecto)</td>
+<td>0.21168</td>
+<td>0.70517</td>
+<td>0.32562</td>
+<td>0.13516</td>
+<td>0.45122</td>
+<td>0.20801</td>
+<td>0.11060</td>
+<td>0.37003</td>
+<td>0.17030</td>
+<td>0.09424</td>
+<td>0.31595</td>
+<td>0.14518</td>
+<td>0.20529</td>
+<td>0.68389</td>
+<td>0.31579</td>
+<td>0.05664</td>
+<td>0.36855</td>
+<td>0.09819</td>
+<td>0.04424</td>
+<td>0.49199</td>
+<td>0.08118</td>
+<td>0.04454</td>
+<td>0.49328</td>
+<td>0.08170</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l1</td>
+<td>0.20985</td>
+<td>0.74434</td>
+<td>0.32740</td>
+<td>0.13516</td>
+<td>0.48052</td>
+<td>0.21098</td>
+<td>0.10786</td>
+<td>0.38436</td>
+<td>0.16845</td>
+<td>0.09149</td>
+<td>0.32680</td>
+<td>0.14296</td>
+<td>0.20712</td>
+<td>0.73463</td>
+<td>0.32314</td>
+<td>0.05342</td>
+<td>0.37004</td>
+<td>0.09336</td>
+<td>0.04427</td>
+<td>0.55823</td>
+<td>0.08203</td>
+<td>0.04457</td>
+<td>0.55942</td>
+<td>0.08256</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l2</td>
+<td>0.21259</td>
+<td>0.71692</td>
+<td>0.32794</td>
+<td>0.14795</td>
+<td>0.50000</td>
+<td>0.22834</td>
+<td>0.12157</td>
+<td>0.41176</td>
+<td>0.18772</td>
+<td>0.10704</td>
+<td>0.36335</td>
+<td>0.16536</td>
+<td>0.20894</td>
+<td>0.70462</td>
+<td>0.32231</td>
+<td>0.05955</td>
+<td>0.39221</td>
+<td>0.10340</td>
+<td>0.04503</td>
+<td>0.51324</td>
+<td>0.08280</td>
+<td>0.04534</td>
+<td>0.51448</td>
+<td>0.08334</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF</td>
+<td>0.21259</td>
+<td>0.72136</td>
+<td>0.32840</td>
+<td>0.13790</td>
+<td>0.46894</td>
+<td>0.21313</td>
+<td>0.10786</td>
+<td>0.36760</td>
+<td>0.16678</td>
+<td>0.09058</td>
+<td>0.30938</td>
+<td>0.14013</td>
+<td>0.20985</td>
+<td>0.71207</td>
+<td>0.32417</td>
+<td>0.05272</td>
+<td>0.34936</td>
+<td>0.09161</td>
+<td>0.04436</td>
+<td>0.51189</td>
+<td>0.08164</td>
+<td>0.04467</td>
+<td>0.51318</td>
+<td>0.08219</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF con idf suavizado</td>
+<td>0.20894</td>
+<td>0.71118</td>
+<td>0.32299</td>
+<td>0.12603</td>
+<td>0.42991</td>
+<td>0.19492</td>
+<td>0.10420</td>
+<td>0.35625</td>
+<td>0.16124</td>
+<td>0.09058</td>
+<td>0.31034</td>
+<td>0.14023</td>
+<td>0.20529</td>
+<td>0.69876</td>
+<td>0.31735</td>
+<td>0.05371</td>
+<td>0.35704</td>
+<td>0.09337</td>
+<td>0.04394</td>
+<td>0.51013</td>
+<td>0.08091</td>
+<td>0.04423</td>
+<td>0.51136</td>
+<td>0.08142</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF: idf suav. y norm. l1</td>
+<td>0.22536</td>
+<td>0.75305</td>
+<td>0.34690</td>
+<td>0.14612</td>
+<td>0.48930</td>
+<td>0.22504</td>
+<td>0.12706</td>
+<td>0.42638</td>
+<td>0.19578</td>
+<td><b>0.11345</b></td>
+<td><b>0.38154</b></td>
+<td><b>0.17490</b></td>
+<td>0.22080</td>
+<td>0.73780</td>
+<td>0.33988</td>
+<td><b>0.06160</b></td>
+<td>0.40206</td>
+<td><b>0.10683</b></td>
+<td>0.05006</td>
+<td>0.56014</td>
+<td>0.09191</td>
+<td>0.05038</td>
+<td>0.56130</td>
+<td>0.09246</td>
+<td align="center">5</td>
+</tr>
+</table>
+<br /><h4>Contadores</h4> Score: 1|| RT: 116|| Id: 614910638574444545|| Text: Qué #Grecia tome ejemplo del gobierno lacayo, sumi<br />Score: 3|| RT: 165|| Id: 615510788787171328|| Text: Rajoy: "Los españoles pueden estar tranquilos". Va<br />Score: 1|| RT: 26|| Id: 615508896623542272|| Text: Si Rajoy dice que podemos estar tranquilos… acojon<br />Score: 1|| RT: 21|| Id: 615516975406686208|| Text: RAJOY SIN TRADUCTOR, CUIDADO QUE ESTO ACABA EN GUE<br />Score: 1|| RT: 59|| Id: 615432179376648192|| Text: Esta es la foto de la #MarcaEspaña muy ilustrativa<br />Score: 1|| RT: 23|| Id: 615510044554170368|| Text: Que dice Rajoy que en España no puede pasar lo mis<br />Score: 0|| RT: 36|| Id: 615505183884361728|| Text: Rajoy y Tsipras, frente a frente. Viñeta vía#greci<br />Score: 1|| RT: 98|| Id: 614814426181562368|| Text: Rajoy se tomó al pie de la letra lo de "frenar el <br />Score: 2|| RT: 1246|| Id: 412316737678606336|| Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 6|| RT: 19|| Id: 615519971972616192|| Text: Rajoy aprovecha la crisis griega para cargar contr<br /><h4>Contadores binarios</h4> Score: 5|| RT: 83|| Id: 615215836903657472|| Text: 24 jefes de gobierno en la reunión del eurogrupo y<br />Score: 2|| RT: 26|| Id: 615487609742184448|| Text: "España no ha estado sometido a un rescate" JAJAJJ<br />Score: 3|| RT: 133|| Id: 615509451429269504|| Text: Rajoy y Sarkozy en calle Genova, hace 5mns: ¿Puede<br />Score: 2|| RT: 38|| Id: 615429751335989248|| Text: 'Muy fan de... Wert', por: "te permites pedirle a <br />Score: 0|| RT: 61|| Id: 598588250815598592|| Text: De la misma estirpe q Rajoy...Ni ridículo, ni verg<br />Score: 4|| RT: 640|| Id: 613803635886170112|| Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 5|| RT: 19|| Id: 615509048180506625|| Text: #CorralitoGreciaEP que dice Rajoy que el corralito<br />Score: 4|| RT: 1161|| Id: 249095440203644929|| Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 3|| RT: 140|| Id: 614376947632730112|| Text: ¿Quién es Íñigo Méndez de Vigo, el nuevo ministro <br />Score: 2|| RT: 410|| Id: 615237326193729536|| Text: La que se va a liar cuando Rajoy recrimine a Obama<br /><h4>Contadores ngramas</h4> Score: 4|| RT: 64|| Id: 615392824851333121|| Text: La crisis de Grecia será tema extraordinario hoy e<br />Score: 3|| RT: 59|| Id: 615509378863644672|| Text: Pues mire usted, yo estaba muy tranqilo hasta que <br />Score: 4|| RT: 930|| Id: 615157203645935616|| Text: Mucho hablar de cambios y, al final, solo cambiaro<br />Score: 1|| RT: 23|| Id: 615510044554170368|| Text: Que dice Rajoy que en España no puede pasar lo mis<br />Score: 2|| RT: 121|| Id: 615420690838257664|| Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 7|| RT: 60|| Id: 615396381788930049|| Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 5|| RT: 61|| Id: 615504062629478400|| Text: #ÚltimaHora Rajoy dice que los españoles podemos e<br />Score: 2|| RT: 38|| Id: 615429751335989248|| Text: 'Muy fan de... Wert', por: "te permites pedirle a <br />Score: 3|| RT: 31|| Id: 615503864268242944|| Text: Rajoy acaba de decir que " El PSOE le ha dado pode<br />Score: 2|| RT: 86|| Id: 615495780128919552|| Text: Me intranquiliza mucho que Rajoy nos tranquilice. <br /><h4>TF-IDF (Defecto)</h4> Score: 3|| RT: 102|| Id: 615512702816010241|| Text: Si Rajoy dice que los españoles pueden estar tranq<br />Score: 3|| RT: 59|| Id: 615509378863644672|| Text: Pues mire usted, yo estaba muy tranqilo hasta que <br />Score: 2|| RT: 41|| Id: 615464295481126913|| Text: Q POCA VERGUENZA.DEMANDAR A LOS TRBJDORES.HASTA CU<br />Score: 2|| RT: 26|| Id: 615487609742184448|| Text: "España no ha estado sometido a un rescate" JAJAJJ<br />Score: 2|| RT: 135|| Id: 615270045875326976|| Text: - Lo siento, mañana sólo podréis sacar 60 euros de<br />Score: 3|| RT: 133|| Id: 615509451429269504|| Text: Rajoy y Sarkozy en calle Genova, hace 5mns: ¿Puede<br />Score: 5|| RT: 61|| Id: 615504062629478400|| Text: #ÚltimaHora Rajoy dice que los españoles podemos e<br />Score: 3|| RT: 27|| Id: 615491775076171776|| Text: #ENCUESTA Rajoy despega: el PP sube 1,5 puntos tra<br />Score: 4|| RT: 640|| Id: 613803635886170112|| Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 5|| RT: 399|| Id: 614015908474916864|| Text: El New York Times tilda de "franquista" la #LeyMor<br /><h4>TF normalizado l1</h4> Score: 1|| RT: 116|| Id: 614910638574444545|| Text: Qué #Grecia tome ejemplo del gobierno lacayo, sumi<br />Score: 1|| RT: 26|| Id: 615508896623542272|| Text: Si Rajoy dice que podemos estar tranquilos… acojon<br />Score: 1|| RT: 21|| Id: 615516975406686208|| Text: RAJOY SIN TRADUCTOR, CUIDADO QUE ESTO ACABA EN GUE<br />Score: 1|| RT: 23|| Id: 615510044554170368|| Text: Que dice Rajoy que en España no puede pasar lo mis<br />Score: 2|| RT: 135|| Id: 615270045875326976|| Text: - Lo siento, mañana sólo podréis sacar 60 euros de<br />Score: 0|| RT: 25|| Id: 615491742998134785|| Text: La 1ª telefonada deaper a demanar perdó a les víct<br />Score: 2|| RT: 50|| Id: 615476085963247616|| Text: Bonita deuda que deja #rajoy y que nadie ve.... #y<br />Score: 4|| RT: 21|| Id: 615495711464030209|| Text: "España no es Grecia" dice Rajoy. Me quedo más tra<br />Score: 3|| RT: 356|| Id: 614918413119582212|| Text: Según Mariano Rajoy 6 de cada 7 españoles notan un<br />Score: 5|| RT: 399|| Id: 614015908474916864|| Text: El New York Times tilda de "franquista" la #LeyMor<br /><h4>TF normalizado l2</h4> Score: 1|| RT: 116|| Id: 614910638574444545|| Text: Qué #Grecia tome ejemplo del gobierno lacayo, sumi<br />Score: 1|| RT: 26|| Id: 615508896623542272|| Text: Si Rajoy dice que podemos estar tranquilos… acojon<br />Score: 4|| RT: 64|| Id: 615392824851333121|| Text: La crisis de Grecia será tema extraordinario hoy e<br />Score: 4|| RT: 30|| Id: 615500417695379456|| Text: De la herencia de #Zapatero a la herencia que nos <br />Score: 5|| RT: 39|| Id: 615450521697153024|| Text: Rajoy en el congreso dando explicaciones sobre la <br />Score: 2|| RT: 135|| Id: 615270045875326976|| Text: - Lo siento, mañana sólo podréis sacar 60 euros de<br />Score: 4|| RT: 21|| Id: 615471334324346880|| Text: .Hoy tenemos 300 mil millones de deuda pública más<br />Score: 7|| RT: 60|| Id: 615396381788930049|| Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 2|| RT: 38|| Id: 615429751335989248|| Text: 'Muy fan de... Wert', por: "te permites pedirle a <br />Score: 3|| RT: 140|| Id: 614376947632730112|| Text: ¿Quién es Íñigo Méndez de Vigo, el nuevo ministro <br /><h4>TF-IDF</h4> Score: 4|| RT: 64|| Id: 615392824851333121|| Text: La crisis de Grecia será tema extraordinario hoy e<br />Score: 1|| RT: 26|| Id: 615508896623542272|| Text: Si Rajoy dice que podemos estar tranquilos… acojon<br />Score: 4|| RT: 63|| Id: 615248382337110016|| Text: .: Rajoy tendría que preocuparse por los problemas<br />Score: 1|| RT: 23|| Id: 615510044554170368|| Text: Que dice Rajoy que en España no puede pasar lo mis<br />Score: 5|| RT: 124|| Id: 615506352497102848|| Text: Rajoy presume de sus reformas que nos ha convertid<br />Score: 4|| RT: 21|| Id: 615495711464030209|| Text: "España no es Grecia" dice Rajoy. Me quedo más tra<br />Score: 2|| RT: 38|| Id: 615429751335989248|| Text: 'Muy fan de... Wert', por: "te permites pedirle a <br />Score: 0|| RT: 61|| Id: 598588250815598592|| Text: De la misma estirpe q Rajoy...Ni ridículo, ni verg<br />Score: 4|| RT: 640|| Id: 613803635886170112|| Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 2|| RT: 86|| Id: 615495780128919552|| Text: Me intranquiliza mucho que Rajoy nos tranquilice. <br /><h4>TF-IDF con idf suavizado</h4> Score: 0|| RT: 85|| Id: 615515674706878464|| Text: Esta es la foto de la #MarcaEspaña muy ilustrativa<br />Score: 6|| RT: 50|| Id: 615922715166289920|| Text: La ministra de Agricultura #PP sobre el referéndum<br />Score: 2|| RT: 135|| Id: 615270045875326976|| Text: - Lo siento, mañana sólo podréis sacar 60 euros de<br />Score: 5|| RT: 124|| Id: 615506352497102848|| Text: Rajoy presume de sus reformas que nos ha convertid<br />Score: 3|| RT: 133|| Id: 615509451429269504|| Text: Rajoy y Sarkozy en calle Genova, hace 5mns: ¿Puede<br />Score: 4|| RT: 21|| Id: 615495711464030209|| Text: "España no es Grecia" dice Rajoy. Me quedo más tra<br />Score: 5|| RT: 53|| Id: 615886247077244928|| Text: Tanto hablar de la deuda griega , aquí tenemos nue<br />Score: 4|| RT: 1161|| Id: 249095440203644929|| Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 2|| RT: 1246|| Id: 412316737678606336|| Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 3|| RT: 79|| Id: 615777396914917376|| Text: Dicen los jueces que Chaves y Griñán no tienen der<br /><h4>TF-IDF: idf suav. y norm. l1</h4> Score: 3|| RT: 165|| Id: 615510788787171328|| Text: Rajoy: "Los españoles pueden estar tranquilos". Va<br />Score: 4|| RT: 63|| Id: 615248382337110016|| Text: .: Rajoy tendría que preocuparse por los problemas<br />Score: 1|| RT: 44|| Id: 615488529137856513|| Text: #Greferendum. Juncker por el sí al programa de ref<br />Score: 3|| RT: 133|| Id: 615509451429269504|| Text: Rajoy y Sarkozy en calle Genova, hace 5mns: ¿Puede<br />Score: 7|| RT: 60|| Id: 615396381788930049|| Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 4|| RT: 30|| Id: 615439530200571905|| Text: ¡Joderos Griegos!,Aquí en España con Rajoy si pode<br />Score: 4|| RT: 21|| Id: 615495711464030209|| Text: "España no es Grecia" dice Rajoy. Me quedo más tra<br />Score: 0|| RT: 61|| Id: 598588250815598592|| Text: De la misma estirpe q Rajoy...Ni ridículo, ni verg<br />Score: 4|| RT: 640|| Id: 613803635886170112|| Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 2|| RT: 1246|| Id: 412316737678606336|| Text: Rajoy no es tan tonto si lo comparas con la gente <br />

@@ -1,0 +1,260 @@
+<meta http-equiv="Content-type" content="text/html;charset=ISO-8859-1">
+<h1>Test #04</h1>
+<br /> Es igual que el primero, pero utilizando en el model de resumen los tweets con hashtags
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td>Sistema empleado</td><td>Total score</td><td>Number of suc. tweets</td><td>Avg. RT count</td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores </td><td> 32 </td><td> 0 </td><td> 9.6 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores binarios </td><td> 48 </td><td> 1 </td><td> 10.6 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores ngramas </td><td> 34 </td><td> 0 </td><td> 4.9 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF (Defecto) </td><td> 35 </td><td> 0 </td><td> 1.8 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l1 </td><td> 27 </td><td> 0 </td><td> 11.3 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l2 </td><td> 53 </td><td> 0 </td><td> 1.5 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF </td><td> 39 </td><td> 0 </td><td> 31.9 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF con idf suavizado </td><td> 51 </td><td> 1 </td><td> 6.5 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF: idf suav. y norm. l1 </td><td> 39 </td><td> 1 </td><td> 0.8 </td></tr>
+</table><br />
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td rowspan=2 align="center" valing="center" width="200">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td><td rowspan=2 align="center" valing="center">Recuento</td></tr><tr style="background-color:#CCCCCC" align="center"><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>
+<tr><td style="background-color:#AAAAAA">Contadores</td>
+<td>0.21259</td>
+<td>0.76144</td>
+<td>0.33238</td>
+<td>0.16621</td>
+<td>0.59672</td>
+<td>0.26000</td>
+<td>0.14077</td>
+<td>0.50658</td>
+<td>0.22032</td>
+<td>0.12351</td>
+<td>0.44554</td>
+<td>0.19341</td>
+<td>0.21168</td>
+<td>0.75817</td>
+<td>0.33096</td>
+<td>0.05401</td>
+<td>0.37781</td>
+<td>0.09451</td>
+<td>0.04405</td>
+<td>0.56646</td>
+<td>0.08174</td>
+<td>0.04436</td>
+<td>0.56772</td>
+<td>0.08229</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores binarios</td>
+<td>0.22719</td>
+<td>0.75000</td>
+<td>0.34874</td>
+<td>0.17717</td>
+<td>0.58610</td>
+<td>0.27209</td>
+<td>0.15631</td>
+<td>0.51818</td>
+<td>0.24017</td>
+<td>0.14090</td>
+<td>0.46809</td>
+<td>0.21660</td>
+<td>0.22536</td>
+<td>0.74398</td>
+<td>0.34593</td>
+<td>0.05695</td>
+<td>0.36718</td>
+<td>0.09861</td>
+<td>0.04995</td>
+<td>0.54546</td>
+<td>0.09152</td>
+<td>0.05027</td>
+<td>0.54668</td>
+<td>0.09207</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores ngramas</td>
+<td>0.20438</td>
+<td>0.76451</td>
+<td>0.32254</td>
+<td>0.14703</td>
+<td>0.55137</td>
+<td>0.23215</td>
+<td>0.12340</td>
+<td>0.46392</td>
+<td>0.19495</td>
+<td>0.10979</td>
+<td>0.41379</td>
+<td>0.17354</td>
+<td>0.20255</td>
+<td>0.75768</td>
+<td>0.31965</td>
+<td>0.05568</td>
+<td><b>0.40681</b></td>
+<td>0.09795</td>
+<td>0.04080</td>
+<td>0.57237</td>
+<td>0.07617</td>
+<td>0.04110</td>
+<td>0.57367</td>
+<td>0.07670</td>
+<td align="center">1</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF (Defecto)</td>
+<td>0.23084</td>
+<td>0.75522</td>
+<td>0.35360</td>
+<td>0.16438</td>
+<td>0.53892</td>
+<td>0.25192</td>
+<td>0.13528</td>
+<td>0.44444</td>
+<td>0.20742</td>
+<td>0.11619</td>
+<td>0.38253</td>
+<td>0.17824</td>
+<td>0.22719</td>
+<td>0.74328</td>
+<td>0.34801</td>
+<td>0.05559</td>
+<td>0.35523</td>
+<td>0.09614</td>
+<td>0.05201</td>
+<td>0.55787</td>
+<td>0.09515</td>
+<td>0.05234</td>
+<td>0.55904</td>
+<td>0.09572</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l1</td>
+<td>0.19982</td>
+<td>0.69524</td>
+<td>0.31042</td>
+<td>0.13059</td>
+<td>0.45541</td>
+<td>0.20298</td>
+<td>0.11060</td>
+<td>0.38658</td>
+<td>0.17199</td>
+<td>0.09790</td>
+<td>0.34295</td>
+<td>0.15232</td>
+<td>0.19617</td>
+<td>0.68254</td>
+<td>0.30475</td>
+<td>0.05280</td>
+<td>0.35882</td>
+<td>0.09205</td>
+<td>0.04000</td>
+<td>0.48535</td>
+<td>0.07391</td>
+<td>0.04029</td>
+<td>0.48667</td>
+<td>0.07442</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l2</td>
+<td><b>0.24453</b></td>
+<td><b>0.79290</b></td>
+<td><b>0.37378</b></td>
+<td><b>0.20000</b></td>
+<td><b>0.64985</b></td>
+<td><b>0.30587</b></td>
+<td><b>0.17185</b></td>
+<td><b>0.55952</b></td>
+<td><b>0.26294</b></td>
+<td><b>0.14913</b></td>
+<td><b>0.48657</b></td>
+<td><b>0.22829</b></td>
+<td><b>0.24088</b></td>
+<td><b>0.78107</b></td>
+<td><b>0.36821</b></td>
+<td><b>0.05976</b></td>
+<td>0.37849</td>
+<td><b>0.10322</b></td>
+<td><b>0.05873</b></td>
+<td><b>0.61874</b></td>
+<td><b>0.10728</b></td>
+<td><b>0.05906</b></td>
+<td><b>0.61976</b></td>
+<td><b>0.10784</b></td>
+<td align="center">23</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF</td>
+<td>0.21533</td>
+<td>0.67816</td>
+<td>0.32687</td>
+<td>0.15068</td>
+<td>0.47550</td>
+<td>0.22884</td>
+<td>0.12980</td>
+<td>0.41040</td>
+<td>0.19722</td>
+<td>0.11619</td>
+<td>0.36812</td>
+<td>0.17663</td>
+<td>0.21442</td>
+<td>0.67529</td>
+<td>0.32549</td>
+<td>0.05333</td>
+<td>0.32804</td>
+<td>0.09174</td>
+<td>0.04519</td>
+<td>0.44907</td>
+<td>0.08212</td>
+<td>0.04549</td>
+<td>0.45037</td>
+<td>0.08263</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF con idf suavizado</td>
+<td>0.23905</td>
+<td>0.77976</td>
+<td>0.36592</td>
+<td>0.18995</td>
+<td>0.62090</td>
+<td>0.29090</td>
+<td>0.16453</td>
+<td>0.53892</td>
+<td>0.25210</td>
+<td>0.14639</td>
+<td>0.48048</td>
+<td>0.22441</td>
+<td>0.23631</td>
+<td>0.77083</td>
+<td>0.36173</td>
+<td>0.05903</td>
+<td>0.37607</td>
+<td>0.10204</td>
+<td>0.05525</td>
+<td>0.58909</td>
+<td>0.10102</td>
+<td>0.05558</td>
+<td>0.59021</td>
+<td>0.10159</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF: idf suav. y norm. l1</td>
+<td>0.21989</td>
+<td>0.75078</td>
+<td>0.34015</td>
+<td>0.16712</td>
+<td>0.57188</td>
+<td>0.25865</td>
+<td>0.14442</td>
+<td>0.49530</td>
+<td>0.22363</td>
+<td>0.12534</td>
+<td>0.43082</td>
+<td>0.19419</td>
+<td>0.21715</td>
+<td>0.74143</td>
+<td>0.33592</td>
+<td>0.05895</td>
+<td>0.39313</td>
+<td>0.10253</td>
+<td>0.04750</td>
+<td>0.55500</td>
+<td>0.08751</td>
+<td>0.04782</td>
+<td>0.55621</td>
+<td>0.08807</td>
+<td align="center">0</td>
+</tr>
+</table>
+<br /><h4>Contadores</h4> Score: 3|| RT: 29|| Text: Dice Rajoy que podemos estar tranquilos, que confi|| Id: 615514621156421632<br />Score: 3|| RT: 59|| Text: Pues mire usted, yo estaba muy tranqilo hasta que || Id: 615509378863644672<br />Score: 5|| RT: 0|| Text: яαιηιєℓ αℓєχαη∂єя ♫ Rajoy asegura que los esfuerzo|| Id: 615514852413472768<br />Score: 6|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615514224983277568<br />Score: 0|| RT: 0|| Text: Periódico digital progresista http://t.co/Dw9azlk0|| Id: 615518541559803904<br />Score: 5|| RT: 7|| Text: El gobierno de Rajoy está destrozando el estado de|| Id: 615500798311727104<br />Score: 0|| RT: 1|| Text: "Porque España es un país serio" dice Rajoy. El te|| Id: 615508974025199616<br />Score: 1|| RT: 0|| Text: Cando Rajoy afirma que España ha tenido un gobiern|| Id: 615508996124971008<br />Score: 3|| RT: 0|| Text: Rajoy insiste en que el problema de Grecia no nos || Id: 615509193345368068<br />Score: 6|| RT: 0|| Text: Rajoy dice que España es seria y critica a Podemos|| Id: 615515480879542273<br /><h4>Contadores binarios</h4> Score: 8|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615514645000904704<br />Score: 3|| RT: 5|| Text: @francescabad @Wittgenstein_jm Ada Colau: Jo faig || Id: 615515145129852929<br />Score: 4|| RT: 0|| Text: @Duelelab Ni podemos es la solución a todo ni lo e|| Id: 615519028195557376<br />Score: 6|| RT: 0|| Text: «Hemos perdido porque el PSOE ha apoyado a Podemos|| Id: 615516976459329536<br />Score: 3|| RT: 62|| Text: Cuando Rajoy nos preguntó en referéndum si queríam|| Id: 615445873527508992<br />Score: 6|| RT: 0|| Text: Rajoy dice que España es seria y critica a Podemos|| Id: 615509853310599168<br />Score: 6|| RT: 3|| Text: Rajoy dice que los esfuerzos de los españoles han || Id: 615505138258546689<br />Score: 3|| RT: 15|| Text: Comisión Urgente en Moncloa, De #Guindos, Campus F|| Id: 615480571758817280<br />Score: 4|| RT: 21|| Text: "España no es Grecia" dice Rajoy. Me quedo más tra|| Id: 615495711464030209<br />Score: 5|| RT: 0|| Text: Rajoy presume de que sus reformas impiden que Espa|| Id: 615518369496707072<br /><h4>Contadores ngramas</h4> Score: 5|| RT: 0|| Text: Rajoy: "Els espanyols poden estar tranquils. Espan|| Id: 615520004943904769<br />Score: 1|| RT: 26|| Text: Si Rajoy dice que podemos estar tranquilos… acojon|| Id: 615508896623542272<br />Score: 3|| RT: 1|| Text: ALGUIEN LE CREE? Rajoy: "Los españoles pueden esta|| Id: 615498370535309312<br />Score: 0|| RT: 0|| Text: Rajoy no se va a comer ni un torrao.|| Id: 615516835681800192<br />Score: 6|| RT: 0|| Text: Rajoy dice que España es seria y critica a Podemos|| Id: 615515534113705985<br />Score: 5|| RT: 7|| Text: El gobierno de Rajoy está destrozando el estado de|| Id: 615500798311727104<br />Score: 2|| RT: 0|| Text: ¿Qué daña más a la Marca España: el álbum fotogáfi|| Id: 615519780204871680<br />Score: 2|| RT: 5|| Text: Rajoy, Cospedal, Aznar y los 40 ladrones dándonos || Id: 615515938797056000<br />Score: 6|| RT: 0|| Text: «Hemos perdido porque el PSOE ha apoyado a Podemos|| Id: 615517118977585152<br />Score: 4|| RT: 10|| Text: "Rajoy no ha sido nada constructivo en los negocia|| Id: 615471698364792832<br /><h4>TF-IDF (Defecto)</h4> Score: 2|| RT: 0|| Text: Yo estaba tranquilo hasta que ha salido Rajoy a de|| Id: 615509395590508544<br />Score: 2|| RT: 0|| Text: rajoy y soria se piensan ke por ke metan la leymor|| Id: 615513891934740480<br />Score: 5|| RT: 0|| Text: Rajoy: "Lo de Grecia no va a pasar en España porqu|| Id: 615519127927656449<br />Score: 3|| RT: 0|| Text: Pues debería pasar @dharmita2003 RT @EFEnoticias: || Id: 615515820429590528<br />Score: 5|| RT: 0|| Text: Rajoy y  #Sarkozy  #estrechan  #lazos del  #PP y L|| Id: 615515322301444096<br />Score: 6|| RT: 3|| Text: Rajoy dice que los esfuerzos de los españoles han || Id: 615505138258546689<br />Score: 2|| RT: 13|| Text: Rajoy cada día se retrata un poco más, en su posic|| Id: 615497888983089152<br />Score: 6|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615514086734888961<br />Score: 3|| RT: 2|| Text: Me deja más tranquila Rajoy diciendo que en España|| Id: 615508817774837760<br />Score: 1|| RT: 0|| Text: Posos de anarquía » Troika, Rajoy… por sus actos l|| Id: 615512296073338880<br /><h4>TF normalizado l1</h4> Score: 1|| RT: 0|| Text: Rajoy-espanoles-tranquilos-Espana-Grecia_. Tarado || Id: 615511292179271680<br />Score: 5|| RT: 83|| Text: 24 jefes de gobierno en la reunión del eurogrupo y|| Id: 615215836903657472<br />Score: 2|| RT: 0|| Text: Es decirme Rajoy que esté tranquila y echarme a te|| Id: 615515181431566336<br />Score: 3|| RT: 0|| Text: Según Rajoy tenemos que estar así " tranquilos". h|| Id: 615515320770523136<br />Score: 0|| RT: 0|| Text: Diputado deja en ridículo a Rajoy https://t.co/vEd|| Id: 615512449429671936<br />Score: 2|| RT: 5|| Text: Tras una hora de charla, le dicen por el pinganill|| Id: 615519312347045888<br />Score: 2|| RT: 0|| Text: Esperando juicio por una critica social en faceboo|| Id: 615513625483153409<br />Score: 6|| RT: 0|| Text: #politica Podemos defiende a Tsipras y acusa a Raj|| Id: 615514747518058496<br />Score: 3|| RT: 25|| Text: .@HazteOir acusa a @MarianoRajoy de ser el “autor || Id: 615209315591303168<br />Score: 3|| RT: 0|| Text: Dice Rajoy q lo de Grecia es culpa de Syriza, guió|| Id: 615514095421407232<br /><h4>TF normalizado l2</h4> Score: 6|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615514101511405569<br />Score: 6|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615514102224457728<br />Score: 4|| RT: 8|| Text: #ÚtimaHora Popular y Sabadell pierden un 7%, Santa|| Id: 615510802326528000<br />Score: 6|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615512382790459392<br />Score: 5|| RT: 0|| Text: Rajoy: "Lo de Grecia no va a pasar en España porqu|| Id: 615519743131414528<br />Score: 6|| RT: 0|| Text: #NoticiasEspaña: Rajoy critica a Podemos por decir|| Id: 615515452668690432<br />Score: 6|| RT: 7|| Text: Podemos denuncia 'chantaje' a Grecia y que Rajoy s|| Id: 615503755618881536<br />Score: 5|| RT: 0|| Text: Rajoy: "Lo de Grecia no va a pasar en España porqu|| Id: 615510745606946819<br />Score: 6|| RT: 0|| Text: Rajoy: los españoles pueden estar tranquilos http:|| Id: 615509804325322753<br />Score: 3|| RT: 0|| Text: supongo ke todas las sentencias y autos judiciales|| Id: 615513177980280832<br /><h4>TF-IDF</h4> Score: 4|| RT: 0|| Text: Lunes, calor, los medios del sistema criminalizan || Id: 615520189094957056<br />Score: 2|| RT: 9|| Text: La verdadera historia de cómo ‘el martilleo’ del q|| Id: 615461165213327360<br />Score: 5|| RT: 0|| Text: El TC suspèn provisionalment les estructures d'est|| Id: 615514908415754240<br />Score: 0|| RT: 0|| Text: @ARMAKdeODELOT @CorrupcionZero AHORA, RAJOY PUEDE || Id: 615519898811408385<br />Score: 6|| RT: 0|| Text: Rajoy dice que los esfuerzos de los españoles han || Id: 615513032077221888<br />Score: 5|| RT: 301|| Text: Si Rajoy les devuelve la extra de 2012 a los funci|| Id: 614048353207324672<br />Score: 2|| RT: 6|| Text: Rajoy: "Grecia debe poner algo de su parte" Pues c|| Id: 615501592704483328<br />Score: 5|| RT: 0|| Text: @Yoan_x7 Rajoy dice que España es seria y critica || Id: 615509808054022144<br />Score: 4|| RT: 3|| Text: Ya le molaria a Rajoy,pisar la calle como lo hace || Id: 615464080866979840<br />Score: 6|| RT: 0|| Text: #TheKinqBebo Rajoy asegura que los esfuerzos de lo|| Id: 615514764224036865<br /><h4>TF-IDF con idf suavizado</h4> Score: 6|| RT: 0|| Text: Rajoy dice que España es seria y critica a Podemos|| Id: 615515511267332096<br />Score: 4|| RT: 6|| Text: Para temblar. Ya solo falta #Rajoy diciendo que Es|| Id: 615502950484586496<br />Score: 7|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615514915109912577<br />Score: 6|| RT: 0|| Text: Rajoy: "Los españoles pueden estar tranquilos" ant|| Id: 615509002865106944<br />Score: 5|| RT: 53|| Text: Tanto hablar de la deuda griega , aquí tenemos nue|| Id: 615886247077244928<br />Score: 6|| RT: 0|| Text: #ElvisTeamoo Rajoy asegura que los esfuerzos de lo|| Id: 615514696892837888<br />Score: 3|| RT: 4|| Text: ¿Qué daña más a la Marca España: el álbum fotogáfi|| Id: 615514376091660288<br />Score: 6|| RT: 0|| Text: Rajoy dice que los esfuerzos de los españoles han || Id: 615513032077221888<br />Score: 2|| RT: 2|| Text: RAJOY LA GENTE DE GRECIA PUEDE SACAR 60€ AL DIA EN|| Id: 615507257061699584<br />Score: 6|| RT: 0|| Text: «Hemos perdido porque el PSOE ha apoyado a Podemos|| Id: 615517759821213696<br /><h4>TF-IDF: idf suav. y norm. l1</h4> Score: 6|| RT: 0|| Text: Rajoy dice que España es seria y critica a Podemos|| Id: 615509589585326085<br />Score: 6|| RT: 0|| Text: Rajoy dice que España es seria y critica a Podemos|| Id: 615509851003727872<br />Score: 5|| RT: 1|| Text: Mariano Rajoy: "En la Eurozona seguimos dispuestos|| Id: 615506790407634944<br />Score: 2|| RT: 0|| Text: #tweetNoRRHH la patilla de las gafas de Rajoy como|| Id: 615508775970164736<br />Score: 7|| RT: 0|| Text: Rajoy asegura que los esfuerzos de los españoles h|| Id: 615514915109912577<br />Score: 6|| RT: 0|| Text: «Hemos perdido porque el PSOE ha apoyado a Podemos|| Id: 615517118977585152<br />Score: 2|| RT: 0|| Text: ¿Alguien se cree alguna palabra de Rajoy aún? Si d|| Id: 615508810401218560<br />Score: 3|| RT: 0|| Text: Claro les dice a los millonarios Rajoy: "Los españ|| Id: 615516305685229568<br />Score: 0|| RT: 0|| Text: @LaVanguardia la hemos cagao, menudo veroño nos es|| Id: 615511242791354372<br />Score: 2|| RT: 7|| Text: #ULTIMAHORA #CorralitoGriegoARV Mensaje #Rajoy a #|| Id: 615496250197209092<br />

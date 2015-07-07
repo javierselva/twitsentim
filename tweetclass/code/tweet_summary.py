@@ -3,7 +3,7 @@ import numpy as np
 import json
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5):
+def summarize(tweets=[],polarity=[],flag=1,rango=4,use_retweets=False,MAX_RES_TWEETS = 5):
     #~ print (json.dumps(docs, indent=1, ensure_ascii=False))
     
     if flag==0:
@@ -43,6 +43,15 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5):
     #Reconstruction based on reduced SVD:
     U, s, V = np.linalg.svd(A,full_matrices=False)
     max_ind=[]
+    
+    if use_retweets:
+        #~ avg_rt=np.mean([tweet["retweet_count"] for tweet in tweets])
+        retweets_ftw=[tweet["retweet_count"] for tweet in tweets]
+        avg_rt=np.percentile(retweets_ftw,80)
+        #~ print(retweets_ftw.count(0))
+        for i in range(len(V)):
+            if tweets[i]["retweet_count"]<avg_rt:
+                V[i]*=0
     
     incr=0
     

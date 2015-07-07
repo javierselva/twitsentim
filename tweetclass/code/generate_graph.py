@@ -18,7 +18,7 @@ import matplotlib.ticker as ticker
 #~ except ImportError:
     #~ from io import StringIO
 
-def draw_rt_vs_score(rt,score):
+def draw_rt_vs_score(rt,fav,score):
     fig = Figure()
     fig.set_figwidth(20)
     canvas = FigureCanvas(fig)
@@ -31,11 +31,16 @@ def draw_rt_vs_score(rt,score):
     N = len(rt)
     ind = np.arange(N)
     
+    max_rt=max(rt)
+    max_fav=max(fav)
     for s in range(len(rt)):
-        rt[s]=(rt[s]*20)/1258
+        rt[s]=(rt[s]*20)/max_rt
+        fav[s]=(fav[s]*20)/max_fav
+        
     
     ax.plot(ind,rt,"#00FF00",linewidth=1.3)
     ax.plot(ind,score,"#FF0000",linewidth=1.3)
+    ax.plot(ind,fav,"#00AAAA",linewidth=1.3)
     
     canvas.print_figure('comparision01.png',facecolor='white',bbox_inches='tight')
 
