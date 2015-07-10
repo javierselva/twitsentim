@@ -74,11 +74,22 @@ def show_results(request,requested_query_data_id):
     graph_data_generator.generate_data(query.query_text,all_results)
     print("graph is ready")
     
+    mul=3
+    bars_size={}
+    bars_size[0]=int(current_query.p_pos_p*mul)
+    bars_size[1]=int(current_query.p_pos*mul)
+    bars_size[2]=int(current_query.p_neu*mul)
+    bars_size[3]=int(current_query.p_neg*mul)
+    bars_size[4]=int(current_query.p_neg_p*mul)
+    bars_size[5]=int(current_query.p_none*mul)
+    
+    print(bars_size)
     # Return the info to the website
     return render(request, 'tweetclass/show_results.html',{
         'query':query,
         'all_res':all_results,
         'current':current_query,
+        'sizes':bars_size,
         'sum_twe':sum_tweets,
         'generic_image_path':"tweetclass/histogram_generic_"+query.query_text+".png",
         'summary_image_path':"tweetclass/histogram_summary_"+query.query_text+".png" })

@@ -162,33 +162,63 @@ if __name__ == "__main__":
     #~ save_obj(add_field("score",tweets,load_tweets_score(tweets,"plain_mixed_tweets")),"modeled_mixed_scored_tweets")
     
     
-    tweets=sorted(load_obj("modeled_mixed_scored_tweets"),key=lambda k : k["score"])
+    raw_popular = load_obj("raw_popular_tweets")
     
-    max_rt=max([tweet["retweet_count"] for tweet in tweets])
-    max_fav=max([tweet["favorite_count"] for tweet in tweets])
-    #~ print("Max rt: %d\tMax fav: %d" % (max_rt ,max_fav))
+    cont=0
+    modeled_popular = []
     
-    for tweet in tweets:
-        tweet["metric_score"]=((math.log(tweet["retweet_count"]*30/max_rt + 1)) + (math.log(tweet["favorite_count"]*20/max_fav + 1)*0.75)) + (tweet["score"])
+    print(raw_popular[0])
+    #~ for tweet in raw_popular:
+        #~ modeled_popular.append(gt.extract_tweet_info(tweet))
     
-    gg.draw_rt_vs_score([tweet["retweet_count"] for tweet in tweets],[tweet["favorite_count"] for tweet in tweets],[tweet["score"] for tweet in tweets],[tweet["metric_score"] for tweet in tweets])
+    #~ for tweet in modeled_popular:
+        #~ print("RT: %d \t Fav: %d" % (tweet["retweet_count"],tweet["favorite_count"]))
+    
+    
+    #CHECKS THE DIFFERENCE BETWEET MIXED AND POPULAR TWEETS (SET INTERSECT)    
+    #~ modeled_mixed = load_obj("modeled_mixed_scored_tweets")
+    #~ 
+    #~ mixed_ids = set([tweet["id"] for tweet in modeled_mixed])
+    #~ 
+    #~ print("HM mixed: ",len(mixed_ids))
+    #~ 
+    #~ for tweet in modeled_popular:
+        #~ if tweet["id"] not in mixed_ids:
+            #~ print(tweet["text"])
+            #~ mixed_ids.add(tweet["id"])
+    #~ 
+    #~ print("HM all: ",len(mixed_ids))
+    
+    #DRAWS A GRAPHIC COMPARING METRICS
+    #~ tweets=sorted(load_obj("modeled_mixed_scored_tweets"),key=lambda k : k["score"])
+    #~ 
+    #~ max_rt=max([tweet["retweet_count"] for tweet in tweets])
+    #~ max_fav=max([tweet["favorite_count"] for tweet in tweets])
+    #~ 
+    #~ for tweet in tweets:
+        #~ tweet["metric_score"]=((math.log(tweet["retweet_count"]*30/max_rt + 1)) + (math.log(tweet["favorite_count"]*20/max_fav + 1)*0.75)) + (tweet["score"])
+    #~ 
+    #~ gg.draw_rt_vs_score([tweet["retweet_count"] for tweet in tweets],[tweet["favorite_count"] for tweet in tweets],[tweet["score"] for tweet in tweets],[tweet["metric_score"] for tweet in tweets])
     
     if False:
         test_number = "10"
         print("<meta http-equiv=\"Content-type\" content=\"text/html;charset=ISO-8859-1\">")
         print("<h1>Test #"+test_number+"</h1>")
         #TWEETS TAL CUAL #2 - #5
-        #~ print("<br /> Esta primera prueba con el nuevo corpus entrenado consiste en un resumen realizado simplemente considerando los tweets con score >6 sin hashtags y habiendo eliminado manualmente los repetidos. El conjunto de tweets es el original, del que se han eliminado los que eran RT y se han añadido los originales de los mismos.")
+        #~ print("<br /> Esta primera prueba con el nuevo corpus entrenado consiste en un resumen realizado simplemente considerando los tweets con score >6 sin hashtags y habiendo eliminado manualmente los repetidos. El conjunto de tweets es el original, del que se han eliminado los que eran RT y se han anyadido los originales de los mismos.")
         #~ print("<br /> La segunda prueba es igual que la anterior pero en este caso limpiamos los tweets antes de realizar el resumen.")
         #~ print("<br /> Es igual que el primero, pero utilizando en el model de resumen los tweets con hashtags")
         #~ print("<br /> Es igual que el segundo, pero utilizando en el modelo de resumen los tweets con hashtags y al limpiar, dejando los hashtags")
         
         #ELIMINANDO LOS QUE TENGAN RT DEBAJO DE LA MEDIA #6 - #9
-        #~ print("<br /> En este caso, empleando el resumen sin hashtags como modelo, se ha intentado dar más relevancia a los retweets mediante la modificación de la matriz. Si el número de RT de un tweet concreto es inferior a la MEDIA de RT de todos los tweets, ese tweet no se cogerá.")
+        #~ print("<br /> En este caso, empleando el resumen sin hashtags como modelo, se ha intentado dar mas relevancia a los retweets mediante la modificacion de la matriz. Si el numero de RT de un tweet concreto es inferior a la MEDIA de RT de todos los tweets, ese tweet no se cogera.")
         #~ print("<br /> Igual que el anterior (descartando un tweet si sus RT son inferiores a la media) pero esta vez limpiando los tweets")
         #~ print("<br /> Igual que #6 pero trabajando con el modelo resumen con hashtags")
         #~ print("<br /> Igual que el anterior pero limpiando urls y menciones")
         
         #ELIMINANDO LOS QUE TENGAN RT DEBAJO DEL PERCENTIL
         print("<br /> Descarta los tweets que tengan RT por debajo del percentil (70). Resumen modelo sin hashtags y tweets limpiados.")
+        
+        print("En los populares no hay RT")
+        
         launch_test(test_number,True)
