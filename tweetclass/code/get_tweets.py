@@ -24,7 +24,9 @@ def extract_tweet_info(tweet):
             "date":str(tweet.created_at),
             "text":tweet.text.replace('\n',' ').replace('\r',' '),
             "retweet_count":tweet.retweet_count,
-            "favorite_count":tweet.favorite_count}
+            "favorite_count":tweet.favorite_count,
+            "followers":tweet.user.followers_count,
+            "friends":tweet.user.friends_count}
 
 def clear_retweets(raw_tweets):
     ret_ids=set([tweet.id for tweet in raw_tweets])

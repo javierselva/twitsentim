@@ -18,7 +18,7 @@ import matplotlib.ticker as ticker
 #~ except ImportError:
     #~ from io import StringIO
 
-def draw_rt_vs_score(rt,fav,score,m_sco):
+def draw_things(things,colors,text):
     fig = Figure()
     fig.set_figwidth(30)
     canvas = FigureCanvas(fig)
@@ -26,24 +26,19 @@ def draw_rt_vs_score(rt,fav,score,m_sco):
     ax = fig.add_subplot(1,1,1, axisbg='white')
     ax.set_ylabel('Value')
     ax.set_xlabel('Tweets')
-    ax.set_title('Score vs Retweet_count')
+    ax.set_title(text)
     
-    N = len(rt)
+    N = len(things[0])
     ind = np.arange(N)
     
-    max_rt=max(rt)
-    max_fav=max(fav)
-    for s in range(len(rt)):
-        rt[s]=(rt[s]*20)/max_rt
-        fav[s]=(fav[s]*20)/max_fav
-        
+    cont=0
     
-    ax.plot(ind,rt,"#00FF00",linewidth=1.3)
-    ax.plot(ind,score,"#FF0000",linewidth=1.3)
-    ax.plot(ind,fav,"#33AAAA",linewidth=1.3)
-    ax.plot(ind,m_sco,"#AAAA33",linewidth=1.3)
+    for t in range(len(things)):
+        ax.plot(ind,things[t],colors[cont],linewidth=1.3)
+        cont+=1
     
-    canvas.print_figure('comparision02.png',facecolor='white',bbox_inches='tight')
+    
+    canvas.print_figure(text+'.png',facecolor='white',bbox_inches='tight')
 
 def general_graph(polarity,name):
     

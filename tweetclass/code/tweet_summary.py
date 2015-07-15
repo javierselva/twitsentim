@@ -3,7 +3,14 @@ import numpy as np
 import json
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-def summarize(tweets=[],polarity=[],flag=1,rango=4,use_retweets=False,MAX_RES_TWEETS = 5):
+with open("spanish_stopwords.txt","r") as fil:
+    stop_words = fil.read().split()
+
+def remove_stopwords(tweet):
+    return " ".join([word for word in tweet.split() if word not in stop_words])
+
+
+def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5,use_retweets=False,remove_stop=False,use_cross=False):
     #~ print (json.dumps(docs, indent=1, ensure_ascii=False))
     
     if flag==0:
@@ -26,8 +33,12 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,use_retweets=False,MAX_RES_TW
         vec = TfidfVectorizer(norm='l1', smooth_idf=True)
         
     
-        
-    X = vec.fit_transform([tweet["text"] for tweet in tweets ])
+    
+    
+    if remove_stop:
+        X = vec.fit_transform([remove_stopwords(tweet["text"]) for tweet in tweets ])
+    else:
+        X = vec.fit_transform([tweet["text"] for tweet in tweets ])
     voca = vec.get_feature_names()
 
 
@@ -42,7 +53,6 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,use_retweets=False,MAX_RES_TW
 
     #Reconstruction based on reduced SVD:
     U, s, V = np.linalg.svd(A,full_matrices=False)
-    max_ind=[]
     
     if use_retweets:
         #~ avg_rt=np.mean([tweet["retweet_count"] for tweet in tweets])
@@ -52,13 +62,23 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,use_retweets=False,MAX_RES_TW
         for i in range(len(V)):
             if tweets[i]["retweet_count"]<avg_rt:
                 V[i]*=0
+    max_ind=[]
     
-    incr=0
-    
-    while len(max_ind)<MAX_RES_TWEETS:
-        max_ind = np.argmax(V[:,:MAX_RES_TWEETS+1+incr], axis=0)
-        max_ind = list(set(max_ind)) # Avoid repetitions
-        incr+=1
+    if use_cross:
+        avg_values = np.mean(V,axis=0)
+        for tweet in V:
+            #Si el valor no supera o iguala la media, lo ponemos a cero
+            tweet *= tweet >= avg_values
+        V = np.transpose(np.dot(s,np.transpose(V)))
+        score_values = np.sum(V,axis=1)
+        max_ind = np.argsort(-score_values)[:MAX_RES_TWEETS]
+    else:
+        incr=0
+        
+        while len(max_ind)<MAX_RES_TWEETS:
+            max_ind = np.argmax(V[:,:MAX_RES_TWEETS+1+incr], axis=0)
+            max_ind = list(set(max_ind)) # Avoid repetitions
+            incr+=1
     #~ print("Max_Ind: ",max_ind)
     #~ print("V.shape: ",V.shape)
     
