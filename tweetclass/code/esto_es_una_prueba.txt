@@ -1,99 +1,99 @@
-2015-07-15 01:03:51,049 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:03:51,050 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpdv_a5gy_/system and model files to /tmp/tmpdv_a5gy_/model.
-2015-07-15 01:03:51,050 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:03:51,050 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:03:51,051 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:03:51,051 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpdv_a5gy_/system.
-2015-07-15 01:03:51,051 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:03:51,051 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:03:51,052 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpdv_a5gy_/model.
-2015-07-15 01:03:51,053 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpn_0na3oa/rouge_conf.xml
-2015-07-15 01:03:51,053 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpn_0na3oa/rouge_conf.xml
-2015-07-15 01:04:02,437 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:04:02,437 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpsdatw_b9/system and model files to /tmp/tmpsdatw_b9/model.
-2015-07-15 01:04:02,438 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:04:02,438 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:04:02,438 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:04:02,438 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpsdatw_b9/system.
-2015-07-15 01:04:02,438 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:04:02,439 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:04:02,439 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpsdatw_b9/model.
-2015-07-15 01:04:02,439 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmplh5i5ac7/rouge_conf.xml
-2015-07-15 01:04:02,439 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmplh5i5ac7/rouge_conf.xml
-2015-07-15 01:04:39,765 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:04:39,765 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpnx70gokt/system and model files to /tmp/tmpnx70gokt/model.
-2015-07-15 01:04:39,765 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:04:39,765 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:04:39,766 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:04:39,766 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpnx70gokt/system.
-2015-07-15 01:04:39,766 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:04:39,766 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:04:39,767 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpnx70gokt/model.
-2015-07-15 01:04:39,767 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmp876bh2q1/rouge_conf.xml
-2015-07-15 01:04:39,767 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmp876bh2q1/rouge_conf.xml
-2015-07-15 01:04:50,866 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:04:50,866 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpisi7bhm_/system and model files to /tmp/tmpisi7bhm_/model.
-2015-07-15 01:04:50,866 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:04:50,867 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:04:50,867 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:04:50,867 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpisi7bhm_/system.
-2015-07-15 01:04:50,867 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:04:50,867 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:04:50,868 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpisi7bhm_/model.
-2015-07-15 01:04:50,868 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmp66hx2e1d/rouge_conf.xml
-2015-07-15 01:04:50,868 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmp66hx2e1d/rouge_conf.xml
-2015-07-15 01:05:02,227 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:05:02,227 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmp1f921k_f/system and model files to /tmp/tmp1f921k_f/model.
-2015-07-15 01:05:02,227 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:05:02,227 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:05:02,228 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:05:02,228 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp1f921k_f/system.
-2015-07-15 01:05:02,228 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:05:02,228 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:05:02,229 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp1f921k_f/model.
-2015-07-15 01:05:02,229 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmp8pdrlh6l/rouge_conf.xml
-2015-07-15 01:05:02,229 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmp8pdrlh6l/rouge_conf.xml
-2015-07-15 01:05:13,268 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:05:13,268 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpw97jrg_f/system and model files to /tmp/tmpw97jrg_f/model.
-2015-07-15 01:05:13,268 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:05:13,268 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:05:13,269 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:05:13,269 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpw97jrg_f/system.
-2015-07-15 01:05:13,269 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:05:13,269 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:05:13,270 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpw97jrg_f/model.
-2015-07-15 01:05:13,270 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmppk0cbqqb/rouge_conf.xml
-2015-07-15 01:05:13,270 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmppk0cbqqb/rouge_conf.xml
-2015-07-15 01:05:24,275 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:05:24,276 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpe9hlh_x0/system and model files to /tmp/tmpe9hlh_x0/model.
-2015-07-15 01:05:24,276 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:05:24,276 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:05:24,277 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:05:24,277 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpe9hlh_x0/system.
-2015-07-15 01:05:24,277 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:05:24,277 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:05:24,277 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpe9hlh_x0/model.
-2015-07-15 01:05:24,278 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpm5jw1f1e/rouge_conf.xml
-2015-07-15 01:05:24,278 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpm5jw1f1e/rouge_conf.xml
-2015-07-15 01:05:35,566 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:05:35,567 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmp8yah7l_n/system and model files to /tmp/tmp8yah7l_n/model.
-2015-07-15 01:05:35,567 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:05:35,567 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:05:35,568 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:05:35,568 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp8yah7l_n/system.
-2015-07-15 01:05:35,568 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:05:35,568 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:05:35,569 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp8yah7l_n/model.
-2015-07-15 01:05:35,569 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpt2t9m0wh/rouge_conf.xml
-2015-07-15 01:05:35,569 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpt2t9m0wh/rouge_conf.xml
-2015-07-15 01:05:46,858 [MainThread  ] [INFO ]  Writing summaries.
-2015-07-15 01:05:46,859 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpb8wmtle0/system and model files to /tmp/tmpb8wmtle0/model.
-2015-07-15 01:05:46,859 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07/.
-2015-07-15 01:05:46,859 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
-2015-07-15 01:05:46,859 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
-2015-07-15 01:05:46,860 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpb8wmtle0/system.
-2015-07-15 01:05:46,860 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07/.
-2015-07-15 01:05:46,860 [MainThread  ] [INFO ]  Processing manual_summary.txt.
-2015-07-15 01:05:46,860 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpb8wmtle0/model.
-2015-07-15 01:05:46,861 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmp034xh1qr/rouge_conf.xml
-2015-07-15 01:05:46,861 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmp034xh1qr/rouge_conf.xml
+2015-07-16 01:00:26,692 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:00:26,693 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmp21d84i6k/system and model files to /tmp/tmp21d84i6k/model.
+2015-07-16 01:00:26,693 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:00:26,694 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:00:26,694 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:00:26,694 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp21d84i6k/system.
+2015-07-16 01:00:26,695 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:00:26,695 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:00:26,695 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp21d84i6k/model.
+2015-07-16 01:00:26,697 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmp3yfhurhy/rouge_conf.xml
+2015-07-16 01:00:26,697 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmp3yfhurhy/rouge_conf.xml
+2015-07-16 01:00:39,599 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:00:39,600 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpz0hiwoc1/system and model files to /tmp/tmpz0hiwoc1/model.
+2015-07-16 01:00:39,600 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:00:39,600 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:00:39,600 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:00:39,601 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpz0hiwoc1/system.
+2015-07-16 01:00:39,601 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:00:39,601 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:00:39,601 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpz0hiwoc1/model.
+2015-07-16 01:00:39,602 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpp4xumgfj/rouge_conf.xml
+2015-07-16 01:00:39,602 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpp4xumgfj/rouge_conf.xml
+2015-07-16 01:01:39,548 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:01:39,579 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmplorcun7d/system and model files to /tmp/tmplorcun7d/model.
+2015-07-16 01:01:39,579 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:01:39,580 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:01:39,580 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:01:39,580 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmplorcun7d/system.
+2015-07-16 01:01:39,580 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:01:39,581 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:01:39,581 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmplorcun7d/model.
+2015-07-16 01:01:39,581 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpocbipqnr/rouge_conf.xml
+2015-07-16 01:01:39,581 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpocbipqnr/rouge_conf.xml
+2015-07-16 01:01:51,958 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:01:51,992 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmp0xrrgpf7/system and model files to /tmp/tmp0xrrgpf7/model.
+2015-07-16 01:01:51,992 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:01:51,992 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:01:51,993 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:01:51,993 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp0xrrgpf7/system.
+2015-07-16 01:01:51,993 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:01:51,993 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:01:51,994 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp0xrrgpf7/model.
+2015-07-16 01:01:52,013 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmplmdw6rfs/rouge_conf.xml
+2015-07-16 01:01:52,013 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmplmdw6rfs/rouge_conf.xml
+2015-07-16 01:02:04,599 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:02:04,599 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmp11cnd6o5/system and model files to /tmp/tmp11cnd6o5/model.
+2015-07-16 01:02:04,600 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:02:04,600 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:02:04,600 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:02:04,600 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp11cnd6o5/system.
+2015-07-16 01:02:04,601 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:02:04,601 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:02:04,601 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp11cnd6o5/model.
+2015-07-16 01:02:04,601 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpigbbkwge/rouge_conf.xml
+2015-07-16 01:02:04,602 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpigbbkwge/rouge_conf.xml
+2015-07-16 01:02:17,211 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:02:17,211 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmp7_1s_6nu/system and model files to /tmp/tmp7_1s_6nu/model.
+2015-07-16 01:02:17,211 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:02:17,211 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:02:17,212 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:02:17,212 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp7_1s_6nu/system.
+2015-07-16 01:02:17,212 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:02:17,212 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:02:17,213 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmp7_1s_6nu/model.
+2015-07-16 01:02:17,213 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpodyioul9/rouge_conf.xml
+2015-07-16 01:02:17,213 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpodyioul9/rouge_conf.xml
+2015-07-16 01:02:29,754 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:02:29,755 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpokbhyrth/system and model files to /tmp/tmpokbhyrth/model.
+2015-07-16 01:02:29,755 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:02:29,755 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:02:29,755 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:02:29,756 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpokbhyrth/system.
+2015-07-16 01:02:29,756 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:02:29,756 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:02:29,756 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpokbhyrth/model.
+2015-07-16 01:02:29,795 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmp9_aq0hsz/rouge_conf.xml
+2015-07-16 01:02:29,795 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmp9_aq0hsz/rouge_conf.xml
+2015-07-16 01:02:41,912 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:02:41,912 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmpi2zowg4b/system and model files to /tmp/tmpi2zowg4b/model.
+2015-07-16 01:02:41,912 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:02:41,912 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:02:41,913 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:02:41,913 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpi2zowg4b/system.
+2015-07-16 01:02:41,913 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:02:41,913 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:02:41,913 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmpi2zowg4b/model.
+2015-07-16 01:02:41,914 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpddfdl30j/rouge_conf.xml
+2015-07-16 01:02:41,914 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpddfdl30j/rouge_conf.xml
+2015-07-16 01:02:54,546 [MainThread  ] [INFO ]  Writing summaries.
+2015-07-16 01:02:54,546 [MainThread  ] [INFO ]  Processing summaries. Saving system files to /tmp/tmphsnns03k/system and model files to /tmp/tmphsnns03k/model.
+2015-07-16 01:02:54,546 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_results_07-C/.
+2015-07-16 01:02:54,546 [MainThread  ] [INFO ]  Processing summary_flagged.002.txt.
+2015-07-16 01:02:54,547 [MainThread  ] [INFO ]  Processing summary_flagged.001.txt.
+2015-07-16 01:02:54,547 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmphsnns03k/system.
+2015-07-16 01:02:54,547 [MainThread  ] [INFO ]  Processing files in summary_test_files/summary_model_07-C/.
+2015-07-16 01:02:54,547 [MainThread  ] [INFO ]  Processing manual_summary.txt.
+2015-07-16 01:02:54,548 [MainThread  ] [INFO ]  Saved processed files to /tmp/tmphsnns03k/model.
+2015-07-16 01:02:54,548 [MainThread  ] [INFO ]  Written ROUGE configuration to /tmp/tmpfh4tzq_1/rouge_conf.xml
+2015-07-16 01:02:54,548 [MainThread  ] [INFO ]  Running ROUGE with command /home/ses_vinyes/tfg/ROUGE-1.5.5/ROUGE-1.5.5.pl -e /home/ses_vinyes/tfg/ROUGE-1.5.5/data -c 95 -2 -1 -U -r 1000 -n 4 -w 1.2 -a -m /tmp/tmpfh4tzq_1/rouge_conf.xml

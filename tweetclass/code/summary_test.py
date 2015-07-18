@@ -113,7 +113,7 @@ def process_rouge_output(num):
 def launch_test(test_number,verbose=False):
     original_tweets = load_obj("summary_raw_"+test_number+"/original_tweets")
     
-    #~ original_tweets = clean_tweets(original_tweets)
+    original_tweets = clean_tweets(original_tweets)
     
     clear_file("summary_results_"+test_number+"/summary_flagged.001")
     clear_file("summary_results_"+test_number+"/summary_flagged.002")
@@ -125,7 +125,7 @@ def launch_test(test_number,verbose=False):
     summary_tweets_data = ""
     for i in range(9):
         mrt=10
-        summary = ts.summarize(tweets=original_tweets,flag=i,remove_stop=False,use_cross=True,MAX_RES_TWEETS = mrt)
+        summary = ts.summarize(tweets=original_tweets,flag=i,remove_stop=True,use_cross=True,MAX_RES_TWEETS = mrt)
         store_tweets(summary,"summary_results_"+test_number+"/summary_flagged.001")
         store_tweets(summary,"summary_results_"+test_number+"/summary_flagged.002")
         
@@ -212,16 +212,16 @@ if __name__ == "__main__":
     
    
     if True:
-        test_number = "02-C"
+        test_number = "07-C"
         print("<meta http-equiv=\"Content-type\" content=\"text/html;charset=ISO-8859-1\">")
         print("<h1>Test #"+test_number+"</h1>")
         #TWEETS TAL CUAL #2 - #5
-        print("<br /> Esta primera prueba con el nuevo corpus puntuado consiste en un resumen realizado simplemente considerando los tweets con score >6 sin ninguna entidad (urls, menciones o hashtags) y habiendo eliminado manualmente los repetidos. El conjunto de tweets es el original, del que se han eliminado los que eran RT y se han anyadido los originales de los mismos.")
+        #~ print("<br /> Esta primera prueba con el nuevo corpus puntuado consiste en un resumen realizado simplemente considerando los tweets con score >6 sin ninguna entidad (urls, menciones o hashtags) y habiendo eliminado manualmente los repetidos. El conjunto de tweets es el original, del que se han eliminado los que eran RT y se han anyadido los originales de los mismos.")
         #~ print("<br /> La segunda prueba es igual que la anterior pero en este caso limpiamos los tweets antes de realizar el resumen.")
         #~ print("<br /> Es igual que el primero, pero utilizando en el model de resumen los tweets con hashtags, y los tweets sin limpieza alguna")
         #~ print("<br /> Es igual que el segundo, pero utilizando en el modelo de resumen los tweets con hashtags y al limpiar, dejando los hashtags")
         #~ print("<br /> Es igual que el primero, pero eliminando stopwords")
-        #~ print("<br /> Es igual que el segundo, pero eliminando stopwords")
+        print("<br /> Es igual que el segundo, pero eliminando stopwords")
         #~ print("<br /> Es igual que el tercero, pero eliminando stopwords")
         #~ print("<br /> Es igual que el cuarto, pero eliminando stopwords")
         

@@ -69,7 +69,8 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5,use_retwee
         for tweet in V:
             #Si el valor no supera o iguala la media, lo ponemos a cero
             tweet *= tweet >= avg_values
-        V = np.transpose(np.dot(s,np.transpose(V)))
+        #~ for i in range(len(s)):
+            #~ V[i]*=s[i]
         score_values = np.sum(V,axis=1)
         max_ind = np.argsort(-score_values)[:MAX_RES_TWEETS]
     else:
