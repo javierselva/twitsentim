@@ -1,0 +1,260 @@
+<meta http-equiv="Content-type" content="text/html;charset=ISO-8859-1">
+<h1>Test #05-C</h1>
+<br /> Es igual que el segundo, pero utilizando en el modelo de resumen los tweets con hashtags y al limpiar, dejando los hashtags
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td>Sistema empleado</td><td>Total score</td><td>Number of suc. tweets</td><td>Avg. RT count</td><td>Avg. Fav count</td><td>Avg. Followers</td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores </td><td> 48 </td><td> 2 </td><td> 0.9 </td><td> 0.3 </td><td> 2092.3 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores binarios </td><td> 40 </td><td> 1 </td><td> 0.0 </td><td> 0.0 </td><td> 627.6 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores ngramas </td><td> 40 </td><td> 1 </td><td> 117.4 </td><td> 16.9 </td><td> 7072.4 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF (Defecto) </td><td> 44 </td><td> 3 </td><td> 40.8 </td><td> 12.6 </td><td> 24777.2 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l1 </td><td> 53 </td><td> 4 </td><td> 0.5 </td><td> 0.2 </td><td> 755.1 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l2 </td><td> 49 </td><td> 1 </td><td> 4.1 </td><td> 1.8 </td><td> 66798.6 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF </td><td> 42 </td><td> 1 </td><td> 12.6 </td><td> 6.4 </td><td> 7595.0 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF con idf suavizado </td><td> 55 </td><td> 2 </td><td> 0.6 </td><td> 0.8 </td><td> 903.8 </td></tr>
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF: idf suav. y norm. l1 </td><td> 44 </td><td> 3 </td><td> 6.3 </td><td> 4.5 </td><td> 1735.0 </td></tr>
+</table><br />
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td rowspan=2 align="center" valing="center" width="200">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td><td rowspan=2 align="center" valing="center">Recuento</td></tr><tr style="background-color:#CCCCCC" align="center"><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>
+<tr><td style="background-color:#AAAAAA">Contadores</td>
+<td>0.22628</td>
+<td>0.83784</td>
+<td>0.35633</td>
+<td>0.18265</td>
+<td>0.67797</td>
+<td>0.28777</td>
+<td>0.16636</td>
+<td>0.61905</td>
+<td>0.26225</td>
+<td>0.15188</td>
+<td>0.56655</td>
+<td>0.23954</td>
+<td>0.22445</td>
+<td>0.83108</td>
+<td>0.35345</td>
+<td>0.06224</td>
+<td><b>0.45013</b></td>
+<td>0.10936</td>
+<td>0.05041</td>
+<td>0.69283</td>
+<td>0.09398</td>
+<td>0.05073</td>
+<td>0.69380</td>
+<td>0.09455</td>
+<td align="center">1</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores binarios</td>
+<td>0.21715</td>
+<td><b>0.85305</b></td>
+<td>0.34618</td>
+<td>0.17991</td>
+<td><b>0.70863</b></td>
+<td>0.28696</td>
+<td>0.15631</td>
+<td>0.61733</td>
+<td>0.24946</td>
+<td>0.13815</td>
+<td>0.54710</td>
+<td>0.22060</td>
+<td>0.21442</td>
+<td><b>0.84229</b></td>
+<td>0.34182</td>
+<td>0.05534</td>
+<td>0.42458</td>
+<td>0.09792</td>
+<td>0.04510</td>
+<td>0.69789</td>
+<td>0.08472</td>
+<td>0.04542</td>
+<td>0.69899</td>
+<td>0.08530</td>
+<td align="center">3</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores ngramas</td>
+<td>0.23266</td>
+<td>0.77273</td>
+<td>0.35764</td>
+<td>0.15982</td>
+<td>0.53191</td>
+<td>0.24579</td>
+<td>0.13620</td>
+<td>0.45427</td>
+<td>0.20957</td>
+<td>0.12351</td>
+<td>0.41284</td>
+<td>0.19014</td>
+<td>0.22901</td>
+<td>0.76061</td>
+<td>0.35203</td>
+<td>0.06181</td>
+<td>0.40098</td>
+<td>0.10711</td>
+<td>0.05281</td>
+<td>0.58373</td>
+<td>0.09686</td>
+<td>0.05313</td>
+<td>0.58487</td>
+<td>0.09741</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF (Defecto)</td>
+<td>0.22080</td>
+<td>0.76825</td>
+<td>0.34302</td>
+<td>0.17169</td>
+<td>0.59873</td>
+<td>0.26686</td>
+<td>0.15631</td>
+<td>0.54633</td>
+<td>0.24307</td>
+<td>0.14364</td>
+<td>0.50321</td>
+<td>0.22349</td>
+<td>0.21898</td>
+<td>0.76190</td>
+<td>0.34019</td>
+<td>0.05848</td>
+<td>0.39743</td>
+<td>0.10196</td>
+<td>0.04942</td>
+<td>0.59960</td>
+<td>0.09131</td>
+<td>0.04973</td>
+<td>0.60066</td>
+<td>0.09186</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l1</td>
+<td><b>0.25730</b></td>
+<td>0.84685</td>
+<td><b>0.39468</b></td>
+<td><b>0.20457</b></td>
+<td>0.67470</td>
+<td><b>0.31395</b></td>
+<td><b>0.18739</b></td>
+<td><b>0.61934</b></td>
+<td><b>0.28772</b></td>
+<td><b>0.17566</b></td>
+<td><b>0.58182</b></td>
+<td><b>0.26985</b></td>
+<td><b>0.25547</b></td>
+<td>0.84084</td>
+<td><b>0.39188</b></td>
+<td><b>0.06771</b></td>
+<td>0.43525</td>
+<td><b>0.11719</b></td>
+<td><b>0.06528</b></td>
+<td><b>0.70864</b></td>
+<td><b>0.11955</b></td>
+<td><b>0.06563</b></td>
+<td><b>0.70946</b></td>
+<td><b>0.12015</b></td>
+<td align="center">20</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l2</td>
+<td>0.22901</td>
+<td>0.82838</td>
+<td>0.35882</td>
+<td>0.18630</td>
+<td>0.67550</td>
+<td>0.29205</td>
+<td>0.17002</td>
+<td>0.61794</td>
+<td>0.26667</td>
+<td>0.15462</td>
+<td>0.56333</td>
+<td>0.24264</td>
+<td>0.22901</td>
+<td>0.82838</td>
+<td>0.35882</td>
+<td>0.06136</td>
+<td>0.43347</td>
+<td>0.10750</td>
+<td>0.05064</td>
+<td>0.66411</td>
+<td>0.09410</td>
+<td>0.05096</td>
+<td>0.66518</td>
+<td>0.09467</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF</td>
+<td>0.23631</td>
+<td>0.79448</td>
+<td>0.36427</td>
+<td>0.15890</td>
+<td>0.53538</td>
+<td>0.24507</td>
+<td>0.13437</td>
+<td>0.45370</td>
+<td>0.20733</td>
+<td>0.11619</td>
+<td>0.39319</td>
+<td>0.17937</td>
+<td>0.23266</td>
+<td>0.78221</td>
+<td>0.35864</td>
+<td>0.05783</td>
+<td>0.37975</td>
+<td>0.10037</td>
+<td>0.05589</td>
+<td>0.63309</td>
+<td>0.10271</td>
+<td>0.05622</td>
+<td>0.63407</td>
+<td>0.10328</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF con idf suavizado</td>
+<td>0.22993</td>
+<td>0.84564</td>
+<td>0.36155</td>
+<td>0.18813</td>
+<td>0.69360</td>
+<td>0.29598</td>
+<td>0.16362</td>
+<td>0.60473</td>
+<td>0.25755</td>
+<td>0.14456</td>
+<td>0.53559</td>
+<td>0.22767</td>
+<td>0.22810</td>
+<td>0.83893</td>
+<td>0.35868</td>
+<td>0.05627</td>
+<td>0.40422</td>
+<td>0.09879</td>
+<td>0.05146</td>
+<td>0.69781</td>
+<td>0.09585</td>
+<td>0.05179</td>
+<td>0.69879</td>
+<td>0.09643</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF: idf suav. y norm. l1</td>
+<td>0.22263</td>
+<td>0.83562</td>
+<td>0.35159</td>
+<td>0.18174</td>
+<td>0.68385</td>
+<td>0.28716</td>
+<td>0.16179</td>
+<td>0.61034</td>
+<td>0.25578</td>
+<td>0.14456</td>
+<td>0.54671</td>
+<td>0.22866</td>
+<td>0.22172</td>
+<td>0.83219</td>
+<td>0.35015</td>
+<td>0.05776</td>
+<td>0.42345</td>
+<td>0.10165</td>
+<td>0.04892</td>
+<td>0.69086</td>
+<td>0.09137</td>
+<td>0.04923</td>
+<td>0.69184</td>
+<td>0.09192</td>
+<td align="center">0</td>
+</tr>
+</table>
+<br /><h4>Contadores</h4> Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 364	||	 Id: 615516970968944640	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 1	||	 RT: 1	||	 Fav: 0	||	 Fol: 2044	||	 Id: 615515576849539073	||	 Text: ¿Alguien sabe identificar el restaurante? #Sarkozy<br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 145	||	 Id: 615517107938271232	||	 Text: Vídeo: foreverdai: Rajoy y su discurso sobre el dí<br />Score: 8	||	 RT: 0	||	 Fav: 0	||	 Fol: 264	||	 Id: 615515481953271809	||	 Text: #Actualidad Rajoy critica a Podemos por decir que <br />Score: 3	||	 RT: 7	||	 Fav: 2	||	 Fol: 12708	||	 Id: 615505278956609536	||	 Text: No sólo hacen trampas en lo deportivo. También en <br />Score: 8	||	 RT: 0	||	 Fav: 0	||	 Fol: 269	||	 Id: 615516760943362048	||	 Text: Rajoy dice a los españoles que estén "tranquilos" <br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 3753	||	 Id: 615517118977585152	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 433	||	 Id: 615515659225681921	||	 Text: RT ": Líderes europeos resolviendo lo de Grecia, b<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 145	||	 Id: 615511222306213888	||	 Text: Rajoy: los españoles pueden estar tranquilos ante <br />Score: 4	||	 RT: 1	||	 Fav: 1	||	 Fol: 798	||	 Id: 615508574538727424	||	 Text: Manda cojones rajoy y de guindos diciendo q miremo<br /><h4>Contadores binarios</h4> Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 2538	||	 Id: 615516553396789248	||	 Text: #Rajoy: "A #España no le pasará lo que a #Grecia" <br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 37	||	 Id: 615515928248324096	||	 Text: Pues debería pasar RT: Rajoy apela a la tranquilid<br />Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 1040	||	 Id: 615515492359385088	||	 Text: Rajoy pide valentía a Tsipras y que ceda en sus "p<br />Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 744	||	 Id: 615516973913387008	||	 Text: #TeamPAPii -  «Hemos perdido porque el PSOE ha apo<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 17	||	 Id: 615511220368490496	||	 Text: ES- Rajoy: los españoles pueden estar tranquilos a<br />Score: 1	||	 RT: 0	||	 Fav: 0	||	 Fol: 172	||	 Id: 615515159906373632	||	 Text: Qué momentos tan jocosos me está proporcionando Ra<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 759	||	 Id: 615517125818474497	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 787	||	 Id: 615516964824285184	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 4	||	 RT: 0	||	 Fav: 0	||	 Fol: 178	||	 Id: 615516925796446209	||	 Text: Ver a Rajoy diciendo todos los españoles pueden es<br />Score: 0	||	 RT: 0	||	 Fav: 0	||	 Fol: 4	||	 Id: 615511242791354372	||	 Text: la hemos cagao, menudo veroño nos espera.<br /><h4>Contadores ngramas</h4> Score: 4	||	 RT: 0	||	 Fav: 0	||	 Fol: 973	||	 Id: 615517954038464512	||	 Text: Rajoy presumió de la reducción de la prima de ries<br />Score: 1	||	 RT: 2	||	 Fav: 4	||	 Fol: 2185	||	 Id: 615517719484571648	||	 Text: ¿No será un gobierno que apoyó Rajoy en la campaña<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 924	||	 Id: 615516973418463233	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 2	||	 RT: 0	||	 Fav: 0	||	 Fol: 11	||	 Id: 615518151778922496	||	 Text: Rajoy ,no tienes ni idea lo q es pasar una crisis <br />Score: 4	||	 RT: 0	||	 Fav: 0	||	 Fol: 1751	||	 Id: 615518305084903424	||	 Text: #CorralitoGreciaEP #AbismoGriegoM4 Cuando Rajoy di<br />Score: 3	||	 RT: 4	||	 Fav: 2	||	 Fol: 144	||	 Id: 615517748978941952	||	 Text: .O sea: Rajoy lleva la deuda del 67 a + del 100% d<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 36201	||	 Id: 615517423383375872	||	 Text: ESPAÑA: Rajoy: los españoles pueden estar tranquil<br />Score: 6	||	 RT: 7	||	 Fav: 1	||	 Fol: 4450	||	 Id: 615503755618881536	||	 Text: Podemos denuncia 'chantaje' a Grecia y que Rajoy s<br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 1016	||	 Id: 615518171697647616	||	 Text: Grecia el 2% del euro lo está bordando solo con qu<br /><h4>TF-IDF (Defecto)</h4> Score: 0	||	 RT: 0	||	 Fav: 1	||	 Fol: 35	||	 Id: 615514967215865856	||	 Text: Rajoy es Gandalf? pero no era Saruman?<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 2	||	 Id: 615515470792273920	||	 Text: Rajoy critica a Podemos por decir que el Gobierno <br />Score: 4	||	 RT: 3	||	 Fav: 1	||	 Fol: 1835	||	 Id: 615515047209644032	||	 Text: Sr Rajoy quiere mayoría absoluta? 1)art.155 a Artu<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 1	||	 Id: 615515464664399872	||	 Text: Rajoy critica a Podemos por decir que el Gobierno <br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 44	||	 Id: 615515322301444096	||	 Text: Rajoy y  #Sarkozy  #estrechan  #lazos del  #PP y L<br />Score: 2	||	 RT: 1	||	 Fav: 1	||	 Fol: 2022	||	 Id: 615515608243929088	||	 Text: Cndo Rajoy intenta tranquilizar, quedo +intranquil<br />Score: 4	||	 RT: 5	||	 Fav: 1	||	 Fol: 784	||	 Id: 615514958709850112	||	 Text: Aznar dice que con Rajoy el PP ha perdido el ADN. <br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 37	||	 Id: 615515820429590528	||	 Text: Pues debería pasarRT: Rajoy apela a la tranquilida<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 2103	||	 Id: 615515540707127296	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br /><h4>TF normalizado l1</h4> Score: 2	||	 RT: 4	||	 Fav: 1	||	 Fol: 534	||	 Id: 615496999127920644	||	 Text: Oir a Rajoy dándose  palmadas a sus politicas que <br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 3072	||	 Id: 615515447857811457	||	 Text: Rajoy critica a Podemos por decir que el Gobierno <br />Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 861	||	 Id: 615514934399606784	||	 Text: ¿Qué daña más a la Marca España: el álbum fotogáfi<br />Score: 8	||	 RT: 0	||	 Fav: 0	||	 Fol: 72	||	 Id: 615514655079821312	||	 Text: Rajoy asegura que los esfuerzos de los españoles h<br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 185	||	 Id: 615515320770523136	||	 Text: Según Rajoy tenemos que estar así " tranquilos".<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 1537	||	 Id: 615515570511851520	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br />Score: 4	||	 RT: 0	||	 Fav: 0	||	 Fol: 66	||	 Id: 615514927239987200	||	 Text: Cuando se empiece a hablar del fondo de pensiones <br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 145	||	 Id: 615511222306213888	||	 Text: Rajoy: los españoles pueden estar tranquilos ante <br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 281	||	 Id: 615515109926920192	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 4	||	 RT: 1	||	 Fav: 1	||	 Fol: 798	||	 Id: 615508574538727424	||	 Text: Manda cojones rajoy y de guindos diciendo q miremo<br /><h4>TF normalizado l2</h4> Score: 2	||	 RT: 1	||	 Fav: 1	||	 Fol: 2022	||	 Id: 615515608243929088	||	 Text: Cndo Rajoy intenta tranquilizar, quedo +intranquil<br />Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 434	||	 Id: 615511325876228096	||	 Text: Rajoy dice que España es seria y critica a Podemos<br />Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 48531	||	 Id: 615515152700542976	||	 Text: Rajoy: "Los españoles pueden estar tranquilos" ant<br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 136	||	 Id: 615515831980687361	||	 Text: Claro q pasará.La deuda española a la q nos encade<br />Score: 6	||	 RT: 38	||	 Fav: 16	||	 Fol: 596044	||	 Id: 615498462885474304	||	 Text: Rajoy dice a los españoles que estén "tranquilos" <br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 184	||	 Id: 615515533593571332	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 193	||	 Id: 615516737560252416	||	 Text: Rajoy: “España puede estar tranquila por las refor<br />Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 845	||	 Id: 615516453807243264	||	 Text: Rajoy y Sarkozy estrechan lazos del PP y Les Répub<br />Score: 7	||	 RT: 1	||	 Fav: 0	||	 Fol: 18799	||	 Id: 615515483249348609	||	 Text: Rajoy critica a Podemos por decir que el Gobierno <br />Score: 4	||	 RT: 1	||	 Fav: 1	||	 Fol: 798	||	 Id: 615508574538727424	||	 Text: Manda cojones rajoy y de guindos diciendo q miremo<br /><h4>TF-IDF</h4> Score: 5	||	 RT: 0	||	 Fav: 0	||	 Fol: 155	||	 Id: 615518369496707072	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 610	||	 Id: 615515520469614592	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br />Score: 4	||	 RT: 1	||	 Fav: 1	||	 Fol: 798	||	 Id: 615508574538727424	||	 Text: Manda cojones rajoy y de guindos diciendo q miremo<br />Score: 2	||	 RT: 0	||	 Fav: 0	||	 Fol: 173	||	 Id: 615516837950943232	||	 Text: ¿Quién fue el único jefe de gobierno que necesitó <br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 182	||	 Id: 615515583191212033	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br />Score: 1	||	 RT: 44	||	 Fav: 17	||	 Fol: 41946	||	 Id: 615488529137856513	||	 Text: #Greferendum. Juncker por el sí al programa de ref<br />Score: 3	||	 RT: 0	||	 Fav: 0	||	 Fol: 145	||	 Id: 615517107938271232	||	 Text: Vídeo: foreverdai: Rajoy y su discurso sobre el dí<br />Score: 4	||	 RT: 80	||	 Fav: 44	||	 Fol: 27987	||	 Id: 615497914425716736	||	 Text: Una vergüenza los informativos españoles sobre Gre<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 624	||	 Id: 615517421521080320	||	 Text: Aznar lidera las críticas de la vieja guardia del <br />Score: 4	||	 RT: 1	||	 Fav: 2	||	 Fol: 3330	||	 Id: 615506962046943232	||	 Text: Cuando Rajoy dice, que estemos tranquilos, que lo <br /><h4>TF-IDF con idf suavizado</h4> Score: 2	||	 RT: 4	||	 Fav: 6	||	 Fol: 1231	||	 Id: 614370530280505344	||	 Text: ¿Qué tienen en común? mariano_rajoy.exe kim_jong_u<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 3753	||	 Id: 615516969190555648	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 8	||	 RT: 0	||	 Fav: 0	||	 Fol: 72	||	 Id: 615516761073422336	||	 Text: Rajoy dice a los españoles que estén "tranquilos" <br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 759	||	 Id: 615517125818474497	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 230	||	 Id: 615516737572859905	||	 Text: Rajoy: “España puede estar tranquila por las refor<br />Score: 3	||	 RT: 1	||	 Fav: 1	||	 Fol: 108	||	 Id: 615518352694489088	||	 Text: Estoy muy preocupado, ...pero que muy preocupado, <br />Score: 8	||	 RT: 0	||	 Fav: 0	||	 Fol: 368	||	 Id: 615516766010126337	||	 Text: Rajoy dice a los españoles que estén "tranquilos" <br />Score: 4	||	 RT: 1	||	 Fav: 1	||	 Fol: 798	||	 Id: 615508574538727424	||	 Text: Manda cojones rajoy y de guindos diciendo q miremo<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 759	||	 Id: 615516982130032640	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 960	||	 Id: 615516965105303552	||	 Text: «Hemos perdido porque el PSOE ha apoyado a Podemos<br /><h4>TF-IDF: idf suav. y norm. l1</h4> Score: 4	||	 RT: 0	||	 Fav: 0	||	 Fol: 539	||	 Id: 615514946969968640	||	 Text: O Rajoy es muy tonto o cree que los españoles lo s<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 339	||	 Id: 615514853881573376	||	 Text: Rajoy apela a la tranquilidad porque en España no <br />Score: 4	||	 RT: 1	||	 Fav: 1	||	 Fol: 798	||	 Id: 615508574538727424	||	 Text: Manda cojones rajoy y de guindos diciendo q miremo<br />Score: 6	||	 RT: 0	||	 Fav: 0	||	 Fol: 2079	||	 Id: 615515546289713152	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 524	||	 Id: 615515572126638080	||	 Text: Rajoy presume de que sus reformas impiden que Espa<br />Score: 2	||	 RT: 0	||	 Fav: 0	||	 Fol: 438	||	 Id: 615514267559817216	||	 Text: RT: Si Rajoy dice que podemos estar tranquilos… ac<br />Score: 3	||	 RT: 62	||	 Fav: 43	||	 Fol: 12551	||	 Id: 615445873527508992	||	 Text: Cuando Rajoy nos preguntó en referéndum si queríam<br />Score: 4	||	 RT: 0	||	 Fav: 0	||	 Fol: 46	||	 Id: 615516303382736896	||	 Text: Rajoy: "Los españoles pueden estar tranquilos, tie<br />Score: 7	||	 RT: 0	||	 Fav: 0	||	 Fol: 1	||	 Id: 615515464664399872	||	 Text: Rajoy critica a Podemos por decir que el Gobierno <br />Score: 0	||	 RT: 0	||	 Fav: 1	||	 Fol: 35	||	 Id: 615514967215865856	||	 Text: Rajoy es Gandalf? pero no era Saruman?<br />

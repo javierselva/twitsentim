@@ -75,7 +75,7 @@ def get_tweets(query,types="mixed",MAX_TWEETS = 2000):
     #~ save_obj(tweets2,"raw_"+types+"_tweets")
     
     #~ print(len(result))
-    tweets =[ extract_tweet_info(tw) for tw in result]# if not tw.text.startswith("RT")]
+    tweets =[ tw for tw in result]# if not tw.text.startswith("RT")]
     #~ print(json.dumps(tws,indent=4,separators=(',',':')))
     #~ for tw in tweets:
         #~ print(tw["text"],"\n")
@@ -83,4 +83,4 @@ def get_tweets(query,types="mixed",MAX_TWEETS = 2000):
 
     #~ for tweet in tweets:
         #~ print(tweet)
-    return tweets
+    return clear_retweets(tweets)

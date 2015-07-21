@@ -18,7 +18,7 @@ import matplotlib.ticker as ticker
 #~ except ImportError:
     #~ from io import StringIO
 
-def draw_things(things,colors,text):
+def draw_things(things,colors,labels,text):
     fig = Figure()
     fig.set_figwidth(30)
     canvas = FigureCanvas(fig)
@@ -34,9 +34,9 @@ def draw_things(things,colors,text):
     cont=0
     
     for t in range(len(things)):
-        ax.plot(ind,things[t],colors[cont],linewidth=1.3)
+        ax.plot(ind,things[t],colors[cont],label=labels[t],linewidth=1.3)
         cont+=1
-    
+    ax.legend()
     
     canvas.print_figure(text+'.png',facecolor='white',bbox_inches='tight')
 

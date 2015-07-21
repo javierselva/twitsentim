@@ -34,6 +34,12 @@
             </ul>
         </td>
         <td><h3>Total tweets: {{current.hm_tweets}}</h3>
+                P+: {{ sum_count.0 }}/{{ sum_count.6 }} | 
+                P: {{ sum_count.1 }}/{{ sum_count.6 }} | 
+                NEU: {{ sum_count.2 }}/{{ sum_count.6 }} | 
+                N: {{ sum_count.3 }}/{{ sum_count.6 }} | 
+                N+: {{ sum_count.4 }}/{{ sum_count.6 }} | 
+                NONE: {{ sum_count.5 }}/{{ sum_count.6 }} | 
             <ul>
                 <form action="{% url 'tweetclass:add_test' %}" method="post">
                     {% csrf_token %}

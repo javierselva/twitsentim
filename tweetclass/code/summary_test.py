@@ -9,6 +9,7 @@ from pyrouge import Rouge155
 from numpy import *
 import re
 import math
+import numpy as np
 
 
 
@@ -113,7 +114,14 @@ def process_rouge_output(num):
 def launch_test(test_number,verbose=False):
     original_tweets = load_obj("summary_raw_"+test_number+"/original_tweets")
     
+    #~ original_tweets = clean_tweets(original_tweets,["urls","mentions"])
     original_tweets = clean_tweets(original_tweets)
+    
+    metric1 = [math.log(max((tweet["followers"]**2)/(tweet["friends"]+1),1)) for tweet in original_tweets]
+    metric2 = [math.log(max((tweet["retweet_count"]*1.5+tweet["favorite_count"])/(math.log(max(tweet["followers"],1))+1),1)) for tweet in original_tweets]
+    metric = [m1*m2 for m1,m2 in zip(metric1,metric2)]
+    max_met = max(metric)
+    add_field("metric",original_tweets,[1+(met/max_met) for met in metric])
     
     clear_file("summary_results_"+test_number+"/summary_flagged.001")
     clear_file("summary_results_"+test_number+"/summary_flagged.002")
@@ -125,7 +133,7 @@ def launch_test(test_number,verbose=False):
     summary_tweets_data = ""
     for i in range(9):
         mrt=10
-        summary = ts.summarize(tweets=original_tweets,flag=i,remove_stop=True,use_cross=True,MAX_RES_TWEETS = mrt)
+        summary = ts.summarize(tweets=original_tweets,flag=i,remove_stop=False,use_retweets=True,use_cross=True,MAX_RES_TWEETS = mrt)
         store_tweets(summary,"summary_results_"+test_number+"/summary_flagged.001")
         store_tweets(summary,"summary_results_"+test_number+"/summary_flagged.002")
         
@@ -143,7 +151,7 @@ def launch_test(test_number,verbose=False):
             avg_retweets+=tweet["retweet_count"]
             avg_favorites+=tweet["favorite_count"]
             avg_followers+=tweet["followers"]
-            if tweet["score"]>6:
+            if tweet["score"]>=5:
                 tweets_in_summary+=1
         
         
@@ -164,37 +172,68 @@ def launch_test(test_number,verbose=False):
     process_rouge_output(test_number)
     if verbose:
         print("<br />"+summary_tweets_data)
+        
+def load_popular_raw():
+    raw_popular = load_obj("raw_popular_tweets")
     
+    modeled_popular=[]
+    for tweet in raw_popular:
+        modeled_popular.append(gt.extract_tweet_info(tweet))
+
+    return modeled_popular
+    
+def load_modeled_mixed():
+    modeled_mixed_tweets = load_obj("modeled_mixed_scored_tweets")
+
+    return modeled_mixed_tweets
+
 if __name__ == "__main__":
     
     #~ raw_mixed_tweets = load_obj("raw_mixed_tweets")
-    
-    #~ tweets = load_obj("modeled_mixed_scored_tweets")
     #~ tweets = gt.clear_retweets(raw_mixed_tweets)
     #~ save_obj(add_field("score",tweets,load_tweets_score(tweets,"plain_mixed_tweets")),"modeled_mixed_scored_tweets")
-    #~ print(tweets[0]["followers"])
-    #~ for tweet in raw_popular:
-        #~ modeled_popular.append(gt.extract_tweet_info(tweet))
-        
+
+    #~ original_tweets = load_modeled_mixed()
     
+    
+    
+    #~ modeled_popular = load_popular_raw()
+    #~ cont=0
     #~ for tweet in modeled_popular:
+        #~ print(tweet["followers"],"\t",tweet["friends"],"\t",tweet["followers"]/float(tweet["friends"]))
         #~ print("RT: %d \t Fav: %d \t Folowers: %d \t Friends: %d" % (tweet["retweet_count"],tweet["favorite_count"],tweet["followers"],tweet["friends"]))
     
-    #~ modeled_popular = sorted(modeled_popular, key=lambda k : k["retweet_count"])
-     #DRAWS A GRAPHIC COMPARING METRICS
-    #~ colors=["#00FF00","#FF0000","#33AAAA","#AAAA33"]
-    #~ retweets = [tweet["retweet_count"] for tweet in modeled_popular]
-    #~ favorites = [tweet["favorite_count"] for tweet in modeled_popular]
-    #~ followers = [tweet["followers"] for tweet in modeled_popular]
-    #~ friends = [tweet["friends"] for tweet in modeled_popular]
+    
+    #~ metric1 = [math.log(max((tweet["followers"]**2)/(tweet["friends"]+1),1)) for tweet in original_tweets]
+    #~ metric2 = [math.log(max((tweet["retweet_count"]*1.5+tweet["favorite_count"])/(math.log(max(tweet["followers"],1))+1),1)) for tweet in original_tweets]
+    #~ metric = [math.log(max(m1*m2,1)) for m1,m2 in zip(metric1,metric2)]
+    #~ max_met = max(metric)
+    #~ add_field("metric",original_tweets,[1+(met/max_met) for met in metric])
+    #~ 
+    #~ print([1+(met/max_met) for met in metric])
+    
+    #~ modeled_tweets = sorted(modeled_tweets, key=lambda k : k["metric"])
+     #~ #DRAWS A GRAPHIC COMPARING METRICS
+    #~ colors=["#00FF00","#FF0000","#33AAAA","#AAAA33","#AA33AA"]
+    #~ labels=["Retweets","Favorites","Followers","Friends","Metric"]
+    #~ retweets = [tweet["retweet_count"] for tweet in modeled_tweets]
+    #~ favorites = [tweet["favorite_count"] for tweet in modeled_tweets]
+    #~ followers = [tweet["followers"] for tweet in modeled_tweets]
+    #~ friends = [tweet["friends"] for tweet in modeled_tweets]
+    #~ metric = [tweet["metric"] for tweet in modeled_tweets]
+    #~ for tweet in modeled_tweets:
+        #~ print(tweet["retweet_count"]/(tweet["followers"]+1))
     #~ max_rt = max(retweets)
     #~ max_fav = max(favorites)
     #~ max_fol = max(followers)
     #~ max_fri = max(friends)
+    #~ max_met = max(metric)
+    #~ print(max_met)
     #~ gg.draw_things([[rt*50/max_rt for rt in retweets][800:],
                     #~ [fav*50/max_fav for fav in favorites][800:],
                     #~ [fol*50/max_fol for fol in followers][800:],
-                    #~ [fri*50/max_fri for fri in friends][800:]],colors,"mixed_no_rt_tweets_values")
+                    #~ [fri*50/max_fri for fri in friends][800:],
+                    #~ [met*50/max_met for met in metric][800:]],colors,labels,"metric_test_09_4")
     
     #CHECKS THE DIFFERENCE BETWEET MIXED AND POPULAR TWEETS (SET INTERSECT)    
     #~ modeled_mixed = load_obj("modeled_mixed_scored_tweets")
@@ -212,16 +251,16 @@ if __name__ == "__main__":
     
    
     if True:
-        test_number = "07-C"
+        test_number = "03-RT_3"
         print("<meta http-equiv=\"Content-type\" content=\"text/html;charset=ISO-8859-1\">")
         print("<h1>Test #"+test_number+"</h1>")
-        #TWEETS TAL CUAL #2 - #5
+        #TWEETS TAL CUAL #2 - #9 (Cross y sin)
         #~ print("<br /> Esta primera prueba con el nuevo corpus puntuado consiste en un resumen realizado simplemente considerando los tweets con score >6 sin ninguna entidad (urls, menciones o hashtags) y habiendo eliminado manualmente los repetidos. El conjunto de tweets es el original, del que se han eliminado los que eran RT y se han anyadido los originales de los mismos.")
-        #~ print("<br /> La segunda prueba es igual que la anterior pero en este caso limpiamos los tweets antes de realizar el resumen.")
+        print("<br /> La segunda prueba es igual que la anterior pero en este caso limpiamos los tweets antes de realizar el resumen.")
         #~ print("<br /> Es igual que el primero, pero utilizando en el model de resumen los tweets con hashtags, y los tweets sin limpieza alguna")
         #~ print("<br /> Es igual que el segundo, pero utilizando en el modelo de resumen los tweets con hashtags y al limpiar, dejando los hashtags")
         #~ print("<br /> Es igual que el primero, pero eliminando stopwords")
-        print("<br /> Es igual que el segundo, pero eliminando stopwords")
+        #~ print("<br /> Es igual que el segundo, pero eliminando stopwords") #Los resultados de 07-C podrían estar mal (ejecución interrumpida)
         #~ print("<br /> Es igual que el tercero, pero eliminando stopwords")
         #~ print("<br /> Es igual que el cuarto, pero eliminando stopwords")
         

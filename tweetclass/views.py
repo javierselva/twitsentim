@@ -45,9 +45,11 @@ def query_page(request):
     clas_tweets = get_polarity.get_polarity([tw["text"] for tw in raw_tweets])
     print("already clasified them")
     
+    raw_tweets = tweet_summary.add_field("polarity",raw_tweets,clas_tweets)
+    
     # Get the summary tweets
     print("about to summarize tweets")
-    sum_tweets = tweet_summary.summarize(raw_tweets,clas_tweets)
+    sum_tweets = tweet_summary.summarize(raw_tweets,MAX_RES_TWEETS = int(len(raw_tweets)*0.01))
     print("already summarized them")
     
     # Store the polarity information in Query_data
@@ -83,6 +85,10 @@ def show_results(request,requested_query_data_id):
     bars_size[4]=int(current_query.p_neg_p*mul)
     bars_size[5]=int(current_query.p_none*mul)
     
+    sum_pol=[tweet.tweet_pol for tweet in sum_tweets]
+    count_pol = [sum_pol.count("P+"),sum_pol.count("P"),sum_pol.count("NEU"),sum_pol.count("N"),sum_pol.count("N+"),sum_pol.count("NONE"),len(sum_pol)]
+        
+    
     print(bars_size)
     # Return the info to the website
     return render(request, 'tweetclass/show_results.html',{
@@ -91,6 +97,7 @@ def show_results(request,requested_query_data_id):
         'current':current_query,
         'sizes':bars_size,
         'sum_twe':sum_tweets,
+        'sum_count':count_pol,
         'generic_image_path':"tweetclass/histogram_generic_"+query.query_text+".png",
         'summary_image_path':"tweetclass/histogram_summary_"+query.query_text+".png" })
 

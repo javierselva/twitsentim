@@ -2,16 +2,29 @@ from random import choice
 import numpy as np
 import json
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+import math
 
-with open("spanish_stopwords.txt","r") as fil:
-    stop_words = fil.read().split()
+#~ with open("spanish_stopwords.txt","r") as fil:
+    #~ stop_words = fil.read().split()
 
-def remove_stopwords(tweet):
-    return " ".join([word for word in tweet.split() if word not in stop_words])
+def add_field(field_name,tweets,field_content):
+    cont=0
+    for tweet in tweets:
+        tweet[field_name]=field_content[cont]
+        cont+=1
+    return tweets
 
+def prepare_metric(original_tweets):
+    metric1 = [math.log(max((tweet["followers"]**2)/(tweet["friends"]+1),1)) for tweet in original_tweets]
+    metric2 = [math.log(max((tweet["retweet_count"]*1.5+tweet["favorite_count"])/(math.log(max(tweet["followers"],1))+1),1)) for tweet in original_tweets]
+    metric = [m1*m2 for m1,m2 in zip(metric1,metric2)]
+    max_met = max(metric)
+    return add_field("metric",original_tweets,[1+(met/max_met) for met in metric])
 
-def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5,use_retweets=False,remove_stop=False,use_cross=False):
-    #~ print (json.dumps(docs, indent=1, ensure_ascii=False))
+#~ def remove_stopwords(tweet):
+    #~ return " ".join([word for word in tweet.split() if word not in stop_words])
+
+def summarize(tweets=[],flag=8,rango=4,MAX_RES_TWEETS = 5,use_retweets=True,remove_stop=False,use_cross=True):
     
     if flag==0:
         vec = CountVectorizer()
@@ -35,10 +48,10 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5,use_retwee
     
     
     
-    if remove_stop:
-        X = vec.fit_transform([remove_stopwords(tweet["text"]) for tweet in tweets ])
-    else:
-        X = vec.fit_transform([tweet["text"] for tweet in tweets ])
+    #~ if remove_stop:
+        #~ X = vec.fit_transform([remove_stopwords(tweet["text"]) for tweet in tweets ])
+    #~ else:
+    X = vec.fit_transform([tweet["text"] for tweet in tweets ])
     voca = vec.get_feature_names()
 
 
@@ -54,15 +67,12 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5,use_retwee
     #Reconstruction based on reduced SVD:
     U, s, V = np.linalg.svd(A,full_matrices=False)
     
-    if use_retweets:
-        #~ avg_rt=np.mean([tweet["retweet_count"] for tweet in tweets])
-        retweets_ftw=[tweet["retweet_count"] for tweet in tweets]
-        avg_rt=np.percentile(retweets_ftw,80)
-        #~ print(retweets_ftw.count(0))
-        for i in range(len(V)):
-            if tweets[i]["retweet_count"]<avg_rt:
-                V[i]*=0
     max_ind=[]
+    
+    if use_retweets and not use_cross:
+        prepare_metric(tweets)
+        for i in range(len(V)):
+            V[i]*=tweets[i]["metric"]
     
     if use_cross:
         avg_values = np.mean(V,axis=0)
@@ -71,6 +81,10 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5,use_retwee
             tweet *= tweet >= avg_values
         #~ for i in range(len(s)):
             #~ V[i]*=s[i]
+        if use_retweets:
+            prepare_metric(tweets)
+            for i in range(len(V)):
+                V[i]*=tweets[i]["metric"]
         score_values = np.sum(V,axis=1)
         max_ind = np.argsort(-score_values)[:MAX_RES_TWEETS]
     else:
@@ -87,8 +101,6 @@ def summarize(tweets=[],polarity=[],flag=1,rango=4,MAX_RES_TWEETS = 5,use_retwee
     res = []
     while i >= 0:
         r_ch=max_ind[i]
-        if len(polarity)>0:
-            tweets[r_ch]["polarity"]=polarity[r_ch]
         res.append(tweets[r_ch])
         i -= 1
     
