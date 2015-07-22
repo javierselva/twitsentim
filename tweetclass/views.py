@@ -10,6 +10,7 @@ from .code import get_tweets,get_polarity,tweet_summary
 from . import graph_data_generator, database_connector
 
 import _thread
+import time
 
 '''
 This file is used to generate almost everything on the site.
@@ -34,27 +35,34 @@ def query_page(request):
     # Try to get the object asociated with the query
     # If it doesn't exist it will be created
     requested_query = database_connector.obtain_query(query_text_search)
-   
+    s_t = time.time()
     # Get the tweets from tweeter
     print("about to get tweets")
+    s = time.time()
     raw_tweets = get_tweets.get_tweets(query_text_search)
-    print("already got them")
+    e = time.time()
+    print("already got them; took ",e-s)
     
     # Get the class for every tweet
     print("about to clasify the tweets")
+    s = time.time()
     clas_tweets = get_polarity.get_polarity([tw["text"] for tw in raw_tweets])
-    print("already clasified them")
-    
     raw_tweets = tweet_summary.add_field("polarity",raw_tweets,clas_tweets)
+    e = time.time()
+    print("already clasified them; took ",e-s)
     
     # Get the summary tweets
     print("about to summarize tweets")
+    s = time.time()
     sum_tweets = tweet_summary.summarize(raw_tweets,MAX_RES_TWEETS = int(len(raw_tweets)*0.01))
     sum_positive = tweet_summary.summarize([tweet for tweet in raw_tweets if tweet["polarity"]=="P+" or tweet["polarity"]=="P"],MAX_RES_TWEETS = 5)
     sum_negative = tweet_summary.summarize([tweet for tweet in raw_tweets if tweet["polarity"]=="N+" or tweet["polarity"]=="N"],MAX_RES_TWEETS = 5)
-    print("already summarized them")
+    e = time.time()
+    print("already summarized them; took ",e-s)
     
     # Store the polarity information in Query_data
+    print("-------------")
+    s = time.time()
     requested_query_data=database_connector.store_polarity(requested_query,clas_tweets)
     
     # Store the summary tweets in Summary_tweets
@@ -64,8 +72,9 @@ def query_page(request):
     
     # Store all the retrieved tweets
     _thread.start_new_thread( database_connector.store_tweets, (requested_query,raw_tweets,clas_tweets), )
+    e = time.time()
     #~ add_data_to_database.store_data(raw_tweets,clas_tweets,requested_query)
-    
+    print("it took ",e-s,"to store everything in the db")
     # Return the information about the query just made to the show_results page
     return HttpResponseRedirect(reverse('tweetclass:show_results',args=(requested_query_data.id,)))
     

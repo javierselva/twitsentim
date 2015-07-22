@@ -57,7 +57,7 @@ def store_tweets(requested_query,raw_tweets,clas_tweets):
         cont+=1
     mf.save_to_mongo(raw_tweets,"tweet",requested_query.query_text)
     end = time.time()
-    print("%d tweets succesfully saved in %s seconds" % (cont, end-start) )
+    print("%d tweets succesfully saved" % (cont) )
 
 def retrieve_query(requested_query_data_id):
     current_query = Query_data.objects.get(pk=requested_query_data_id)

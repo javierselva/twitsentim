@@ -14,7 +14,7 @@
 
             <form action="{% url 'tweetclass:query_page' %}" method="post">
             {% csrf_token %}
-            <input type="text" name="query_text" id="query_text" value={{ query.query_text }} />
+            <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
             <input type="submit" value="Search" />
             </form>
         </td>

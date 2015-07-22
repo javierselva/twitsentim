@@ -13,7 +13,7 @@ class QueryDisplay(admin.ModelAdmin):
     list_display = ['query_text','id']
 
 class TweetDisplay(admin.ModelAdmin):
-    list_display = ['id','getQueryText','tweet_text','tweet_pol','tweet_id']
+    list_display = ['id','getQueryText','tag','tweet_text','tweet_pol','tweet_id']
     #Si señor, así es como se accede al objeto Query que se presenta como clave ajena... Ô_Ô
     def getQueryText(self,obj):
         return obj.query_id.query_id.query_text
