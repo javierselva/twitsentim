@@ -50,13 +50,17 @@ def query_page(request):
     # Get the summary tweets
     print("about to summarize tweets")
     sum_tweets = tweet_summary.summarize(raw_tweets,MAX_RES_TWEETS = int(len(raw_tweets)*0.01))
+    sum_positive = tweet_summary.summarize([tweet for tweet in raw_tweets if tweet["polarity"]=="P+" or tweet["polarity"]=="P"],MAX_RES_TWEETS = 5)
+    sum_negative = tweet_summary.summarize([tweet for tweet in raw_tweets if tweet["polarity"]=="N+" or tweet["polarity"]=="N"],MAX_RES_TWEETS = 5)
     print("already summarized them")
     
     # Store the polarity information in Query_data
     requested_query_data=database_connector.store_polarity(requested_query,clas_tweets)
     
     # Store the summary tweets in Summary_tweets
-    database_connector.store_summary(requested_query_data,sum_tweets)
+    database_connector.store_summary(requested_query_data,sum_tweets,"ALL")
+    database_connector.store_summary(requested_query_data,sum_positive,"POS")
+    database_connector.store_summary(requested_query_data,sum_negative,"NEG")
     
     # Store all the retrieved tweets
     _thread.start_new_thread( database_connector.store_tweets, (requested_query,raw_tweets,clas_tweets), )
@@ -69,7 +73,7 @@ def query_page(request):
 # It will show the results to the user
 def show_results(request,requested_query_data_id):
     # Get the current Query_data object, the actual Query, and every Query_data related to that query
-    current_query,query,all_results,sum_tweets=database_connector.retrieve_query(requested_query_data_id)
+    current_query,query,all_results,sum_t_all,sum_t_pos,sum_t_neg=database_connector.retrieve_query(requested_query_data_id)
     
     # Prepare all the historic graphics
     print("drawing graph")
@@ -85,9 +89,8 @@ def show_results(request,requested_query_data_id):
     bars_size[4]=int(current_query.p_neg_p*mul)
     bars_size[5]=int(current_query.p_none*mul)
     
-    sum_pol=[tweet.tweet_pol for tweet in sum_tweets]
+    sum_pol=[tweet.tweet_pol for tweet in sum_t_all]
     count_pol = [sum_pol.count("P+"),sum_pol.count("P"),sum_pol.count("NEU"),sum_pol.count("N"),sum_pol.count("N+"),sum_pol.count("NONE"),len(sum_pol)]
-        
     
     print(bars_size)
     # Return the info to the website
@@ -96,13 +99,20 @@ def show_results(request,requested_query_data_id):
         'all_res':all_results,
         'current':current_query,
         'sizes':bars_size,
-        'sum_twe':sum_tweets,
+        'sum_t_all':sum_t_all,
+        'sum_t_pos':sum_t_pos,
+        'sum_t_neg':sum_t_neg,
         'sum_count':count_pol,
         'generic_image_path':"tweetclass/histogram_generic_"+query.query_text+".png",
         'summary_image_path':"tweetclass/histogram_summary_"+query.query_text+".png" })
 
 def add_test(request):
-    print(request.POST)
+    #~ print(request.POST)
     tweets = Summary_tweet.objects.filter(query_id=request.POST["summary_tweet_id"])
-    database_connector.store_feedback(tweets,[request.POST['choice'+str(cont)] for cont in range(1,len(tweets)+1)])
+    all_tweets = tweets.filter(tag="ALL")
+    pos_tweets = tweets.filter(tag="POS")
+    neg_tweets = tweets.filter(tag="NEG")
+    database_connector.store_feedback(all_tweets,[request.POST['choice'+str(cont)] for cont in range(1,len(all_tweets)+1)])
+    database_connector.store_feedback(pos_tweets,[request.POST['choice2'+str(cont)] for cont in range(1,len(pos_tweets)+1)])
+    database_connector.store_feedback(neg_tweets,[request.POST['choice3'+str(cont)] for cont in range(1,len(neg_tweets)+1)])
     return HttpResponseRedirect(reverse('tweetclass:show_results',args=(request.POST["summary_tweet_id"],)))

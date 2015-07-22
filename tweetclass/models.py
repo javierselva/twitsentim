@@ -32,12 +32,14 @@ class Query_data(models.Model):
 # The id of each tweet will be the same that in tweeter
 class Summary_tweet(models.Model):
     query_id = models.ForeignKey(Query_data)
+    tweet_id = models.CharField(max_length=21,default="000000000000")
+    tag = models.CharField(max_length=3,default="ALL")
     tweet_text = models.CharField(max_length=140)
     tweet_pol = models.CharField(max_length=4)
     
     #This is used for when the system needs to print a Summary_tweet object
     def __str__(self):
-        return self.tweet_text
+        return self.tweet_text+"\t"+self.tweet_pol
 
 class Test_tweet(models.Model):
     tweet_text = models.CharField(max_length=140)

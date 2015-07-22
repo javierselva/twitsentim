@@ -40,10 +40,11 @@
                 N: {{ sum_count.3 }}/{{ sum_count.6 }} | 
                 N+: {{ sum_count.4 }}/{{ sum_count.6 }} | 
                 NONE: {{ sum_count.5 }}/{{ sum_count.6 }} | 
-            <ul>
+            
                 <form action="{% url 'tweetclass:add_test' %}" method="post">
                     {% csrf_token %}
-            {% for tweet in sum_twe %}
+            <ul>
+            {% for tweet in sum_t_all %}
                 <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)
                     <br /> 
                     <input type="radio" name="choice{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
@@ -60,10 +61,55 @@
                     <label>NONE</label>
                 </li>
             {% endfor %}
-                    <input type="hidden" name="summary_tweet_id" value="{{ current.id }}">
-                    <input type="submit" value="Send feedback" />
-                </form>
             </ul>
+            <table>
+                <tr>
+                    <td style="border-style:solid;border-width:5px;border-color:#00FF00">
+                    <ul>
+                    {% for tweet in sum_t_pos %}
+                        <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)
+                            <br /> 
+                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
+                            <label>P+</label>
+                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
+                            <label>P</label>
+                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
+                            <label>NEU</label>
+                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
+                            <label>N</label>
+                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
+                            <label>N+</label>
+                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
+                            <label>NONE</label>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    </td>
+                    <td style="border-style:solid;border-width:5px;border-color:#FF0000">
+                    {% for tweet in sum_t_neg %}
+                        <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)
+                            <br /> 
+                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
+                            <label>P+</label>
+                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
+                            <label>P</label>
+                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
+                            <label>NEU</label>
+                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
+                            <label>N</label>
+                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
+                            <label>N+</label>
+                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
+                            <label>NONE</label>
+                        </li>
+                    {% endfor %}
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" name="summary_tweet_id" value="{{ current.id }}">
+            <input type="submit" value="Send feedback" />
+            </form>
+                    
         </td>
     </tr>
 

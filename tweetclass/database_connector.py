@@ -63,17 +63,18 @@ def retrieve_query(requested_query_data_id):
     current_query = Query_data.objects.get(pk=requested_query_data_id)
     query = get_object_or_404(Query,pk=current_query.query_id_id)
     all_results = query.query_data_set.all()
-    sum_tweets = Summary_tweet.objects.filter(query_id=current_query.id)
-    return current_query,query,all_results,sum_tweets
+    sum_tweets = Summary_tweet.objects.filter(query_id=current_query.id )
+    return current_query,query,all_results,sum_tweets.filter(tag="ALL"),sum_tweets.filter(tag="POS"),sum_tweets.filter(tag="NEG")
 
-def store_summary(requested_query, tweets):
+def store_summary(requested_query, tweets, tweet_tag):
     for tweet in tweets:
-        if not (requested_query.summary_tweet_set.filter(pk=tweet["id"]).exists()):
-            requested_query.summary_tweet_set.create(
-                id=tweet["id"],
-                tweet_text=tweet["text"],
-                tweet_pol=tweet["polarity"]
-                )
+        #~ if not (requested_query.summary_tweet_set.filter(pk=tweet["id"]).exists()):
+        requested_query.summary_tweet_set.create(
+            tweet_id=tweet["id"],
+            tweet_text=tweet["text"],
+            tag = tweet_tag,
+            tweet_pol=tweet["polarity"]
+            )
     requested_query.save()
         
 def store_feedback(tweets,polarity):
