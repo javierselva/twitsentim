@@ -1,0 +1,56 @@
+
+body {
+    background-color: #A6BFE3;
+}
+
+.top_menu_default {
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    text-align: center;
+}
+
+.top_menu_default:hover {
+    background-color: #9BC2E9;
+    color: #2C2C2C;
+    text-align: center;
+}
+
+.top_menu_selected {
+    background-color: #79A0C7;
+    color: #FAFCFF;
+    text-align: center;
+}
+
+.content_table {
+    background-color: #79A0C7;
+    color: #FAFCFF;
+    text-align: center;
+}
+
+.search_button {
+    border:0;
+    height:20px;
+    width: 20px;
+}
+
+table,td,th {
+    border:0px solid white;
+    text-align: center;
+    vertical-align: center;
+}
+
+th {
+    height: 50px;
+}
+
+input[type=text] {
+    border: 0;
+    height:30px;
+    color: #575767;
+    background-color: #F2F0F1;
+}
+
+input:focus[type=text] {
+    color: #0D1D2D;
+    background-color: #F2F0F1;
+}

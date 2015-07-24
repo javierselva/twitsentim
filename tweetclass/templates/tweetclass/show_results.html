@@ -1,37 +1,78 @@
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'tweetclass/tabcontent.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'tweetclass/main_colors.css' %}" />
 <script type="text/javascript" src="{% static 'tweetclass/tabcontent.js' %}">
 /***********************************************
 * Tab Content script v2.2- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
 * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
 ***********************************************/
 </script>
-<table border=1 width=100%>
+<table width=70% align=center bgcolor="white">
+    <tr>
+        <td colspan=4 style="background-color:#FAFAFA;" height=15px></td>
+        <th rowspan=2 bgcolor="white"><img height=90% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
+        <td style="background-color:#FAFAFA;" height=15px></td>
+    </tr>
+    <tr>
+        <th class="top_menu_default">HOME</th>
+        <th class="top_menu_default">WHAT'S THIS?</th>
+        <th class="top_menu_default">HISTORIC</th>
+        <th class="top_menu_selected">RESULTS</th>
+        <th style="background-color:#FAFAFA;"> 
+            <div valign="center">
+                <form action="{% url 'tweetclass:query_page' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
+                    <input type="submit" value="" class="search_button" style="background:url({% static 'tweetclass/images/search-icon.png' %});"/>
+                </form>
+            </div>
+        </th>
+    </tr>
+</table> 
+<br /><br />
+<table width=75% align=center bgcolor="#EBE8E9">
+    <tr>
+        <td colspan=5 height=10px></td>
+    </tr>
+    <tr>
+        <td width=1%></td>
+        <td bgcolor="white" width=45%> 
+            <h2>Query: <i>{{ query.query_text }}</i></h2> Los resultados de polaridad son <br />mayormente <a color={{pol_win.2}}>{{pol_win.1}}</a> con un valor de <a color={{pol_win.2}}>{{pol_win.0}}%</a>.
+            </td>
+        <td width=1%></td>
+        <td bgcolor="white" width=45%> 
+
+            <h3>Results for {{ current.query_date }}:</h3>
+            <ul>
+                <li><table border=0><tr><td width=55px align=left>P+ </td><td style="background-color:#A7DB40" width={{ sizes.0 }}px></td><td><b>{{current.p_pos_p}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>P </td><td style="background-color:#D8E067" width={{ sizes.1 }}px></td><td><b>{{current.p_pos}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>NEU </td><td style="background-color:#FFB81F" width={{ sizes.2 }}px></td><td><b>{{current.p_neu}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>N </td><td style="background-color:#FF743D" width={{ sizes.3 }}px></td><td><b>{{current.p_neg}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>N+ </td><td style="background-color:#C4213D" width={{ sizes.4 }}px></td><td><b>{{current.p_neg_p}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>NONE </td><td style="background-color:#707070" width={{ sizes.5 }}px></td><td><b>{{current.p_none}} %</b></td></tr></table></li>
+            </ul>
+        </td>
+        <td width=1%></td>
+    </tr>
+    <tr>
+        <td colspan=5 height=10px></td>
+    </tr>
+</table>
+
+<br /><br />
+
+<table border=3 width=100% bgcolor="#FF6666">
     <tr>
         <td colspan=2>
             <h1> Polarity Classifier in Twitter</h1>
 
-            <form action="{% url 'tweetclass:query_page' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
-            <input type="submit" value="Search" />
-            </form>
+            
         </td>
     </tr>
     <tr>
         <td width = 500>
-            <h2>Query: <i>{{ query.query_text }}</i></h2>
-
-            <h3>Results for {{ current.query_date }}:</h3>
-            <ul>
-                <li><table border=0><tr><td width=55px>P+ </td><td style="background-color:#00FF00" width={{ sizes.0 }}px></td><td><b>{{current.p_pos_p}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>P </td><td style="background-color:#008800" width={{ sizes.1 }}px></td><td><b>{{current.p_pos}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>NEU </td><td style="background-color:#888888" width={{ sizes.2 }}px></td><td><b>{{current.p_neu}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>N </td><td style="background-color:#880000" width={{ sizes.3 }}px></td><td><b>{{current.p_neg}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>N+ </td><td style="background-color:#FF0000" width={{ sizes.4 }}px></td><td><b>{{current.p_neg_p}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>NONE </td><td style="background-color:#000000" width={{ sizes.5 }}px></td><td><b>{{current.p_none}} %</b></td></tr></table></li>
-            </ul>
+            
         </td>
         <td><h3>Total tweets: {{current.hm_tweets}}</h3>
                 P+: {{ sum_count.0 }}/{{ sum_count.6 }} | 

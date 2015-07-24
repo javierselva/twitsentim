@@ -101,7 +101,14 @@ def show_results(request,requested_query_data_id):
     sum_pol=[tweet.tweet_pol for tweet in sum_t_all]
     count_pol = [sum_pol.count("P+"),sum_pol.count("P"),sum_pol.count("NEU"),sum_pol.count("N"),sum_pol.count("N+"),sum_pol.count("NONE"),len(sum_pol)]
     
-    print(bars_size)
+    val_max = max([
+                    (current_query.p_pos_p,"VERY POSITIVE","#A7DB40"),
+                    (current_query.p_pos,"POSITIVE","#D8E067"),
+                    (current_query.p_neu,"NEUTRAL","#FFB81F"),
+                    (current_query.p_neg,"NEGATIVE","#FF743D"),
+                    (current_query.p_neg_p,"VERY NEGATIVE","#C4213D"),
+                    (current_query.p_none,"NONE","#707070")])
+    #~ print(bars_size)
     # Return the info to the website
     return render(request, 'tweetclass/show_results.html',{
         'query':query,
@@ -112,6 +119,7 @@ def show_results(request,requested_query_data_id):
         'sum_t_pos':sum_t_pos,
         'sum_t_neg':sum_t_neg,
         'sum_count':count_pol,
+        'pol_win':val_max,
         'generic_image_path':"tweetclass/histogram_generic_"+query.query_text+".png",
         'summary_image_path':"tweetclass/histogram_summary_"+query.query_text+".png" })
 
