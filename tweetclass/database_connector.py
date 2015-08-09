@@ -59,6 +59,12 @@ def store_tweets(requested_query,raw_tweets,clas_tweets):
     end = time.time()
     print("%d tweets succesfully saved" % (cont) )
 
+def get_last_query_data(q_text):
+    query = Query.objects.get(query_text=q_text)
+    all_results = query.query_data_set.all()
+    ids=[result.id for result in all_results]
+    return max(ids)
+
 def retrieve_query(requested_query_data_id):
     current_query = Query_data.objects.get(pk=requested_query_data_id)
     query = get_object_or_404(Query,pk=current_query.query_id_id)
@@ -76,6 +82,9 @@ def store_summary(requested_query, tweets, tweet_tag):
             tweet_pol=tweet["polarity"]
             )
     requested_query.save()
+
+def retrieve_query_list():
+    return Query.objects.all()
         
 def store_feedback(tweets,polarity):
     cont=0

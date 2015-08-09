@@ -34,7 +34,7 @@ class Summary_tweet(models.Model):
     query_id = models.ForeignKey(Query_data)
     tweet_id = models.CharField(max_length=21,default="000000000000")
     tag = models.CharField(max_length=3,default="ALL")
-    tweet_text = models.CharField(max_length=140)
+    tweet_text = models.CharField(max_length=500)
     tweet_pol = models.CharField(max_length=4)
     
     #This is used for when the system needs to print a Summary_tweet object

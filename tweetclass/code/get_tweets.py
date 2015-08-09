@@ -14,6 +14,18 @@ def get_tweet_api():
     #In this second call we need access tokens
     auth.set_access_token(ACCES_KEY, ACCES_SECRET)
     return tweepy.API(auth)
+
+def transform_links(tweet):
+    t_text=tweet.text.replace('\n',' ').replace('\r',' ')
+    print(t_text)
+    for url in tweet.entities["urls"]:
+        t_text=t_text.replace(url['url'],"<a href=\""+url['url']+"\" target=\"_blank\"><font color=blue>"+url['url']+"</font></a>")
+    for mention in tweet.entities["user_mentions"]:
+        t_text=t_text.replace("@"+mention['screen_name'],"<a href=\"http://twitter.com/"+mention['screen_name']+"\" target=\"_blank\"><font color=blue>@"+mention['screen_name']+"</font></a>")
+    for hashtag in tweet.entities["hashtags"]:
+        t_text=t_text.replace("#"+hashtag['text'],"<a href=\"http://twitter.com/hashtag/"+hashtag['text']+"\" target=\"_blank\"><font color=blue>#"+hashtag['text']+"</font></a>")
+    
+    return t_text
     
 def get_retweets(tweets_id):
     api = get_tweet_api()
@@ -22,7 +34,7 @@ def get_retweets(tweets_id):
 def extract_tweet_info(tweet):
     return {"id":str(tweet.id),
             "date":str(tweet.created_at),
-            "text":tweet.text.replace('\n',' ').replace('\r',' '),
+            "text":transform_links(tweet),
             "retweet_count":tweet.retweet_count,
             "favorite_count":tweet.favorite_count,
             "followers":tweet.user.followers_count,

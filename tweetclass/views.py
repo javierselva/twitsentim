@@ -6,7 +6,7 @@ from django.utils import timezone
 
 from .models import Query, Query_data, Summary_tweet, Test_tweet
 
-from .code import get_tweets,get_polarity,tweet_summary
+from .code import get_tweets,get_polarity,tweet_summary,generate_graph
 from . import graph_data_generator, database_connector
 
 import _thread
@@ -21,13 +21,13 @@ or makes a query. Is the skeleton of the app.
 # The first view we define: Index
 # Is the front page of the site and it just consists on a form to make the query.
 def index(request):
-    return render(request, 'tweetclass/index.html')
+    querys = database_connector.retrieve_query_list()
+    return render(request, 'tweetclass/index.html',{'querys':querys})
 
 # This is called everytime the user makes a query
 def query_page(request):
     # Get the query from the request
     query_text_search = request.POST['query_text']
-    print(request.POST)
     # If the query is empty, redirect the user.
     if query_text_search=="":
         return render(request,'tweetclass/index.html',{'error_message':"You didn't write a query."})
@@ -84,11 +84,6 @@ def show_results(request,requested_query_data_id):
     # Get the current Query_data object, the actual Query, and every Query_data related to that query
     current_query,query,all_results,sum_t_all,sum_t_pos,sum_t_neg=database_connector.retrieve_query(requested_query_data_id)
     
-    # Prepare all the historic graphics
-    print("drawing graph")
-    graph_data_generator.generate_data(query.query_text,all_results)
-    print("graph is ready")
-    
     mul=3
     bars_size={}
     bars_size[0]=int(current_query.p_pos_p*mul)
@@ -101,6 +96,11 @@ def show_results(request,requested_query_data_id):
     sum_pol=[tweet.tweet_pol for tweet in sum_t_all]
     count_pol = [sum_pol.count("P+"),sum_pol.count("P"),sum_pol.count("NEU"),sum_pol.count("N"),sum_pol.count("N+"),sum_pol.count("NONE"),len(sum_pol)]
     
+    # Prepare all the historic graphics
+    print("drawing graph")
+    generate_graph.radial_summary(count_pol[:-1],query.query_text)
+    print("graph is ready")
+    
     val_max = max([
                     (current_query.p_pos_p,"VERY POSITIVE","#A7DB40"),
                     (current_query.p_pos,"POSITIVE","#D8E067"),
@@ -109,17 +109,40 @@ def show_results(request,requested_query_data_id):
                     (current_query.p_neg_p,"VERY NEGATIVE","#C4213D"),
                     (current_query.p_none,"NONE","#707070")])
     #~ print(bars_size)
+    
     # Return the info to the website
     return render(request, 'tweetclass/show_results.html',{
         'query':query,
-        'all_res':all_results,
         'current':current_query,
         'sizes':bars_size,
         'sum_t_all':sum_t_all,
+        'hm_summary':len(sum_t_all),
         'sum_t_pos':sum_t_pos,
         'sum_t_neg':sum_t_neg,
         'sum_count':count_pol,
         'pol_win':val_max,
+        'summary_image_path':"tweetclass/summary_pie_"+query.query_text+".png" })
+
+def show_historic(request,requested_query_data_id):
+    if requested_query_data_id=='000':
+        generic = True
+        requested_query_data_id = database_connector.get_last_query_data(request.POST["real_id"])
+    else:
+        generic = False
+    # Get the current Query_data object, the actual Query, and every Query_data related to that query
+    current_query,query,all_results,sum_t_all,sum_t_pos,sum_t_neg=database_connector.retrieve_query(requested_query_data_id)
+    
+    # Prepare all the historic graphics
+    print("drawing graph")
+    graph_data_generator.generate_data(query.query_text,all_results)
+    print("graph is ready")
+    
+    # Return the info to the website
+    return render(request, 'tweetclass/show_historic.html',{
+        'current':current_query,
+        'query':query,
+        'all_res':all_results,
+        'is_generic':generic,
         'generic_image_path':"tweetclass/histogram_generic_"+query.query_text+".png",
         'summary_image_path':"tweetclass/histogram_summary_"+query.query_text+".png" })
 

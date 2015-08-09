@@ -48,8 +48,8 @@ def general_graph(polarity,name):
     #~ rect.set_facecolor('white')
     fig.set_figwidth(12)
     
-    
-    colors=["#00FF00","#008800","#888888","#880000","#FF0000","#000000"]
+    legend=["P+",     "P",      "NEU",    "N",      "N+",     "NONE"]
+    colors=["#A7DB40","#D8E067","#FFB81F","#FF743D","#C4213D","#707070"]
     
     canvas = FigureCanvas(fig)
     
@@ -91,8 +91,9 @@ def general_graph(polarity,name):
     
     i=0
     while i < 6: 
-        ax.plot(ind,polarity[i],colors[i],linewidth=1.3)
+        ax.plot(ind,polarity[i],colors[i],label=legend[i],linewidth=3)
         i+=1
+    ax.legend()
     #~ plt.grid(True)
     
     #~ plt.show()
@@ -103,8 +104,23 @@ def general_graph(polarity,name):
     ax.xaxis.set_major_formatter(ticker.FuncFormatter(format_date))
     fig.autofmt_xdate()
     
-    canvas.print_figure('tweetclass/static/tweetclass/histogram_generic_'+name+'.png',facecolor='white',bbox_inches='tight')
+    canvas.print_figure('tweetclass/static/tweetclass/histogram_generic_'+name+'.png',facecolor="#EBE8E9",bbox_inches='tight')
 #~ graph([[1,2,3,4,5,6],[3,4,5,6,7,8],[5,6,7,8,9,10],[7,8,9,10,11,12],[9,10,11,12,13,14],[11,12,13,14,15,16],[13,14,15,16,17,18],[1,2,3,4,5,6]],"obama")
+
+def radial_summary(values,name):
+    legend=["P+",     "P",      "NEU",    "N",      "N+",     "NONE"]
+    colors=["#A7DB40","#D8E067","#FFB81F","#FF743D","#C4213D","#707070"]
+    
+    fig = Figure()
+    canvas = FigureCanvas(fig)
+    fig.set_figwidth(1)
+    fig.set_figheight(1)
+    
+    ax = fig.add_subplot(1,1,1)
+
+    ax.pie(values,colors=colors, shadow=True, startangle=90)
+
+    canvas.print_figure('tweetclass/static/tweetclass/summary_pie_'+name+'.png',bbox_inches='tight')
 
 def summary_graph(polarity,name):
     
@@ -133,4 +149,4 @@ def summary_graph(polarity,name):
     ax.xaxis.set_major_formatter(ticker.FuncFormatter(format_date))
     fig.autofmt_xdate()
     
-    canvas.print_figure('tweetclass/static/tweetclass/histogram_summary_'+name+'.png',facecolor='white',bbox_inches='tight')
+    canvas.print_figure('tweetclass/static/tweetclass/histogram_summary_'+name+'.png',facecolor="#EBE8E9",bbox_inches='tight')

@@ -1,25 +1,18 @@
 {% load staticfiles %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'tweetclass/tabcontent.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'tweetclass/main_colors.css' %}" />
-<script type="text/javascript" src="{% static 'tweetclass/tabcontent.js' %}">
-/***********************************************
-* Tab Content script v2.2- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
-* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
-***********************************************/
-</script>
 <table width=70% align=center bgcolor="white">
     <tr>
         <td colspan=4 style="background-color:#FAFAFA;" height=15px></td>
-        <th rowspan=2 bgcolor="white"><img height=90% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
+        <th rowspan=2 bgcolor="white"><img height=96% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
         <td style="background-color:#FAFAFA;" height=15px></td>
     </tr>
     <tr>
-        <th class="top_menu_default">HOME</th>
+        <th class="top_menu_default"><a href="{% url 'tweetclass:index' %}">HOME</a></th>
         <th class="top_menu_default">WHAT'S THIS?</th>
-        <th class="top_menu_default">HISTORIC</th>
+        <th class="top_menu_default"><a href="../../../tweetclass/{{current.id}}/show_historic/">HISTORIC</a></th>
         <th class="top_menu_selected">RESULTS</th>
-        <th style="background-color:#FAFAFA;"> 
+        <th style="background-color:#FAFAFA;">
             <div valign="center">
                 <form action="{% url 'tweetclass:query_page' %}" method="post">
                     {% csrf_token %}
@@ -29,29 +22,31 @@
             </div>
         </th>
     </tr>
-</table> 
+</table>
 <br /><br />
+
 <table width=75% align=center bgcolor="#EBE8E9">
     <tr>
         <td colspan=5 height=10px></td>
     </tr>
     <tr>
         <td width=1%></td>
-        <td bgcolor="white" width=45%> 
-            <h2>Query: <i>{{ query.query_text }}</i></h2> Los resultados de polaridad son <br />mayormente <a color={{pol_win.2}}>{{pol_win.1}}</a> con un valor de <a color={{pol_win.2}}>{{pol_win.0}}%</a>.
+        <td bgcolor="white" width=45% align=center>
+            <h2>Query: <i>{{ query.query_text }}</i></h2> The polarity results are <br />mainly <font color={{pol_win.2}}><b>{{pol_win.1}}</b></font> with a value of <font color={{pol_win.2}}><b>{{pol_win.0}}%</b></font>.
             </td>
         <td width=1%></td>
-        <td bgcolor="white" width=45%> 
+        <td bgcolor="white" width=45%>
 
-            <h3>Results for {{ current.query_date }}:</h3>
+            <h3 style="background-color:#BAB8B9; height:30px; vertical-align:center"><font color="F7F7F7">Results for {{ current.query_date }}:</font></h3>
             <ul>
-                <li><table border=0><tr><td width=55px align=left>P+ </td><td style="background-color:#A7DB40" width={{ sizes.0 }}px></td><td><b>{{current.p_pos_p}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>P </td><td style="background-color:#D8E067" width={{ sizes.1 }}px></td><td><b>{{current.p_pos}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>NEU </td><td style="background-color:#FFB81F" width={{ sizes.2 }}px></td><td><b>{{current.p_neu}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>N </td><td style="background-color:#FF743D" width={{ sizes.3 }}px></td><td><b>{{current.p_neg}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>N+ </td><td style="background-color:#C4213D" width={{ sizes.4 }}px></td><td><b>{{current.p_neg_p}} %</b></td></tr></table></li>
-                <li><table border=0><tr><td width=55px>NONE </td><td style="background-color:#707070" width={{ sizes.5 }}px></td><td><b>{{current.p_none}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px align=left>P+ </td><td width=10px></td><td style="background-color:#A7DB40" width={{ sizes.0 }}px></td><td><b>{{current.p_pos_p}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>P </td><td width=10px></td><td style="background-color:#D8E067" width={{ sizes.1 }}px></td><td><b>{{current.p_pos}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>NEU </td><td width=10px></td><td style="background-color:#FFB81F" width={{ sizes.2 }}px></td><td><b>{{current.p_neu}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>N </td><td width=10px></td><td style="background-color:#FF743D" width={{ sizes.3 }}px></td><td><b>{{current.p_neg}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>N+ </td><td width=10px></td><td style="background-color:#C4213D" width={{ sizes.4 }}px></td><td><b>{{current.p_neg_p}} %</b></td></tr></table></li>
+                <li><table border=0><tr><td width=55px>NONE </td><td width=10px></td><td style="background-color:#707070" width={{ sizes.5 }}px></td><td><b>{{current.p_none}} %</b></td></tr></table></li>
             </ul>
+            <div align=right><a href="../../../tweetclass/{{current.id}}/show_historic/"><font color=blue>+more</font></a></div>
         </td>
         <td width=1%></td>
     </tr>
@@ -60,170 +55,134 @@
     </tr>
 </table>
 
+<form action="{% url 'tweetclass:add_test' %}" method="post">
+    {% csrf_token %}
 <br /><br />
-
-<table border=3 width=100% bgcolor="#FF6666">
+<table width=75% align=center bgcolor="#EBE8E9">
     <tr>
-        <td colspan=2>
-            <h1> Polarity Classifier in Twitter</h1>
-
-            
-        </td>
-    </tr>
-    <tr>
-        <td width = 500>
-            
-        </td>
-        <td><h3>Total tweets: {{current.hm_tweets}}</h3>
-                P+: {{ sum_count.0 }}/{{ sum_count.6 }} | 
-                P: {{ sum_count.1 }}/{{ sum_count.6 }} | 
-                NEU: {{ sum_count.2 }}/{{ sum_count.6 }} | 
-                N: {{ sum_count.3 }}/{{ sum_count.6 }} | 
-                N+: {{ sum_count.4 }}/{{ sum_count.6 }} | 
-                NONE: {{ sum_count.5 }}/{{ sum_count.6 }} | 
-            
-                <form action="{% url 'tweetclass:add_test' %}" method="post">
-                    {% csrf_token %}
-            <ul>
-            {% for tweet in sum_t_all %}
-                <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)
-                    <br /> 
-                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
-                    <label>P+</label>
-                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
-                    <label>P</label>
-                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
-                    <label>NEU</label>
-                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
-                    <label>N</label>
-                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
-                    <label>N+</label>
-                    <input type="radio" name="choice{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
-                    <label>NONE</label>
-                </li>
-            {% endfor %}
-            </ul>
-            <table>
+        <td colspan=3>
+            <table width=100%>
                 <tr>
-                    <td style="border-style:solid;border-width:5px;border-color:#00FF00">
-                    <ul>
-                    {% for tweet in sum_t_pos %}
-                        <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)
-                            <br /> 
-                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
-                            <label>P+</label>
-                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
-                            <label>P</label>
-                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
-                            <label>NEU</label>
-                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
-                            <label>N</label>
-                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
-                            <label>N+</label>
-                            <input type="radio" name="choice2{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
-                            <label>NONE</label>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                    </td>
-                    <td style="border-style:solid;border-width:5px;border-color:#FF0000">
-                    {% for tweet in sum_t_neg %}
-                        <li>{{ tweet.tweet_text }} (Pol: <b>{{ tweet.tweet_pol }}</b>)
-                            <br /> 
-                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
-                            <label>P+</label>
-                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
-                            <label>P</label>
-                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
-                            <label>NEU</label>
-                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
-                            <label>N</label>
-                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
-                            <label>N+</label>
-                            <input type="radio" name="choice3{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
-                            <label>NONE</label>
-                        </li>
-                    {% endfor %}
-                    </td>
+                    <td bgcolor="#BAB8B9" width=25%><font size=5 color="F7F7F7">SUMMARY</font></td>
+                    <td bgcolor=white><font size=4>Total tweets: <b>{{current.hm_tweets}}</b>&nbsp;&nbsp;&nbsp;&nbsp; Summary tweets: <b>{{hm_summary}}</b></font></td>
                 </tr>
             </table>
-            <input type="hidden" name="summary_tweet_id" value="{{ current.id }}">
-            <input type="submit" value="Send feedback" />
-            </form>
-                    
         </td>
     </tr>
-
     <tr>
-        <td colspan=2>
-            <h3>Historic results</h3>
-
-            <!--
-            START OF THE TAB ELEMENT
-            -->
-
-            <ul id="countrytabs" class="shadetabs">
-            <li><a href="#1" rel="table" class="selected">Information Table</a></li>
-            <li><a href="#1" rel="graph1">Generic Graphic</a></li>
-            <li><a href="#1" rel="graph2">Sumarized Graphic</a></li>
-            <li><a href="#1" rel="somethingElse">Something Else</a></li>
-            </ul>
-
-            <div style="border:0px; width:1000px; height:600px margin-bottom: 1em; padding: 10px">
-
-            <a id="#1">
-            <div id="table" class="tabcontent">
-                <table border=1>
-                    <tr style="background-color:#AAAAAA" align="center">
-                        <td width="250px"><b>Query Date</b></td>
-                        <td width="50px"><b>P+</b></td>
-                        <td width="50px"><b>P</b></td>
-                        <td width="50px"><b>NEU</b></td>
-                        <td width="50px"><b>N</b></td>
-                        <td width="50px"><b>N+</b></td>
-                        <td width="50px"><b>NONE</b></td>
+        <td colspan=3 height=10px></td>
+    </tr>
+    <tr>
+        <td width=1%></td>
+        <td bgcolor="white" width=90%>
+                <table width=100%>
+                    <tr>
+                        <td>
+                            <b><font color="#A7DB40">P+</font></b>: {{ sum_count.0 }}/{{ sum_count.6 }} |
+                            <b><font color="#D8E067">P</font></b>: {{ sum_count.1 }}/{{ sum_count.6 }} |
+                            <b><font color="#FFB81F">NEU</font></b>: {{ sum_count.2 }}/{{ sum_count.6 }} |
+                            <b><font color="#FF743D">N</font></b>: {{ sum_count.3 }}/{{ sum_count.6 }} |
+                            <b><font color="#C4213D">N+</font></b>: {{ sum_count.4 }}/{{ sum_count.6 }} |
+                            <b><font color="#707070">NONE</font></b>: {{ sum_count.5 }}/{{ sum_count.6 }} |
+                        </td>
+                        <td>
+                            <img src="{% static summary_image_path %}" alt="generic_img"/>
+                        </td>
                     </tr>
-                    {% for result in all_res %}
-                        <tr align="center">
-                            <td width="250px" style="background-color:#CCCCCC">{{ result.query_date }}</td>
-                            <td width="50px">{{ result.p_pos_p }}</td>
-                            <td width="50px">{{ result.p_pos }}</td>
-                            <td width="50px">{{ result.p_neu }}</td>
-                            <td width="50px">{{ result.p_neg }}</td>
-                            <td width="50px">{{ result.p_neg_p }}</td>
-                            <td width="50px">{{ result.p_none }}</td>
-                        </tr>
-                    {% endfor %}
                 </table>
-            </div>
-
-            <div id="graph1" class="tabcontent">
-                <img src="{% static generic_image_path %}" alt="My image"/>
-            </div>
-
-            <div id="graph2" class="tabcontent">
-            <img src="{% static summary_image_path %}" alt="My image"/>
-            </div>
-
-            <div id="somethinElse" class="tabcontent">
-            This has not been done yet<br /><br />
-            </div>
-
-            </div>
-
-            <script type="text/javascript">
-            var countries=new ddtabcontent("countrytabs")
-            countries.setpersist(true)
-            countries.setselectedClassTarget("link")
-            countries.init()
-            </script>
-
-            <!--
-            END OF THE TAB ELEMENT 
-            -->
-
-            <br />
-            <a href="{% url 'tweetclass:index' %}">Make other query</a>
+                <br /><br />
+            {% for tweet in sum_t_all %}
+                <li>{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+                    <div style="text-align:right;">
+                        <input type="radio" name="choice{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
+                        <label>P+</label>
+                        <input type="radio" name="choice{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
+                        <label>P</label>
+                        <input type="radio" name="choice{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
+                        <label>NEU</label>
+                        <input type="radio" name="choice{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
+                        <label>N</label>
+                        <input type="radio" name="choice{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
+                        <label>N+</label>
+                        <input type="radio" name="choice{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
+                        <label>NONE</label>
+                    </div>
+            {% endfor %}
+            </ul>
         </td>
+        <td width=1%></td>
+    </tr>
+    <tr><td colspan=3 height=10px></td></tr>
+    <tr>
+        <td width=1%></td>
+        <td bgcolor="white" width=90% style="border-top:5px solid green;">
+            {% for tweet in sum_t_pos %}
+                <li>{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+                    <div style="text-align:right;">
+                        <input type="radio" name="choice2{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
+                        <label>P+</label>
+                        <input type="radio" name="choice2{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
+                        <label>P</label>
+                        <input type="radio" name="choice2{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
+                        <label>NEU</label>
+                        <input type="radio" name="choice2{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
+                        <label>N</label>
+                        <input type="radio" name="choice2{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
+                        <label>N+</label>
+                        <input type="radio" name="choice2{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
+                        <label>NONE</label>
+                    </div>
+            {% endfor %}
+        </td>
+        <td width=1%></td>
+    </tr>
+    <tr><td colspan=3 height=10px></td></tr>
+    <tr>
+        <td width=1%></td>
+        <td bgcolor="white" width=90% style="border-top:5px solid #C22621;">
+            {% for tweet in sum_t_neg %}
+                <li>{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+                    <div style="text-align:right;">
+                        <input type="radio" name="choice3{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
+                        <label>P+</label>
+                        <input type="radio" name="choice3{{ forloop.counter }}" id="tweet2_{{ forloop.counter }}" value="P" />
+                        <label>P</label>
+                        <input type="radio" name="choice3{{ forloop.counter }}" id="tweet3_{{ forloop.counter }}" value="NEU" />
+                        <label>NEU</label>
+                        <input type="radio" name="choice3{{ forloop.counter }}" id="tweet4_{{ forloop.counter }}" value="N" />
+                        <label>N</label>
+                        <input type="radio" name="choice3{{ forloop.counter }}" id="tweet5_{{ forloop.counter }}" value="N+" />
+                        <label>N+</label>
+                        <input type="radio" name="choice3{{ forloop.counter }}" id="tweet6_{{ forloop.counter }}" value="NONE" />
+                        <label>NONE</label>
+                    </div>
+            {% endfor %}
+        </td>
+        <td width=1%></td>
+    </tr>
+    <tr>
+        <td colspan=3 height=3px></td>
+    </tr>
+    <tr>
+        <td width=1%></td>
+        <td width=90% align=right>
+            <input type="hidden" name="summary_tweet_id" value="{{ current.id }}">
+            <input type="submit" value="Send feedback" />
+        </td>
+        <td width=1%></td>
+    </tr>
+    <tr>
+        <td colspan=3 height=5px></td>
+    </tr>
+</table>
+</form>
+
+<br /><br />
+
+<table width=90% align=center>
+    <tr>
+        <td width=50%><hr></td>
+        <td><img height=80px src="{% static 'tweetclass/images/logo_small_circle.png' %}" /></td>
+        <td width=50%><hr></td>
     </tr>
 </table>

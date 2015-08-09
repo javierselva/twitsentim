@@ -189,13 +189,17 @@ def load_modeled_mixed():
 
 if __name__ == "__main__":
     
-    #~ raw_mixed_tweets = load_obj("raw_mixed_tweets")
+    raw_mixed_tweets = load_obj("raw_mixed_tweets")
     #~ tweets = gt.clear_retweets(raw_mixed_tweets)
     #~ save_obj(add_field("score",tweets,load_tweets_score(tweets,"plain_mixed_tweets")),"modeled_mixed_scored_tweets")
 
     #~ original_tweets = load_modeled_mixed()
     
-    
+    cont=0
+    for tweet in raw_mixed_tweets:
+        if cont<20:
+            gt.transform_links(tweet)
+        cont+=1
     
     #~ modeled_popular = load_popular_raw()
     #~ cont=0
@@ -250,7 +254,7 @@ if __name__ == "__main__":
     #~ print("HM all: ",len(mixed_ids))
     
    
-    if True:
+    if False:
         test_number = "03-RT_3"
         print("<meta http-equiv=\"Content-type\" content=\"text/html;charset=ISO-8859-1\">")
         print("<h1>Test #"+test_number+"</h1>")
