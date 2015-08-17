@@ -23,9 +23,13 @@ or makes a query. Is the skeleton of the app.
 def index(request):
     querys = database_connector.retrieve_query_list()
     return render(request, 'tweetclass/index.html',{'querys':querys})
+    
+def whats_this(request):
+    return render(request, 'tweetclass/whats_this.html')
 
 # This is called everytime the user makes a query
 def query_page(request):
+    s_t = time.time()
     # Get the query from the request
     query_text_search = request.POST['query_text']
     # If the query is empty, redirect the user.
@@ -35,35 +39,43 @@ def query_page(request):
     # Try to get the object asociated with the query
     # If it doesn't exist it will be created
     requested_query = database_connector.obtain_query(query_text_search)
-    s_t = time.time()
+    
     # Get the tweets from tweeter
-    print("about to get tweets")
+    print("___ #1 ABOUT TO GET TWEETS ___")
     s = time.time()
     raw_tweets = get_tweets.get_tweets(query_text_search)
     e = time.time()
-    print("already got them; took ",e-s)
+    print("#1 already got them; took ",e-s)
     
     # Get the class for every tweet
-    print("about to clasify the tweets")
+    print("___ #2 ABOUT TO CLASIFY TWEETS ___")
     s = time.time()
     clas_tweets = get_polarity.get_polarity([tw["text"] for tw in raw_tweets])
     raw_tweets = tweet_summary.add_field("polarity",raw_tweets,clas_tweets)
     e = time.time()
-    print("already clasified them; took ",e-s)
+    print("#2 already clasified them; took ",e-s)
     
     # Get the summary tweets
-    print("about to summarize tweets")
+    print("___ #3 ABOUT TO SUMMARIZE TWEETS ___")
     s = time.time()
-    sum_tweets = tweet_summary.summarize(raw_tweets,MAX_RES_TWEETS = int(len(raw_tweets)*0.01))
+    sum_tweets = tweet_summary.summarize(tweets=raw_tweets,MAX_RES_TWEETS = max(int(len(raw_tweets)*0.01),6))
     sum_positive = tweet_summary.summarize([tweet for tweet in raw_tweets if tweet["polarity"]=="P+" or tweet["polarity"]=="P"],MAX_RES_TWEETS = 5)
     sum_negative = tweet_summary.summarize([tweet for tweet in raw_tweets if tweet["polarity"]=="N+" or tweet["polarity"]=="N"],MAX_RES_TWEETS = 5)
     e = time.time()
-    print("already summarized them; took ",e-s)
+    print("#3 already summarized them; took ",e-s)
+    
+    print("___ #4 ABOUT TO TRANSFORM LINKS ___")
+    s = time.time()
+    get_tweets.transform_links_regex(sum_tweets)
+    get_tweets.transform_links_regex(sum_positive)
+    get_tweets.transform_links_regex(sum_negative)
+    e = time.time()
+    print("#4 already summarized them; took ",e-s)
     
     # Store the polarity information in Query_data
     print("-------------")
     s = time.time()
-    requested_query_data=database_connector.store_polarity(requested_query,clas_tweets)
+    requested_query_data=database_connector.store_polarity(requested_query,clas_tweets,raw_tweets)
     
     # Store the summary tweets in Summary_tweets
     database_connector.store_summary(requested_query_data,sum_tweets,"ALL")
@@ -76,6 +88,7 @@ def query_page(request):
     #~ add_data_to_database.store_data(raw_tweets,clas_tweets,requested_query)
     print("it took ",e-s,"to store everything in the db")
     # Return the information about the query just made to the show_results page
+    print("___ #5 EVERITHING TOOK: ",e-s_t)
     return HttpResponseRedirect(reverse('tweetclass:show_results',args=(requested_query_data.id,)))
     
 # This is called every time a query has been processed

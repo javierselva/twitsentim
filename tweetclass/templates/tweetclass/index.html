@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <th class="top_menu_selected">HOME</th>
-        <th class="top_menu_default">WHAT'S THIS?</th>
+        <th class="top_menu_default"><a href="{% url 'tweetclass:whats_this' %}">WHAT'S THIS?</a></th>
         <th class="top_menu_disabled">HISTORIC</th>
         <th class="top_menu_disabled">RESULTS</th>
         <th style="background-color:#FAFAFA;">
@@ -57,6 +57,7 @@
                 {% endfor %}
             </ul>
         </td>
+        <td width=1%></td>
     </tr>
     <tr>
         <td colspan=3 height=10px></td>

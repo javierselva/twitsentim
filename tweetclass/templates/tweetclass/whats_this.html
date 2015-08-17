@@ -1,0 +1,68 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'tweetclass/main_colors.css' %}" />
+
+<table width=70% align=center bgcolor="white">
+    <tr>
+        <td colspan=4 style="background-color:#FAFAFA;" height=15px></td>
+        <th rowspan=2 bgcolor="white"><img height=96% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
+        <td style="background-color:#FAFAFA;" height=15px></td>
+    </tr>
+    <tr>
+        <th class="top_menu_default"><a href="{% url 'tweetclass:index' %}">HOME</a></th>
+        <th class="top_menu_selected">WHAT'S THIS?</th>
+        <th class="top_menu_disabled">HISTORIC</th>
+        <th class="top_menu_disabled">RESULTS</th>
+        <th style="background-color:#FAFAFA;">
+            <div valign="center">
+                <form action="{% url 'tweetclass:query_page' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
+                    <input type="submit" value="" class="search_button" style="background:url({% static 'tweetclass/images/search-icon.png' %});"/>
+                </form>
+            </div>
+        </th>
+    </tr>
+</table>
+<br /><br />
+<table width=75% align=center bgcolor="#EBE8E9">
+    <tr>
+        <td colspan=3 height=10px></td>
+    </tr>
+    <tr>
+        <td width=1%></td>
+        <td bgcolor="white" style="vertical-align:top;text-align:left;">
+            <h3 style="background-color:#BAB8B9; height:30px; vertical-align:center"><font color="F7F7F7">What's this?</font></h3>
+            <b> Sentiment Analysis on Twitter</b> for Spanish is a web app developed by Javier Selva for the 
+            <a href="http://www.upv.es" target="_blank"><font color=blue>Universitat Politècnica de València</font></a> 
+            as a Final Degree Project.
+            <br /><br /> It is based on the <a href="http://users.dsic.upv.es/~lhurtado/index.html" target="_blank">
+                <font color=blue>Lluis Felip Hurtado Oliver</font></a> and 
+                <a href="http://users.dsic.upv.es/~fpla/" target="_blank"><font color=blue>Ferran Pla</font></a>'s 
+                <a href="http://users.dsic.upv.es/~fpla/ARTICLES13/sentiment_analisisNLDB_v19_final_SHORTPAPER.pdf" 
+                target="_blank"><i><font color=blue>Sentiment Analysis in Twitter for Spanish</font></i></a>
+            which results in a six-class polarity clasifier. These clases are: Very Positive (P+), Positive (P), 
+            Neutral (NEU), Negative (N), Very Negative (N+) and None (NONE). It has an acuracy of <b>62.88%</b>.
+            <br /><br />
+             This web app also has a summary functionality which chooses a set of tweets for the given query that
+            represent the main ideas being expressed in the obtained tweets. Furthermore, it also has an Historic 
+            section, where past results of a given query are shown in order to compare its polarity evolution. 
+            <br />
+            <br />
+        </td>
+        <td width=1%></td>
+    <tr>
+        <td colspan=3 height=10px></td>
+    </tr>
+</table>
+
+<br /><br />
+
+<br /><br />
+<table width=90% align=center>
+    <tr>
+        <td width=50%><hr></td>
+        <td><img height=80px src="{% static 'tweetclass/images/logo_small_circle.png' %}" /></td>
+        <td width=50%><hr></td>
+    </tr>
+</table>

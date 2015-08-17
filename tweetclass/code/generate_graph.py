@@ -18,9 +18,13 @@ import matplotlib.ticker as ticker
 #~ except ImportError:
     #~ from io import StringIO
 
-def draw_things(things,colors,labels,text):
+def draw_things(things,colors,labels,text,name=""):
+    if name=="":
+        name = text
+    
     fig = Figure()
-    fig.set_figwidth(30)
+    fig.set_figwidth(15)
+    fig.set_figheight(5)
     canvas = FigureCanvas(fig)
     
     ax = fig.add_subplot(1,1,1, axisbg='white')
@@ -31,14 +35,17 @@ def draw_things(things,colors,labels,text):
     N = len(things[0])
     ind = np.arange(N)
     
-    cont=0
+    def numeric_ment(x,pos):
+        return "#0%d" % (x+1)
+    
+    formatter = ticker.FuncFormatter(numeric_ment)
     
     for t in range(len(things)):
-        ax.plot(ind,things[t],colors[cont],label=labels[t],linewidth=1.3)
-        cont+=1
+        ax.plot(ind,things[t],colors[t],label=labels[t],linewidth=1.5)
     ax.legend()
+    ax.xaxis.set_major_formatter(formatter)
     
-    canvas.print_figure(text+'.png',facecolor='white',bbox_inches='tight')
+    canvas.print_figure(name+'.png',facecolor='white',bbox_inches='tight')
 
 def general_graph(polarity,name):
     

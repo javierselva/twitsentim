@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^$',views.index,name='index'),
     # /tweetclass/query_page/
     url(r'^query_page/$', views.query_page,name='query_page'),
+    # /tweetclass/whats_this/
+    url(r'^whats_this/$', views.whats_this,name='whats_this'),
     # /tweetclass/34/show_results/
     url(r'^(?P<requested_query_data_id>[0-9]+)/show_results/$', views.show_results,name='show_results'),
     # /tweetclass/42/show_historic/

@@ -1,0 +1,269 @@
+<meta http-equiv="Content-type" content="text/html;charset=ISO-8859-1">
+<h1>Test #09-RT_3</h1>
+<br /> Es igual que el cuarto, pero eliminando stopwords
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td>Sistema empleado</td><td>Total score</td><td>Number of suc. tweets</td><td>Avg. RT count</td><td>Avg. Fav count</td><td>Avg. Followers</td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores </td><td> 29 </td><td> 0 </td><td> 567.5 </td><td> 293.6 </td><td> 675494.3 </td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores binarios </td><td> 32 </td><td> 1 </td><td> 544.4 </td><td> 288.4 </td><td> 1074106.4 </td></tr>
+(1010, 17042)
+<tr align="center"><td style="background-color:#AAAAAA"> Contadores ngramas </td><td> 27 </td><td> 1 </td><td> 486.1 </td><td> 263.1 </td><td> 691413.4 </td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF (Defecto) </td><td> 29 </td><td> 0 </td><td> 567.5 </td><td> 293.6 </td><td> 675494.3 </td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l1 </td><td> 40 </td><td> 1 </td><td> 535.1 </td><td> 243.9 </td><td> 1072482.3 </td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> TF normalizado l2 </td><td> 35 </td><td> 1 </td><td> 535.6 </td><td> 249.3 </td><td> 1103172.1 </td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF </td><td> 27 </td><td> 0 </td><td> 554.4 </td><td> 293.6 </td><td> 675383.6 </td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF con idf suavizado </td><td> 30 </td><td> 0 </td><td> 581.2 </td><td> 300.9 </td><td> 643721.5 </td></tr>
+(1010, 2586)
+<tr align="center"><td style="background-color:#AAAAAA"> TF-IDF: idf suav. y norm. l1 </td><td> 38 </td><td> 1 </td><td> 463.0 </td><td> 177.8 </td><td> 885017.7 </td></tr>
+</table><br />
+<table border=1><tr style="background-color:#AAAAAA" align="center"><td rowspan=2 align="center" valing="center" width="200">SISTEMA EMPLEADO</td><td colspan=3>ROUGE-1</td><td colspan=3>ROUGE-2</td><td colspan=3>ROUGE-3</td><td colspan=3>ROUGE-4</td><td colspan=3>ROUGE-L</td><td colspan=3>ROUGE-W-1.2</td><td colspan=3>ROUGE-S*</td><td colspan=3>ROUGE-SU*</td><td rowspan=2 align="center" valing="center">Recuento</td></tr><tr style="background-color:#CCCCCC" align="center"><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td><td>R</td><td>P</td><td>F</td></tr>
+<tr><td style="background-color:#AAAAAA">Contadores</td>
+<td>0.20255</td>
+<td>0.71154</td>
+<td>0.31534</td>
+<td>0.12146</td>
+<td>0.42765</td>
+<td>0.18919</td>
+<td>0.10055</td>
+<td>0.35484</td>
+<td>0.15670</td>
+<td>0.08875</td>
+<td>0.31392</td>
+<td>0.13838</td>
+<td>0.19617</td>
+<td>0.68910</td>
+<td>0.30540</td>
+<td>0.05248</td>
+<td>0.36007</td>
+<td>0.09161</td>
+<td>0.04014</td>
+<td>0.49650</td>
+<td>0.07428</td>
+<td>0.04044</td>
+<td>0.49786</td>
+<td>0.07480</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores binarios</td>
+<td>0.21807</td>
+<td><b>0.74455</b></td>
+<td>0.33734</td>
+<td>0.13699</td>
+<td><b>0.46875</b></td>
+<td>0.21202</td>
+<td>0.11792</td>
+<td><b>0.40439</b></td>
+<td>0.18260</td>
+<td>0.10613</td>
+<td><b>0.36478</b></td>
+<td>0.16442</td>
+<td>0.21350</td>
+<td><b>0.72897</b></td>
+<td>0.33027</td>
+<td>0.05852</td>
+<td><b>0.39026</b></td>
+<td>0.10178</td>
+<td>0.04660</td>
+<td><b>0.54447</b></td>
+<td>0.08585</td>
+<td>0.04691</td>
+<td><b>0.54570</b></td>
+<td>0.08639</td>
+<td align="center">8</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">Contadores ngramas</td>
+<td><b>0.22354</b></td>
+<td>0.74018</td>
+<td><b>0.34338</b></td>
+<td>0.13790</td>
+<td>0.45758</td>
+<td>0.21193</td>
+<td>0.11700</td>
+<td>0.38906</td>
+<td>0.17990</td>
+<td>0.10613</td>
+<td>0.35366</td>
+<td>0.16327</td>
+<td><b>0.21989</b></td>
+<td>0.72810</td>
+<td><b>0.33777</b></td>
+<td><b>0.05934</b></td>
+<td>0.38374</td>
+<td><b>0.10279</b></td>
+<td>0.04870</td>
+<td>0.53504</td>
+<td>0.08927</td>
+<td>0.04901</td>
+<td>0.53626</td>
+<td>0.08981</td>
+<td align="center">6</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF (Defecto)</td>
+<td>0.20255</td>
+<td>0.71154</td>
+<td>0.31534</td>
+<td>0.12146</td>
+<td>0.42765</td>
+<td>0.18919</td>
+<td>0.10055</td>
+<td>0.35484</td>
+<td>0.15670</td>
+<td>0.08875</td>
+<td>0.31392</td>
+<td>0.13838</td>
+<td>0.19617</td>
+<td>0.68910</td>
+<td>0.30540</td>
+<td>0.05248</td>
+<td>0.36007</td>
+<td>0.09161</td>
+<td>0.04011</td>
+<td>0.49604</td>
+<td>0.07422</td>
+<td>0.04040</td>
+<td>0.49741</td>
+<td>0.07473</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l1</td>
+<td>0.22354</td>
+<td>0.73134</td>
+<td>0.34242</td>
+<td><b>0.13973</b></td>
+<td>0.45808</td>
+<td><b>0.21414</b></td>
+<td>0.11974</td>
+<td>0.39339</td>
+<td>0.18360</td>
+<td>0.10704</td>
+<td>0.35241</td>
+<td>0.16420</td>
+<td>0.21715</td>
+<td>0.71045</td>
+<td>0.33263</td>
+<td>0.05875</td>
+<td>0.37544</td>
+<td>0.10160</td>
+<td><b>0.04895</b></td>
+<td>0.52500</td>
+<td><b>0.08955</b></td>
+<td><b>0.04926</b></td>
+<td>0.52622</td>
+<td><b>0.09009</b></td>
+<td align="center">6</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF normalizado l2</td>
+<td>0.21624</td>
+<td>0.73148</td>
+<td>0.33380</td>
+<td>0.13699</td>
+<td>0.46440</td>
+<td>0.21157</td>
+<td>0.11792</td>
+<td>0.40062</td>
+<td>0.18221</td>
+<td>0.10613</td>
+<td>0.36137</td>
+<td>0.16407</td>
+<td>0.20985</td>
+<td>0.70988</td>
+<td>0.32394</td>
+<td>0.05748</td>
+<td>0.37974</td>
+<td>0.09985</td>
+<td>0.04578</td>
+<td>0.52494</td>
+<td>0.08422</td>
+<td>0.04608</td>
+<td>0.52620</td>
+<td>0.08474</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF</td>
+<td>0.20529</td>
+<td>0.73052</td>
+<td>0.32051</td>
+<td>0.12603</td>
+<td>0.44951</td>
+<td>0.19686</td>
+<td>0.10420</td>
+<td>0.37255</td>
+<td>0.16285</td>
+<td>0.09149</td>
+<td>0.32787</td>
+<td>0.14306</td>
+<td>0.19799</td>
+<td>0.70455</td>
+<td>0.30911</td>
+<td>0.05312</td>
+<td>0.36922</td>
+<td>0.09288</td>
+<td>0.04112</td>
+<td>0.52193</td>
+<td>0.07623</td>
+<td>0.04142</td>
+<td>0.52327</td>
+<td>0.07676</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF con idf suavizado</td>
+<td>0.21259</td>
+<td>0.73270</td>
+<td>0.32956</td>
+<td>0.12785</td>
+<td>0.44164</td>
+<td>0.19830</td>
+<td>0.10420</td>
+<td>0.36076</td>
+<td>0.16170</td>
+<td>0.09149</td>
+<td>0.31746</td>
+<td>0.14204</td>
+<td>0.20529</td>
+<td>0.70755</td>
+<td>0.31824</td>
+<td>0.05486</td>
+<td>0.36931</td>
+<td>0.09553</td>
+<td>0.04428</td>
+<td>0.52719</td>
+<td>0.08170</td>
+<td>0.04459</td>
+<td>0.52847</td>
+<td>0.08224</td>
+<td align="center">0</td>
+</tr>
+<tr><td style="background-color:#AAAAAA">TF-IDF: idf suav. y norm. l1</td>
+<td>0.22263</td>
+<td>0.72619</td>
+<td>0.34078</td>
+<td>0.13973</td>
+<td>0.45672</td>
+<td>0.21399</td>
+<td><b>0.12157</b></td>
+<td>0.39820</td>
+<td><b>0.18627</b></td>
+<td><b>0.10979</b></td>
+<td>0.36036</td>
+<td><b>0.16830</b></td>
+<td>0.21807</td>
+<td>0.71131</td>
+<td>0.33380</td>
+<td>0.05855</td>
+<td>0.37304</td>
+<td>0.10121</td>
+<td>0.04886</td>
+<td>0.52098</td>
+<td>0.08934</td>
+<td>0.04918</td>
+<td>0.52219</td>
+<td>0.08989</td>
+<td align="center">4</td>
+</tr>
+</table>
+<br /><h4>Contadores</h4> Score: 0	||	 RT: 88	||	 Fav: 83	||	 Fol: 392478	||	 Id: 614909844085063681	||	 Text: Cuando estés triste, imagínate a Rajoy pronunciand<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 5	||	 RT: 301	||	 Fav: 118	||	 Fol: 41340	||	 Id: 614048353207324672	||	 Text: Si Rajoy les devuelve la extra de 2012 a los funci<br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 1	||	 RT: 379	||	 Fav: 475	||	 Fol: 115955	||	 Id: 615399952609624064	||	 Text: Hace tanto calor que Rajoy es gilipollas<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>Contadores binarios</h4> Score: 1	||	 RT: 98	||	 Fav: 117	||	 Fol: 27206	||	 Id: 614814426181562368	||	 Text: Rajoy se tomó al pie de la letra lo de "frenar el <br />Score: 7	||	 RT: 60	||	 Fav: 32	||	 Fol: 4392733	||	 Id: 615396381788930049	||	 Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 1	||	 RT: 379	||	 Fav: 475	||	 Fol: 115955	||	 Id: 615399952609624064	||	 Text: Hace tanto calor que Rajoy es gilipollas<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>Contadores ngramas</h4> Score: 0	||	 RT: 212	||	 Fav: 64	||	 Fol: 51344	||	 Id: 591082759667474432	||	 Text: "RAJOY PRIVATIZA EL SOL~PROHIBE UTILIZAR SU ENERGÍ<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 4	||	 RT: 244	||	 Fav: 53	||	 Fol: 240909	||	 Id: 614847809834065920	||	 Text: Hablando de Grecia, recuerden que Rajoy ha subido <br />Score: 1	||	 RT: 98	||	 Fav: 117	||	 Fol: 27206	||	 Id: 614814426181562368	||	 Text: Rajoy se tomó al pie de la letra lo de "frenar el <br />Score: 7	||	 RT: 60	||	 Fav: 32	||	 Fol: 4392733	||	 Id: 615396381788930049	||	 Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 1	||	 RT: 379	||	 Fav: 475	||	 Fol: 115955	||	 Id: 615399952609624064	||	 Text: Hace tanto calor que Rajoy es gilipollas<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>TF-IDF (Defecto)</h4> Score: 0	||	 RT: 88	||	 Fav: 83	||	 Fol: 392478	||	 Id: 614909844085063681	||	 Text: Cuando estés triste, imagínate a Rajoy pronunciand<br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 5	||	 RT: 301	||	 Fav: 118	||	 Fol: 41340	||	 Id: 614048353207324672	||	 Text: Si Rajoy les devuelve la extra de 2012 a los funci<br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 1	||	 RT: 379	||	 Fav: 475	||	 Fol: 115955	||	 Id: 615399952609624064	||	 Text: Hace tanto calor que Rajoy es gilipollas<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>TF normalizado l1</h4> Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 5	||	 RT: 83	||	 Fav: 29	||	 Fol: 85580	||	 Id: 615215836903657472	||	 Text: 24 jefes de gobierno en la reunión del eurogrupo y<br />Score: 7	||	 RT: 60	||	 Fav: 32	||	 Fol: 4392733	||	 Id: 615396381788930049	||	 Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 5	||	 RT: 301	||	 Fav: 118	||	 Fol: 41340	||	 Id: 614048353207324672	||	 Text: Si Rajoy les devuelve la extra de 2012 a los funci<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>TF normalizado l2</h4> Score: 0	||	 RT: 88	||	 Fav: 83	||	 Fol: 392478	||	 Id: 614909844085063681	||	 Text: Cuando estés triste, imagínate a Rajoy pronunciand<br />Score: 7	||	 RT: 60	||	 Fav: 32	||	 Fol: 4392733	||	 Id: 615396381788930049	||	 Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 5	||	 RT: 301	||	 Fav: 118	||	 Fol: 41340	||	 Id: 614048353207324672	||	 Text: Si Rajoy les devuelve la extra de 2012 a los funci<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>TF-IDF</h4> Score: 0	||	 RT: 88	||	 Fav: 83	||	 Fol: 392478	||	 Id: 614909844085063681	||	 Text: Cuando estés triste, imagínate a Rajoy pronunciand<br />Score: 3	||	 RT: 170	||	 Fav: 118	||	 Fol: 40233	||	 Id: 615495554026631168	||	 Text: "Los españoles pueden estar tranquilos", dice Rajo<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 1	||	 RT: 379	||	 Fav: 475	||	 Fol: 115955	||	 Id: 615399952609624064	||	 Text: Hace tanto calor que Rajoy es gilipollas<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>TF-IDF con idf suavizado</h4> Score: 3	||	 RT: 170	||	 Fav: 118	||	 Fol: 40233	||	 Id: 615495554026631168	||	 Text: "Los españoles pueden estar tranquilos", dice Rajo<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 3	||	 RT: 356	||	 Fav: 156	||	 Fol: 75857	||	 Id: 614918413119582212	||	 Text: Según Mariano Rajoy 6 de cada 7 españoles notan un<br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 1	||	 RT: 379	||	 Fav: 475	||	 Fol: 115955	||	 Id: 615399952609624064	||	 Text: Hace tanto calor que Rajoy es gilipollas<br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 4	||	 RT: 930	||	 Fav: 733	||	 Fol: 1878873	||	 Id: 615157203645935616	||	 Text: Mucho hablar de cambios y, al final, solo cambiaro<br /><h4>TF-IDF: idf suav. y norm. l1</h4> Score: 2	||	 RT: 209	||	 Fav: 72	||	 Fol: 4227	||	 Id: 615222326242709504	||	 Text: Una foto de la última Cumbre europea. Una sola per<br />Score: 5	||	 RT: 83	||	 Fav: 29	||	 Fol: 85580	||	 Id: 615215836903657472	||	 Text: 24 jefes de gobierno en la reunión del eurogrupo y<br />Score: 2	||	 RT: 1246	||	 Fav: 750	||	 Fol: 14111	||	 Id: 412316737678606336	||	 Text: Rajoy no es tan tonto si lo comparas con la gente <br />Score: 2	||	 RT: 121	||	 Fav: 84	||	 Fol: 152012	||	 Id: 615420690838257664	||	 Text: Grecia puede alterar el discurso económico de Rajo<br />Score: 7	||	 RT: 60	||	 Fav: 32	||	 Fol: 4392733	||	 Id: 615396381788930049	||	 Text: Aznar critica a Rajoy en nombre de la vieja guardi<br />Score: 4	||	 RT: 1161	||	 Fav: 162	||	 Fol: 23069	||	 Id: 249095440203644929	||	 Text: Rajoy dice no a la independencia de Cataluña. Dijo<br />Score: 2	||	 RT: 410	||	 Fav: 161	||	 Fol: 17922	||	 Id: 615237326193729536	||	 Text: La que se va a liar cuando Rajoy recrimine a Obama<br />Score: 5	||	 RT: 301	||	 Fav: 118	||	 Fol: 41340	||	 Id: 614048353207324672	||	 Text: Si Rajoy les devuelve la extra de 2012 a los funci<br />Score: 4	||	 RT: 640	||	 Fav: 248	||	 Fol: 3878274	||	 Id: 613803635886170112	||	 Text: Presidente Rajoy, Colombia tiene el mayor cartel d<br />Score: 5	||	 RT: 399	||	 Fav: 122	||	 Fol: 240909	||	 Id: 614015908474916864	||	 Text: El New York Times tilda de "franquista" la #LeyMor<br />

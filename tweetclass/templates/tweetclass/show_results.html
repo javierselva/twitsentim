@@ -9,7 +9,7 @@
     </tr>
     <tr>
         <th class="top_menu_default"><a href="{% url 'tweetclass:index' %}">HOME</a></th>
-        <th class="top_menu_default">WHAT'S THIS?</th>
+        <th class="top_menu_default"><a href="{% url 'tweetclass:whats_this' %}">WHAT'S THIS?</a></th>
         <th class="top_menu_default"><a href="../../../tweetclass/{{current.id}}/show_historic/">HISTORIC</a></th>
         <th class="top_menu_selected">RESULTS</th>
         <th style="background-color:#FAFAFA;">
@@ -92,7 +92,7 @@
                 </table>
                 <br /><br />
             {% for tweet in sum_t_all %}
-                <li>{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+                <li><a href="http://twitter.com/{{ tweet.tweet_user }}/status/{{ tweet.tweet_id }}" target="_blank"><b>@{{ tweet.tweet_user }}</b></a>:{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
                     <div style="text-align:right;">
                         <input type="radio" name="choice{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
                         <label>P+</label>
@@ -117,7 +117,7 @@
         <td width=1%></td>
         <td bgcolor="white" width=90% style="border-top:5px solid green;">
             {% for tweet in sum_t_pos %}
-                <li>{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+                <li><a href="http://twitter.com/{{ tweet.tweet_user }}/status/{{ tweet.tweet_id }}" target="_blank"><b>@{{ tweet.tweet_user }}</b></a>:{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
                     <div style="text-align:right;">
                         <input type="radio" name="choice2{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
                         <label>P+</label>
@@ -141,7 +141,7 @@
         <td width=1%></td>
         <td bgcolor="white" width=90% style="border-top:5px solid #C22621;">
             {% for tweet in sum_t_neg %}
-                <li>{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
+                <li><a href="http://twitter.com/{{ tweet.tweet_user }}/status/{{ tweet.tweet_id }}" target="_blank"><b>@{{ tweet.tweet_user }}</b></a>:{% autoescape off %}{{ tweet.tweet_text }}{% endautoescape %} (Pol: <b>{{ tweet.tweet_pol }}</b>)</li>
                     <div style="text-align:right;">
                         <input type="radio" name="choice3{{ forloop.counter }}" id="tweet1_{{ forloop.counter }}" value="P+" />
                         <label>P+</label>

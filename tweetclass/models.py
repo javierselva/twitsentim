@@ -36,6 +36,7 @@ class Summary_tweet(models.Model):
     tag = models.CharField(max_length=3,default="ALL")
     tweet_text = models.CharField(max_length=500)
     tweet_pol = models.CharField(max_length=4)
+    tweet_user = models.CharField(max_length=15,default="noName")
     
     #This is used for when the system needs to print a Summary_tweet object
     def __str__(self):

@@ -26,19 +26,23 @@ def obtain_query(query_text_search):
     return requested_query
 
 # The results of the classification have to be stored
-def store_polarity(requested_query,clas_tweets):
+def store_polarity(requested_query,clas_tweets,raw_tweets):
     # hm will contain the total amount of tweets retreived for a concrete query
-    hm = float(len(clas_tweets)) 
+    retweet_count = [tweet["retweet_count"]+1 for tweet in raw_tweets]
+    polarity={}
+    for a,b in zip(clas_tweets,retweet_count):
+        polarity[a]=polarity.get(a,0)+b
+    hm = float(sum(retweet_count)) 
     print("storing results")
     requested_query_data=requested_query.query_data_set.create(
         query_date=timezone.now(),
-        p_pos_p=round(clas_tweets.count("P+")*100.0/hm,2),
-        p_pos=round(clas_tweets.count("P")*100/hm,2),
-        p_neu=round(clas_tweets.count("NEU")*100/hm,2),
-        p_neg=round(clas_tweets.count("N")*100/hm,2),
-        p_neg_p=round(clas_tweets.count("N+")*100/hm,2),
-        p_none=round(clas_tweets.count("NONE")*100/hm,2),
-        hm_tweets=hm,
+        p_pos_p=round(polarity["P+"]*100.0/hm,2),
+        p_pos=round(polarity["P"]*100.0/hm,2),
+        p_neu=round(polarity["NEU"]*100.0/hm,2),
+        p_neg=round(polarity["N"]*100.0/hm,2),
+        p_neg_p=round(polarity["N+"]*100.0/hm,2),
+        p_none=round(polarity["NONE"]*100.0/hm,2),
+        hm_tweets=len(clas_tweets),
     )
     print("results stored")
     
@@ -79,7 +83,8 @@ def store_summary(requested_query, tweets, tweet_tag):
             tweet_id=tweet["id"],
             tweet_text=tweet["text"],
             tag = tweet_tag,
-            tweet_pol=tweet["polarity"]
+            tweet_pol=tweet["polarity"],
+            tweet_user=tweet["user"]
             )
     requested_query.save()
 
