@@ -1,76 +1,108 @@
 {% load staticfiles %}
+<html>
+    <head>
+    <script language="JavaScript">
+        function setVisibility(id1,id2,visibility) {
+            document.getElementById(id1).style.display = visibility;
+            document.getElementById(id2).style.display = visibility;
+        }
+    </script>
+    <title>Historic results for "{{ query.query_text }}"</title>
 
-<link rel="stylesheet" type="text/css" href="{% static 'tweetclass/main_colors.css' %}" />
-
-<table width=70% align=center bgcolor="white">
-    <tr>
-        <td colspan=4 style="background-color:#FAFAFA;" height=15px></td>
-        <th rowspan=2 bgcolor="white"><img height=96% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
-        <td style="background-color:#FAFAFA;" height=15px></td>
-    </tr>
-    <tr>
-        <th class="top_menu_selected">HOME</th>
-        <th class="top_menu_default"><a href="{% url 'tweetclass:whats_this' %}">WHAT'S THIS?</a></th>
-        <th class="top_menu_disabled">HISTORIC</th>
-        <th class="top_menu_disabled">RESULTS</th>
-        <th style="background-color:#FAFAFA;">
-            <div valign="center">
+    <link rel="stylesheet" type="text/css" href="{% static 'tweetclass/main_colors.css' %}" />
+</head>
+    <body onunload="">
+    <table width=70% align=center bgcolor="white">
+        <tr>
+            <td colspan=4 style="background-color:#FAFAFA;" height=15px></td>
+            <th rowspan=2 bgcolor="white"><img height=96% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
+            <td style="background-color:#FAFAFA;" height=15px></td>
+        </tr>
+        <tr>
+            <th class="top_menu_selected"><a href="{% url 'tweetclass:index' %}">HOME</a></th>
+            <th class="top_menu_default"><a href="{% url 'tweetclass:whats_this' %}">WHAT'S THIS?</a></th>
+            <th class="top_menu_disabled">HISTORIC</th>
+            <th class="top_menu_disabled">RESULTS</th>
+            <th style="background-color:#FAFAFA;">
+                <div valign="center">
+                    <form action="{% url 'tweetclass:query_page' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
+                        <input type="submit" value="" class="search_button" 
+                        style="background:url({% static 'tweetclass/images/search-icon.png' %});"
+                        onclick="setVisibility('loading_box','background_box', 'inline');"; />
+                    </form>
+                </div>
+            </th>
+        </tr>
+    </table>
+    <br /><br />
+    <div class="background_layer" id="background_box"></div>
+    <div class="loading_layer" id="loading_box">
+        <table align=center>
+            <tr>
+                <td height="10px"></td>
+            </tr>
+            <tr>
+                <td><img src="{% static 'tweetclass/images/loading.gif' %}" width=50px height=50px /></td>
+            </tr>
+        </table>
+        <h2>Loading...</h2>
+    </div>
+    <table width=75% align=center bgcolor="#EBE8E9">
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+        <tr>
+            <td width=1%></td>
+            <td bgcolor=white style="vertical-align:top;text-align:center;">
+                <h3 style="background-color:#BAB8B9; height:30px; vertical-align:center"><font color="F7F7F7">Make your own:</font></h3>
                 <form action="{% url 'tweetclass:query_page' %}" method="post">
-                    {% csrf_token %}
-                    <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
-                    <input type="submit" value="" class="search_button" style="background:url({% static 'tweetclass/images/search-icon.png' %});"/>
+                {% csrf_token %}
+                <input type="text" name="query_text" id="query_text" />
+                <input type="submit" value="Search" onclick="setVisibility('loading_box','background_box', 'inline');";/>
                 </form>
-            </div>
-        </th>
-    </tr>
-</table>
-<br /><br />
-<table width=75% align=center bgcolor="#EBE8E9">
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-    <tr>
-        <td width=1%></td>
-        <td bgcolor=white style="vertical-align:top;text-align:center;">
-            <h3 style="background-color:#BAB8B9; height:30px; vertical-align:center"><font color="F7F7F7">Make your own:</font></h3>
-            <form action="{% url 'tweetclass:query_page' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="query_text" id="query_text" />
-            <input type="submit" value="Search" />
-            </form>
-        </td>
-        <td width=1%></td>
-        <td bgcolor="white" width=45%>
+                <br />
+                <a href ="https://dev.twitter.com/rest/public/search" target="_blank"><font color=blue>How to build a query?</font></a>
+                <br />
+                {% if error %}
+                    <font color=red>You should've written something...</font>
+                {% endif %}
+            </td>
+            <td width=1%></td>
+            <td bgcolor="white" width=45%>
 
-            <h3 style="background-color:#BAB8B9; height:30px; vertical-align:center; text-align:center;"><font color="F7F7F7">Other Querys:</font></h3>
-            <ul>
-                {% for query in querys %}
-                    <li>
-                        <form method="post" action="../../../tweetclass/000/show_historic/" id="form_{{ forloop.counter }}">
-                            {% csrf_token %}
-                            <input type="hidden" name="real_id" value="{{ query.query_text }}" />
-                            <a href="../../../tweetclass/000/show_historic/" onclick="document.getElementById('form_{{ forloop.counter }}').submit(); return false;">
-                                <font color=blue>{{ query.query_text }}</font>
-                            </a>
-                        </form>    
-                    </li>
-                {% endfor %}
-            </ul>
-        </td>
-        <td width=1%></td>
-    </tr>
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-</table>
+                <h3 style="background-color:#BAB8B9; height:30px; vertical-align:center; text-align:center;"><font color="F7F7F7">Other Querys:</font></h3>
+                <ul>
+                    {% for query in querys %}
+                        <li>
+                            <form method="post" action="../../../tweetclass/000/show_historic/" id="form_{{ forloop.counter }}">
+                                {% csrf_token %}
+                                <input type="hidden" name="real_id" value="{{ query.1 }}" />
+                                <a href="../../../tweetclass/000/show_historic/" onclick="document.getElementById('form_{{ forloop.counter }}').submit(); return false;">
+                                    <font color=blue>{{ query.1 }}</font>
+                                </a>
+                            </form>    
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td width=1%></td>
+        </tr>
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+    </table>
 
-<br /><br />
+    <br /><br />
 
-<br /><br />
-<table width=90% align=center>
-    <tr>
-        <td width=50%><hr></td>
-        <td><img height=80px src="{% static 'tweetclass/images/logo_small_circle.png' %}" /></td>
-        <td width=50%><hr></td>
-    </tr>
-</table>
+    <br /><br />
+    <table width=90% align=center>
+        <tr>
+            <td width=50%><hr></td>
+            <td><img height=80px src="{% static 'tweetclass/images/logo_small_circle.png' %}" /></td>
+            <td width=50%><hr></td>
+        </tr>
+    </table>
+</body>
+</html>

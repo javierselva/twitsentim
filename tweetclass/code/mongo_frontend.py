@@ -2,8 +2,8 @@ import json
 import pymongo
 
 '''
-Code extract from the book " Mining the Social Web, Matthew A. Russell - 2nd Edition.
-It is used to save tweets in a MongoDb database.
+Code extract from the book " Mining the Social Web, Matthew A. Russell - 2nd Edition."
+It is used to save and/or retreive tweets in a MongoDb database.
 '''
 
 def save_to_mongo(data, mongo_db,mongo_db_coll, **mongo_conn_kw):

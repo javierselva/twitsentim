@@ -1,135 +1,181 @@
 {% load staticfiles %}
+<html>
+    <head>
+    <script language="JavaScript">
+        function setVisibility(id1,id2,visibility) {
+            document.getElementById(id1).style.display = visibility;
+            document.getElementById(id2).style.display = visibility;
+        }
+    </script>
+    <title>Historic results for "{{ query.query_text }}"</title>
 
-<link rel="stylesheet" type="text/css" href="{% static 'tweetclass/main_colors.css' %}" />
-
-<table width=70% align=center bgcolor="white">
-    <tr>
-        <td colspan=4 style="background-color:#FAFAFA;" height=15px></td>
-        <th rowspan=2 bgcolor="white"><img height=96% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
-        <td style="background-color:#FAFAFA;" height=15px></td>
-    </tr>
-    <tr>
-        <th class="top_menu_default"><a href="{% url 'tweetclass:index' %}">HOME</a></th>
-        <th class="top_menu_default"><a href="{% url 'tweetclass:whats_this' %}">WHAT'S THIS?</a></th>
-        <th class="top_menu_selected">HISTORIC</th>
-        {% if is_generic %}
-            <th class="top_menu_disabled">RESULTS</th>
-        {% else %}
-            <th class="top_menu_default"><a href="../../../tweetclass/{{current.id}}/show_results/">RESULTS</a></th>
-        {% endif %}
-        <th style="background-color:#FAFAFA;">
-            <div valign="center">
-                <form action="{% url 'tweetclass:query_page' %}" method="post">
-                    {% csrf_token %}
-                    <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
-                    <input type="submit" value="" class="search_button" style="background:url({% static 'tweetclass/images/search-icon.png' %});"/>
-                </form>
-            </div>
-        </th>
-    </tr>
-</table>
-<br /><br />
-<table width=75% align=center bgcolor="#EBE8E9">
-    <tr>
-        <td colspan=3>
-            <table width=100%>
-                <tr>
-                    <td bgcolor="#BAB8B9" width=30%><font size=5 color="F7F7F7">GENERIC GRAPHIC</font></td>
-                    <td bgcolor=white><font size=4>Shows the evolution of each polarity value</font></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-    <tr>
-        <td width=1%></td>
-        <td><img src="{% static generic_image_path %}" alt="generic_img"/></td>
-        <td width=1%></td>
-    </tr>
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-</table>
-
-<br /><br />
-
-<table width=75% align=center bgcolor="#EBE8E9">
-    <tr>
-        <td colspan=3>
-            <table width=100%>
-                <tr>
-                    <td bgcolor="#BAB8B9" width=30%><font size=5 color="F7F7F7">SUMMARY GRAPHIC</font></td>
-                    <td bgcolor=white><font size=4>Shows the general polarity evolution (being 50 neutral)</font></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-    <tr>
-        <td width=1%></td>
-        <td width=90%><img src="{% static summary_image_path %}" alt="summary_img"/></td>
-        <td width=1%></td>
-    </tr>
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-</table>
-<br /><br />
-<table width=75% align=center bgcolor="#EBE8E9">
-    <tr>
-        <td colspan=3>
-            <table width=100%>
-                <tr>
-                    <td bgcolor="#BAB8B9" width=30%><font size=5 color="F7F7F7">HISTORIC DATA</font></td>
-                    <td bgcolor=white><font size=4>Contains the query's historic results</font></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-    <tr>
-        <td width=1%></td>
-        <td width=90% bgcolor=white align=center>
-            <table border=1>
-                <tr style="background-color:#AAAAAA" align="center">
-                    <td width="250px"><b>Query Date</b></td>
-                    <td width="80px"><b>P+</b></td>
-                    <td width="80px"><b>P</b></td>
-                    <td width="80px"><b>NEU</b></td>
-                    <td width="80px"><b>N</b></td>
-                    <td width="80px"><b>N+</b></td>
-                    <td width="80px"><b>NONE</b></td>
-                </tr>
-                {% for result in all_res %}
-                    <tr align="center">
-                        <td width="250px" style="background-color:#CCCCCC">{{ result.query_date }}</td>
-                        <td width="80px">{{ result.p_pos_p }} %</td>
-                        <td width="80px">{{ result.p_pos }} %</td>
-                        <td width="80px">{{ result.p_neu }} %</td>
-                        <td width="80px">{{ result.p_neg }} %</td>
-                        <td width="80px">{{ result.p_neg_p }} %</td>
-                        <td width="80px">{{ result.p_none }} %</td>
+    <link rel="stylesheet" type="text/css" href="{% static 'tweetclass/main_colors.css' %}" />
+</head>
+<body onunload="">
+    <table width=70% align=center bgcolor="white">
+        <tr>
+            <td colspan=4 style="background-color:#FAFAFA;" height=15px></td>
+            <th rowspan=2 bgcolor="white"><img height=96% src="{% static 'tweetclass/images/logo_small.png' %}" /></th>
+            <td style="background-color:#FAFAFA;" height=15px></td>
+        </tr>
+        <tr>
+            <th class="top_menu_default"><a href="{% url 'tweetclass:index' %}">HOME</a></th>
+            <th class="top_menu_default"><a href="{% url 'tweetclass:whats_this' %}">WHAT'S THIS?</a></th>
+            <th class="top_menu_selected">HISTORIC</th>
+            {% if is_generic %}
+                <th class="top_menu_disabled">RESULTS</th>
+            {% else %}
+                {% if feedback %}
+                    <th class="top_menu_default"><a href="../../../tweetclass/F{{current.id}}/show_results/">RESULTS</a></th>
+                {% else %}
+                    <th class="top_menu_default"><a href="../../../tweetclass/{{current.id}}/show_results/">RESULTS</a></th>
+                {% endif %}
+            {% endif %}
+            <th style="background-color:#FAFAFA;">
+                <div valign="center">
+                    <form action="{% url 'tweetclass:query_page' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="query_text" id="query_text" value="{{ query.query_text }}" />
+                        <input type="submit" value="" class="search_button" 
+                            style="background:url({% static 'tweetclass/images/search-icon.png' %});"
+                            onclick="setVisibility('loading_box','background_box', 'inline');"; />
+                    </form>
+                </div>
+            </th>
+        </tr>
+    </table>
+    <br /><br />
+    <div class="background_layer" id="background_box"></div>
+    <div class="loading_layer" id="loading_box">
+        <table align=center>
+            <tr>
+                <td height="10px"></td>
+            </tr>
+            <tr>
+                <td><img src="{% static 'tweetclass/images/loading.gif' %}" width=50px height=50px /></td>
+            </tr>
+        </table>
+        <h2>Loading...</h2>
+    </div>
+    <table width=75% align=center bgcolor="#EBE8E9">
+        <tr>
+            <td colspan=3>
+                <table width=100%>
+                    <tr>
+                        <td bgcolor="#BAB8B9" width=30%><font size=5 color="F7F7F7">&nbsp;&nbsp;GENERIC GRAPHIC</font></td>
+                        <td bgcolor=white><font size=4>Shows the evolution of each polarity value</font></td>
                     </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td width=1%></td>
-    </tr>
-    <tr>
-        <td colspan=3 height=10px></td>
-    </tr>
-</table>
-     <br /><br />           
-<table width=90% align=center>
-    <tr>
-        <td width=50%><hr></td>
-        <td><img height=80px src="{% static 'tweetclass/images/logo_small_circle.png' %}" /></td>
-        <td width=50%><hr></td>
-    </tr>
-</table>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+        <tr>
+            <td width=1%></td>
+            <td>
+            {% if hist_available %}
+                <img src="{% static generic_image_path %}" alt="generic_img"/>
+            {% else %}
+                <div align="center"><h3>Data not available</h3> We are sorry, there is not enough data to draw the graphic.<br /></div>
+            {% endif %}    
+            </td>
+            <td width=1%></td>
+        </tr>
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+    </table>
+
+    <br /><br />
+
+    <table width=75% align=center bgcolor="#EBE8E9">
+        <tr>
+            <td colspan=3>
+                <table width=100%>
+                    <tr>
+                        <td bgcolor="#BAB8B9" width=30%><font size=5 color="F7F7F7">&nbsp;&nbsp;SUMMARY GRAPHIC</font></td>
+                        <td bgcolor=white><font size=4>Shows the general polarity evolution (being 50 neutral)</font></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+        <tr>
+            <td width=1%></td>
+            <td width=90%>
+            {% if hist_available %}
+                <img src="{% static summary_image_path %}" alt="summary_img"/>
+            {% else %}
+                <div align="center"><h3>Data not available</h3> We are sorry, there is not enough data to draw the graphic.<br /></div>
+            {% endif %}
+            </td>
+            <td width=1%></td>
+        </tr>
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+    </table>
+    <br /><br />
+    <table width=75% align=center bgcolor="#EBE8E9">
+        <tr>
+            <td colspan=3>
+                <table width=100%>
+                    <tr>
+                        <td bgcolor="#BAB8B9" width=30%><font size=5 color="F7F7F7">HISTORIC DATA</font></td>
+                        <td bgcolor=white><font size=4>Contains the query's historic results</font></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+        <tr>
+            <td width=1%></td>
+            <td width=90% bgcolor=white align=center>
+                <table border=1>
+                    <tr style="background-color:#AAAAAA" align="center">
+                        <td width="250px"><b>Query Date</b></td>
+                        <td width="80px"><b>P+</b></td>
+                        <td width="80px"><b>P</b></td>
+                        <td width="80px"><b>NEU</b></td>
+                        <td width="80px"><b>N</b></td>
+                        <td width="80px"><b>N+</b></td>
+                        <td width="80px"><b>NONE</b></td>
+                    </tr>
+                    {% for result in all_res %}
+                        <tr align="center">
+                            <td width="250px" style="background-color:#CCCCCC">
+                                <a href="../../../tweetclass/{{ result.id }}/show_results/">
+                                {{ result.query_date }}
+                                </a>
+                                </td>
+                            <td width="80px">{{ result.p_pos_p }} %</td>
+                            <td width="80px">{{ result.p_pos }} %</td>
+                            <td width="80px">{{ result.p_neu }} %</td>
+                            <td width="80px">{{ result.p_neg }} %</td>
+                            <td width="80px">{{ result.p_neg_p }} %</td>
+                            <td width="80px">{{ result.p_none }} %</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+            <td width=1%></td>
+        </tr>
+        <tr>
+            <td colspan=3 height=10px></td>
+        </tr>
+    </table>
+         <br /><br />           
+    <table width=90% align=center>
+        <tr>
+            <td width=50%><hr></td>
+            <td><img height=80px src="{% static 'tweetclass/images/logo_small_circle.png' %}" /></td>
+            <td width=50%><hr></td>
+        </tr>
+    </table>
+</body>
+</html>

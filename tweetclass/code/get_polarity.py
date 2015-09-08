@@ -1,5 +1,13 @@
 #! /usr/bin/python3
 #!encoding:utf8
+'''
+@file:      tweetclass/code/get_polarity.py
+@desc:      This file contains the necessary code to call the clasificator given a list of 
+            tweets (as plain text)
+@date:      2015
+@author:    Javier Selva Castello
+'''
+
 
 #~ from random import choice
 

@@ -1,4 +1,12 @@
 #!encoding:utf8
+'''
+@file:      tweetclass/code/summary_test.py
+@desc:      this file contains all the methods that were used to test the summary system
+            This code is a bit messy, I know it and so do you, let's not make a big fuss about it.
+@date:      2015
+@author:    Javier Selva Castello
+'''
+
 
 import get_tweets as gt
 import get_polarity as gp
@@ -525,9 +533,8 @@ def compare_methods():
 
 if __name__ == "__main__":
     
-    print(gt.transform_links_regex("esto es @pedro un tuit con #hash @enrique y también #tags y alguna http://www.url.com"))
     
-    if False:
+    if True:
         test_number = sys.argv[1]
         print("<meta http-equiv=\"Content-type\" content=\"text/html;charset=ISO-8859-1\">")
         print("<h1>Test #"+test_number+"</h1>")
