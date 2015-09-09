@@ -169,7 +169,6 @@ def summarize(tweets,system=5,wrange=4,MAX_RES_TWEETS = 10,use_retweets=True,rem
     except:
         return []
 
-    print("ESTO --->",s)
     
     max_ind=[]
     
