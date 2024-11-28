@@ -4,4 +4,6 @@ This repo contains the web app I developed as a final project for my Bachelor's 
 ![visualization of the app for tweet summarization](tweetsentim.png "Visualization of the App for tweet summarization")
 
 
-I'm honestly sorry I did not add any usage instructions, but it's been almost 10 years now and I don't remember :s
+I'm sorry I did not add any usage instructions, but it's been almost 10 years now and I don't remember :s
+
+I honestly never thought anyone could be interested in a class project.
